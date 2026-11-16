@@ -2,6 +2,7 @@
 
 __version__ = "0.0.0"
 
+from ._candidates import add_bond_candidate, candidates, remove_candidate
 from ._connect import connectivity
 from ._element import AmchiError, UnsupportedElementError
 from ._parity import ParityMargins, parity_margins
@@ -16,6 +17,9 @@ __all__ = [
     "IllDefinedParityError",
     "ParityMargins",
     "UnsupportedElementError",
+    "add_bond_candidate",
+    "candidates",
     "connectivity",
     "parity_margins",
+    "remove_candidate",
 ]

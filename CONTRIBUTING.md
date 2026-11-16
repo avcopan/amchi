@@ -56,8 +56,9 @@ import amchi
 
 conn = amchi.connectivity(geo)
 cands = amchi.candidates(geo.symbols, conn)
-# Correct the result by hand (the signature is provisional)
-cands = amchi.remove_candidate(cands, atom)
+# Correct the result by hand: here atom 1 is a planar N=N, not a stereocenter
+cands = amchi.remove_candidate(cands, 1)
+cands = amchi.add_bond_candidate(cands, conn, (0, 1))
 amchi.string(geo, conn, cands)
 ```
 

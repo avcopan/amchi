@@ -65,7 +65,7 @@ layers = [
     "(amchi._layers)",
     "(amchi._canon)",
     "amchi._parity",
-    "(amchi._candidates)",
+    "amchi._candidates",
     "amchi._resonance",
     "amchi._connect",
     "amchi._graph",
