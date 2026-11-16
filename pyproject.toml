@@ -63,7 +63,7 @@ type = "layers"
 layers = [
     "(amchi._amchi)",
     "(amchi._layers)",
-    "(amchi._canon)",
+    "amchi._canon",
     "amchi._parity",
     "amchi._candidates",
     "amchi._resonance",
