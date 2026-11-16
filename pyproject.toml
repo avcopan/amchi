@@ -59,7 +59,7 @@ name = "Module Layering"
 type = "layers"
 # Highest layer first, in the reverse of the module table in VISION.md.
 # The parentheses make a layer optional until its module exists: remove each pair when
-# the module is added, and drop the layer1 and layer2 placeholders (see PLAN.md).
+# the module is added.
 layers = [
     "(amchi._amchi)",
     "(amchi._layers)",
@@ -70,7 +70,7 @@ layers = [
     "(amchi._connect)",
     "(amchi._graph)",
     "(amchi._types)",
-    "(amchi._element)",
+    "amchi._element",
 ]
 
 # Pytest configurations

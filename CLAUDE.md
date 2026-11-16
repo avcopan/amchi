@@ -9,7 +9,7 @@ Read `CONTRIBUTING.md` for the workflow and the design rules (the flat API, the 
 
 - Run everything through Pixi (`pixi run <task>`, or `pixi run -e test python ...`).
   The dependencies are only installed in the Pixi environments, not in the system Python.
-- `pixi run pre-commit` runs all checks. A single test: `pixi run -e test pytest tests/test_amchi.py::test__greet`.
+- `pixi run pre-commit` runs all checks. A single test: `pixi run -e test pytest tests/test__element.py::test__element`.
 
 ## Things that aren't obvious from the code
 

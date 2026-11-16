@@ -29,7 +29,7 @@ The project follows the [copier-pixi-python](https://github.com/avcopan/copier-p
 
 To run a single test, call pytest in the `test` environment:
 ```bash
-pixi run -e test pytest tests/test_amchi.py::test__greet
+pixi run -e test pytest tests/test__element.py::test__element
 ```
 
 Coverage must stay at or above 80%.
