@@ -134,5 +134,7 @@ Known limitations of the old code are kept, with tests that record today's behav
 
 ### Errors
 
-Report, don't guess: a parity that isn't well defined (a nearly planar tetrahedral atom, a bond twisted near 90°) and an unsupported element raise a named error.
+Report, don't guess: an unsupported element, and a stereocenter whose parity the coordinates don't define, raise a named error.
+A parity is ill-defined only when its determinant or dot product is exactly zero, as in the old code: the old strings give nearly planar nitrogens a parity.
+How nearly planar each candidate is (a tetrahedral atom, a bond twisted near 90°) is a diagnostic, `parity_margins`, not an error.
 Validate at the boundary, in the input models, and not inside loops.

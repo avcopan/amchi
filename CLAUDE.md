@@ -21,7 +21,9 @@ Read `CONTRIBUTING.md` for the workflow and the design rules (the flat API, the 
 - **Parities are stored local**, against the neighbor order stored with them. Canonical parities exist only inside `_canon`, derived from the local ones and the current priorities.
 - **Hydrogens are explicit in the inputs and implicit in the canonicalized graph**, except backbone hydrogens such as a transferring H in a TS.
 - **Validate at the boundary** (the input models and the tests), not inside loops. Build the graph once per record and never copy it in a loop.
-- **A parity that isn't well defined, or an unsupported element, raises a named error.** Don't guess.
+- **An unsupported element raises a named error.** Don't guess.
+- **A local parity is ill-defined (`None`) only when its determinant or dot product is exactly zero**, as in the old code, so a nearly planar nitrogen still gets a parity.
+  `_canon` raises `IllDefinedParityError` only when a candidate with parity `None` turns out to be a stereocenter. How nearly planar a candidate is, is a diagnostic: `parity_margins`.
 - Atoms are indices into the geometry, and a bond is an ordered pair `(i, j)` with `i < j`.
 - The public API is flat: users write `amchi.string(...)`. A new function goes in a private module and must be added to `amchi/__init__.py`.
 - Docstring examples run as doctests and start with `import amchi`, so they read as user code.
