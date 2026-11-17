@@ -9,11 +9,27 @@ from typing import NamedTuple
 
 
 class AmchiError(Exception):
-    """Base class for the errors that amchi raises."""
+    """Base class for the errors that amchi raises.
+
+    Examples:
+        >>> import amchi
+        >>> issubclass(amchi.UnsupportedElementError, amchi.AmchiError)
+        True
+    """
 
 
 class UnsupportedElementError(AmchiError):
-    """An element that amchi has no data for."""
+    """An element that amchi has no data for (amchi supports H to Xe, main group).
+
+    Examples:
+        >>> import amchi
+        >>> from types import SimpleNamespace
+        >>> iron = SimpleNamespace(symbols=["Fe"], coordinates=[[0, 0, 0]])
+        >>> amchi.from_geometry(iron)  # doctest: +IGNORE_EXCEPTION_DETAIL
+        Traceback (most recent call last):
+            ...
+        amchi._element.UnsupportedElementError: ...
+    """
 
 
 class _Element(NamedTuple):

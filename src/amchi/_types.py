@@ -13,11 +13,33 @@ type Bond = tuple[int, int]
 
 
 class IllDefinedParityError(AmchiError):
-    """A stereocenter whose parity the coordinates don't define."""
+    """A stereocenter whose parity the coordinates don't define.
+
+    Examples:
+        >>> import amchi
+        >>> from types import SimpleNamespace
+        >>> # CHFClBr with the four substituents in one plane
+        >>> flat = SimpleNamespace(
+        ...     symbols=["C", "H", "F", "Cl", "Br"],
+        ...     coordinates=[[0, 0, 0], [1, 0, 0], [0, 1, 0], [-1, 0, 0], [0, -1, 0]],
+        ... )
+        >>> amchi.from_geometry(flat)  # doctest: +IGNORE_EXCEPTION_DETAIL
+        Traceback (most recent call last):
+            ...
+        amchi._types.IllDefinedParityError: ...
+    """
 
 
 class GeometryLike(Protocol):
-    """Anything with atomic symbols and Cartesian coordinates (N x 3, Å)."""
+    """Anything with atomic symbols and Cartesian coordinates (N x 3, Å).
+
+    Examples:
+        >>> import amchi
+        >>> from types import SimpleNamespace
+        >>> helium = SimpleNamespace(symbols=["He"], coordinates=[[0, 0, 0]])
+        >>> amchi.from_geometry(helium)
+        'AMChI=2S/He'
+    """
 
     @property
     def symbols(self) -> Sequence[str]:

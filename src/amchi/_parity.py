@@ -24,6 +24,11 @@ class ParityMargins(BaseModel, frozen=True):
     an ideal tetrahedron, 0.77 for an ideal pyramid with a lone pair, and 0 for a
     planar atom. For a bond, the `|cos|` of the dihedral angle between its reference
     neighbors: 1 when planar, 0 at 90°.
+
+    Examples:
+        >>> import amchi
+        >>> amchi.ParityMargins(atoms={0: 3.08}, bonds={}).atoms
+        {0: 3.08}
     """
 
     atoms: dict[int, float]
