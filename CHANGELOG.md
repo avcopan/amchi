@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Intended differences from the old AMChI
+
+- Para-stereocenters get `t` and `b` entries: a ring stereocenter whose two ring neighbors are equivalent, as in cis- and trans-1,3-dimethylcyclobutane, 1,4-dimethylcyclohexane and bicyclo[3.3.0]octane, which the old AMChI gives one string. A candidate counts if its neighbors keep exactly one tied pair joined in a ring through it, and the candidates of a ring system are kept if flipping any one of them changes the form. They add Schneider's dependent-chirality invariant to the refinement, and those still tied get their parity during the tie-breaking (D32, D33). The `c` layer can differ too, since the stereo splits the ring atoms before numbering, so the string with `stereo=False` is no longer always the stereo string without its stereo layers. A component without a para-stereocenter keeps its string; 12 of the 600 sampled species change, among them ring NH groups (cis or trans to a substituent, under the old convention that a pyramidal N is a stereocenter) and bicyclic bridgeheads.
+
 ### Fixed
 
 - The canonical enantiomer no longer depends on the atom order: the two sides of a bond stereocenter, and stereocenters of equal priority, are compared without reference to the atom indices. An achiral species with bond stereocenters (bicyclo[4.2.2]deca-2,4,7-triene) got an `m` layer for some atom orders; it now has none, as in the old AMChI.
