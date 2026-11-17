@@ -87,7 +87,6 @@ All errors that amchi raises on its own inherit from `amchi.AmchiError`:
 | `UnsupportedElementError` | A symbol has no element data |
 | `IllDefinedParityError` | A stereocenter's parity is exactly zero (all its neighbors in one plane) |
 | `ValueError` (not an `AmchiError`) | The inputs don't fit each other: the coordinates aren't N × 3, a bond names a missing atom, or a candidate's neighbors aren't those of its atom or bond |
-| `NotImplementedError` | The connectivity has breaking or forming bonds (a transition state) |
 
 A parity is ill-defined only when its determinant or dot product is exactly zero, as in the old AutoMol, so a nearly planar nitrogen still gets a parity. Check `parity_margins` to find such cases.
 

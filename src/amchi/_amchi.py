@@ -1,4 +1,4 @@
-"""The public pipeline: the AMChI string of a species from its three inputs.
+"""The public pipeline: the AMChI string of a species or a TS from its three inputs.
 
 The components are written one by one and joined as the old AutoMol joins them
 (`amchi.base.sorted_join`): sorted by the old sort key, highest first, with repeated
@@ -20,7 +20,7 @@ from ._layers import component_layers, component_string
 from ._parity import stereo_graph
 from ._types import Candidates, Connectivity, GeometryLike
 
-_LETTERS = ("c", "h", "b", "t", "m", "s")
+_LETTERS = ("c", "h", "b", "t", "m", "s", "k", "f", "r")
 """The layers after the formula, in the order they are written."""
 
 
@@ -31,8 +31,11 @@ def string(
     *,
     stereo: bool = True,
 ) -> str:
-    """The AMChI string of a species.
+    """The AMChI string of a species or a transition state (TS).
 
+    A TS has breaking or forming bonds in its connectivity, and its string has the
+    `k` (breaking) and `f` (forming) layers, as read in its canonical direction, and
+    an `r` layer if the given direction is the reverse of that (`r1`) or not (`r0`).
     With `stereo=False`, the candidates are ignored, and the string has no `b`, `t`,
     `m` or `s` layer.
 
@@ -41,8 +44,8 @@ def string(
         IllDefinedParityError: A stereocenter's parity is exactly zero.
         ValueError: The inputs don't fit each other: the coordinates aren't N x 3,
             a bond names a missing atom, or a candidate's neighbors aren't the
-            neighbors of its atom or bond.
-        NotImplementedError: The connectivity is a transition state's.
+            neighbors of its atom or bond (for a TS: aren't among them, over the
+            breaking and forming bonds too).
 
     Examples:
         >>> import amchi
@@ -109,26 +112,28 @@ def _check(
     if shape != (len(symbols), 3):
         msg = f"Expected {len(symbols)} x 3 coordinates, got {shape}"
         raise ValueError(msg)
-    if connectivity.breaking or connectivity.forming:
-        msg = "The string of a transition state is not supported yet"
-        raise NotImplementedError(msg)
+    # A species' candidate lists exactly its atom's or bond's neighbors. A TS's
+    # lists those of one side or of several, so only some of all its neighbors.
+    is_ts = bool(connectivity.breaking or connectivity.forming)
+    fits = set.issubset if is_ts else set.__eq__
     neighbors: list[set[int]] = [set() for _ in symbols]
-    for i, j in connectivity.bonds:
+    for i, j in (*connectivity.bonds, *connectivity.breaking, *connectivity.forming):
         if j >= len(symbols):
             msg = f"A bond names a missing atom: {(i, j)}"
             raise ValueError(msg)
         neighbors[i].add(j)
         neighbors[j].add(i)
-    for atom, atom_neighbors in candidates.atoms.items():
-        if atom >= len(symbols) or set(atom_neighbors) != neighbors[atom]:
-            msg = f"An atom candidate's neighbors aren't its atom's: {atom}"
-            raise ValueError(msg)
+    for atoms in (candidates.atoms, candidates.reverse_atoms):
+        for atom, atom_neighbors in atoms.items():
+            if atom >= len(symbols) or not fits(set(atom_neighbors), neighbors[atom]):
+                msg = f"An atom candidate's neighbors aren't its atom's: {atom}"
+                raise ValueError(msg)
     for (i, j), (side_i, side_j) in candidates.bonds.items():
         if (
             j >= len(symbols)
             or i not in neighbors[j]
-            or set(side_i) != neighbors[i] - {j}
-            or set(side_j) != neighbors[j] - {i}
+            or not fits(set(side_i), neighbors[i] - {j})
+            or not fits(set(side_j), neighbors[j] - {i})
         ):
             msg = f"A bond candidate's neighbors aren't its bond's: {(i, j)}"
             raise ValueError(msg)

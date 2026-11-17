@@ -2,7 +2,8 @@
 
 The formula, `c` and `h` layers are written on the canonical graph: the component
 relabeled by its canonical numbers. The `b`, `t`, `m` and `s` layers are written
-from the canonical form itself. Like the old AutoMol, the strings use 1-based numbers.
+from the canonical form itself, and the `k`, `f` and `r` layers of a TS from both.
+Like the old AutoMol, the strings use 1-based numbers.
 """
 
 from collections import Counter
@@ -30,6 +31,9 @@ def component_layers(graph: MolGraph, form: CanonicalForm) -> dict[str, str]:
         "t": t_layer(form),
         "m": m_layer(form),
         "s": s_layer(form),
+        "k": k_layer(canonical, form),
+        "f": f_layer(canonical, form),
+        "r": r_layer(form),
     }
     return {"formula": formula_layer(canonical)} | {
         letter: layer for letter, layer in layers.items() if layer
@@ -37,7 +41,7 @@ def component_layers(graph: MolGraph, form: CanonicalForm) -> dict[str, str]:
 
 
 def component_string(layers: dict[str, str]) -> str:
-    """The string of one component: `AMChI=2S/<formula>/c.../h.../b.../t...`."""
+    """The string of one component: `AMChI=2S/<formula>/c.../h.../b.../t.../k...`."""
     formula = layers["formula"]
     rest = [letter + layer for letter, layer in layers.items() if letter != "formula"]
     return "/".join([PREFIX, formula, *rest])
@@ -199,3 +203,35 @@ def m_layer(form: CanonicalForm) -> str:
 def s_layer(form: CanonicalForm) -> str:
     """`1` (absolute stereo) whenever there is an `m` layer."""
     return "" if form.is_canonical_enantiomer is None else "1"
+
+
+def k_layer(graph: MolGraph, form: CanonicalForm) -> str:
+    """The breaking bonds of a canonical graph, as read in the canonical direction."""
+    return _reacting_layer(graph, "forming" if _reversed(form) else "breaking")
+
+
+def f_layer(graph: MolGraph, form: CanonicalForm) -> str:
+    """The forming bonds of a canonical graph, as read in the canonical direction."""
+    return _reacting_layer(graph, "breaking" if _reversed(form) else "forming")
+
+
+def r_layer(form: CanonicalForm) -> str:
+    """`0` for the canonical direction, `1` for the reverse, or empty."""
+    if form.is_canonical_direction is None:
+        return ""
+    return "0" if form.is_canonical_direction else "1"
+
+
+def _reversed(form: CanonicalForm) -> bool:
+    """Whether the canonical direction swaps the given breaking and forming bonds."""
+    return form.is_canonical_direction is False
+
+
+def _reacting_layer(graph: MolGraph, change: str) -> str:
+    """The bonds with this change: `j-i` with `j > i`, sorted."""
+    pairs = sorted(
+        (max(i, j) + 1, min(i, j) + 1)
+        for i, j, value in graph.edges(data="change")
+        if value == change
+    )
+    return ",".join(f"{j}-{i}" for j, i in pairs)

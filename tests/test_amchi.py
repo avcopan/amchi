@@ -77,6 +77,34 @@ def species(records: list[dict]) -> list[dict]:
 
 
 @pytest.fixture(scope="module")
+def transition_states(records: list[dict]) -> list[dict]:
+    """The 300 TSs as sampled, each with its connectivity and its string."""
+    result = []
+    for record in records:
+        if record["kind"] == "ts":
+            old = record["old"]
+            geometry = Geometry(record["symbols"], record["xyz"])
+            connectivity = Connectivity(
+                bonds=old["bonds"], breaking=old["breaking"], forming=old["forming"]
+            )
+            candidates = amchi.candidates(record["symbols"], connectivity)
+            string = amchi.string(geometry, connectivity, candidates)
+            result.append(
+                record
+                | {"geometry": geometry, "connectivity": connectivity, "amchi": string}
+            )
+    assert len(result) == 300
+    return result
+
+
+@pytest.fixture(scope="module")
+def ts_differences() -> dict[str, dict]:
+    """The TSs whose new strings differ from the old ones (D28, D29), by id."""
+    cases = json.loads((DATA / "ts_differences.json").read_text())
+    return {case["id"]: case for case in cases}
+
+
+@pytest.fixture(scope="module")
 def components() -> list[dict]:
     """Species of the sample put together, written by `baseline/dump_components.py`."""
     return json.loads((DATA / "components.json").read_text())
@@ -86,6 +114,86 @@ def test__from_geometry(species: list[dict]) -> None:
     """The 600 species give the old strings (D13), with the c layer of D24."""
     for record in species:
         _assert_old(record["amchi"], record["old"]["amchi"], record["id"])
+
+
+def test__string__ts(
+    transition_states: list[dict], ts_differences: dict[str, dict]
+) -> None:
+    """The 300 TSs give the old strings, except the intended differences.
+
+    These include TSs with two components (`/k;3-2,5-1/f;5-3/r;0`) and with the
+    canonical direction the reverse of the given one (`/r1`).
+    """
+    differing = 0
+    for record in transition_states:
+        difference = ts_differences.get(record["id"])
+        if difference and "forward" in difference["differing"]:
+            assert record["amchi"] == difference["new"]["forward"], record["id"]
+            differing += 1
+        else:
+            _assert_old(record["amchi"], record["old"]["amchi"], record["id"])
+    forward = [x for x in ts_differences.values() if "forward" in x["differing"]]
+    assert differing == len(forward) == 7
+
+
+def test__string__ts__stereo_false(transition_states: list[dict]) -> None:
+    """Without stereo, a TS string has no b, t, m or s layer.
+
+    It is the stereo string without them, except where the stereo decides the
+    direction: then the direction is chosen without it, which can drop `r` or change
+    the numbering.
+    """
+    decided_by_stereo = []
+    for record in transition_states:
+        string = amchi.string(
+            record["geometry"], record["connectivity"], Candidates(), stereo=False
+        )
+        assert string == _without_stereo(string), record["id"]
+        if string != _without_stereo(record["amchi"]):
+            decided_by_stereo.append(record["id"])
+    assert len(decided_by_stereo) == 8
+
+
+# CH3 + H2O: H4 moves from O5 to C0
+H_TRANSFER = Geometry(
+    ["C", "H", "H", "H", "H", "O", "H"],
+    [[0, 0, 0], [1, 0, 0.3], [-0.5, 0.87, 0.3], [-0.5, -0.87, 0.3],
+     [0, 0, -1.3], [0, 0, -2.5], [0.9, 0, -2.8]],
+)  # fmt: skip
+H_TRANSFER_BONDS = [(0, 1), (0, 2), (0, 3), (5, 6)]
+
+
+@pytest.mark.parametrize(
+    ("breaking", "forming", "expected"),
+    [
+        ((4, 5), (0, 4), "AMChI=2S/CH5O/c1-3-2/h2H,1H3/k3-2/f3-1/r0"),
+        ((0, 4), (4, 5), "AMChI=2S/CH5O/c1-3-2/h2H,1H3/k3-2/f3-1/r1"),
+    ],
+)
+def test__string__ts__h_transfer(
+    breaking: tuple[int, int], forming: tuple[int, int], expected: str
+) -> None:
+    """The transferring H is a node, in the c, k and f layers; reversing changes r."""
+    connectivity = Connectivity(
+        bonds=H_TRANSFER_BONDS, breaking=[breaking], forming=[forming]
+    )
+    candidates = amchi.candidates(H_TRANSFER.symbols, connectivity)
+    assert amchi.string(H_TRANSFER, connectivity, candidates) == expected
+
+
+def test__string__ts__candidates() -> None:
+    """A TS candidate may list some of its atom's neighbors, but no other atom."""
+    connectivity = Connectivity(bonds=H_TRANSFER_BONDS, breaking=[(4, 5)])
+    candidates = Candidates(atoms={0: (1, 2, 3)})
+    string = amchi.string(H_TRANSFER, connectivity, candidates)
+    assert string == amchi.string(H_TRANSFER, connectivity, Candidates())
+    with pytest.raises(ValueError, match="atom candidate"):
+        amchi.string(H_TRANSFER, connectivity, Candidates(atoms={0: (1, 2, 5)}))
+    reverse = Candidates(atoms={0: (1, 2, 3)}, reverse_atoms={0: (1, 2, 6)})
+    with pytest.raises(ValueError, match="atom candidate"):
+        amchi.string(H_TRANSFER, connectivity, reverse)
+    with pytest.raises(ValueError, match="bond candidate"):
+        amchi.string(H_TRANSFER, connectivity, Candidates(bonds={(0, 5): ((1,), (6,))}))
 
 
 def test__from_geometry__components(components: list[dict]) -> None:
@@ -177,8 +285,8 @@ CHFCLBR_GEOMETRY = Geometry(CHFCLBR, TETRAHEDRON)
          (ValueError, "coordinates")),
         (CHFCLBR_GEOMETRY, Connectivity(bonds=[(0, 5)]), Candidates(),
          (ValueError, "missing atom")),
-        (CHFCLBR_GEOMETRY, Connectivity(bonds=[(0, 1)], forming=[(0, 2)]),
-         Candidates(), (NotImplementedError, "transition state")),
+        (CHFCLBR_GEOMETRY, Connectivity(bonds=[(0, 1)], forming=[(0, 5)]),
+         Candidates(), (ValueError, "missing atom")),
         (CHFCLBR_GEOMETRY, STAR, Candidates(atoms={0: (1, 2, 3)}),
          (ValueError, "atom candidate")),
         (CHFCLBR_GEOMETRY, STAR, Candidates(atoms={1: (0, 2, 3)}),
