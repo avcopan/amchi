@@ -11,5 +11,6 @@ Written by the old AutoMol (never imported here), except `inchi.json`. The first
 - `ts_differences.json`: the 11 TSs whose new string differs from the old one in at least one of four variants (as sampled, reversed, mirrored, both), with the old and the new strings (D28, D29). Written by the planning repo's TS prototype (`walkthroughs/2026-11-16-ts-prototype.py --write`), not by the old AutoMol.
 
 - `achiral_cases.json`: `stjohn:122910_00879f` of the large sample (bicyclo[4.2.2]deca-2,4,7-triene, achiral, with two bond stereocenters), whose `m` layer once depended on the atom order. The geometry is from the planning repo's `baseline/oracle_read.py --ids`, the old string from `baseline/sample_large_ids_mismatches.csv`.
+- `large_differences.json.gz`: the 190 records of the large sample (21,948 records) whose new string differs from the old one or where a code fails, with the decision that explains each (D34–D36 of the planning repo, or a record that can't be read), the old and new strings and errors, and the geometries. Written by the planning repo's `baseline/dump_large_differences.py`; its `compare_large.py` reads it back.
 
-They are regenerated from the planning repo's `baseline/` (`make_test_records.py`, `dump_hand_cases.py`, `dump_components.py`, `inchi_c_layers.py`, `ts_variants.py`, `dump_ts_hand_cases.py`).
+They are regenerated from the planning repo's `baseline/` (`make_test_records.py`, `dump_hand_cases.py`, `dump_components.py`, `inchi_c_layers.py`, `ts_variants.py`, `dump_ts_hand_cases.py`, `dump_large_differences.py`).

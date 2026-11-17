@@ -5,6 +5,8 @@ c layer must describe the same graph in the same canonical numbers as the old on
 the writer itself is tested against InChI in `test__layers.py`.
 """
 
+import functools
+import gzip
 import json
 import re
 from collections.abc import Sequence
@@ -426,6 +428,36 @@ def test__from_geometry__achiral_bond_stereo() -> None:
             for _ in range(8):
                 string = amchi.from_geometry(_shuffled(variant, rng))
                 _assert_old(string, case["amchi"], case["id"])
+
+
+def test__large_differences() -> None:
+    """The records of the large sample whose strings differ from the old ones (D34-D36).
+
+    Each gives the recorded new string, or fails with the recorded error where the new
+    code fails too. The record that can't be read is skipped.
+    """
+    with gzip.open(DATA / "large_differences.json.gz", "rt") as f:
+        cases = json.load(f)
+    assert len(cases) == 190
+    for case in cases:
+        if case["decision"] == "reader":
+            continue
+        if case["kind"] == "ts":
+            ts, reactant, product = (
+                Geometry(case["symbols"], case[k]) for k in ("xyz_ts", "xyz_r", "xyz_p")
+            )
+            run = functools.partial(amchi.from_ts_geometries, ts, reactant, product)
+        else:
+            run = functools.partial(
+                amchi.from_geometry, Geometry(case["symbols"], case["xyz"])
+            )
+        if case["new"] is None:
+            error = getattr(amchi, case["new_error"].split(":")[0])
+            with pytest.raises(error):
+                run()
+        else:
+            assert run() == case["new"], case["id"]
+            assert case["new"] != case["old"], case["id"]
 
 
 def test__string__override(hand_cases: dict[str, list[dict]]) -> None:
