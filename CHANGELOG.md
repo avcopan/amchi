@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `string(geometry, connectivity, candidates)`, the AMChI string of a species, and `from_geometry(geometry)`, which derives the connectivity and the candidates first. Both take `stereo=False` to leave out the `b`, `t`, `m` and `s` layers. Several components are sorted and joined as in the old AutoMol (`C4H6N.C2H5NO2.H2O`, `2*` for repeated layers). `string` raises `ValueError` when its inputs don't fit each other, and `NotImplementedError` for a transition state, for now.
 - `ts_connectivity(reactant_geometry, product_geometry)`, the bonds of a transition state from reactant-side and product-side geometries in the TS atom order: the bonds of both sides, and the breaking and forming bonds as their difference.
 - `Candidates.reverse_atoms`, the product-side neighbors of a TS atom that is tetrahedral on both sides with different neighbors (D26). `remove_candidate` removes an atom's reverse neighbors with it.
+- `candidates` and `add_bond_candidate` for a transition state: the rules apply to the reactant and the product side; an atom gets the neighbors of the side where it is tetrahedral (the reactant side first), and also `reverse_atoms`; a bond gets its neighbors from every side where it is rigid and planar, and the small-ring test runs over all the TS's bonds through those neighbors only.
 
 ### Intended differences from the old AMChI
 
