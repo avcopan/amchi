@@ -121,3 +121,16 @@ def test__remove_candidate__errors() -> None:
     # The input is unchanged
     amchi.remove_candidate(candidates, 0)
     assert candidates.atoms == {0: (1, 2, 3)}
+
+
+def test__remove_candidate__reverse_atoms() -> None:
+    """An atom goes with its reverse neighbors; the others keep theirs."""
+    candidates = Candidates(
+        atoms={0: (1, 2, 3), 4: (5, 6, 7)},
+        reverse_atoms={0: (1, 2, 8), 4: (5, 6, 9)},
+        bonds={(10, 11): ((12,), (13,))},
+    )
+    result = amchi.remove_candidate(candidates, 0)
+    assert result.reverse_atoms == {4: (5, 6, 9)}
+    result = amchi.remove_candidate(candidates, (10, 11))
+    assert result.reverse_atoms == candidates.reverse_atoms

@@ -106,6 +106,11 @@ class Candidates(BaseModel, frozen=True):
     side). Any neighbor order is valid: a local parity is measured against the order
     given. A bond given as `(j, i)` is sorted, with its two sides swapped.
 
+    For a TS, `atoms` holds the reactant-side neighbors, or the product-side ones if
+    the atom is tetrahedral only there. `reverse_atoms` holds the product-side
+    neighbors of an atom that is tetrahedral on both sides with different neighbors;
+    reading the TS reversed uses them. Each of its keys is also a key of `atoms`.
+
     Examples:
         >>> import amchi
         >>> candidates = amchi.Candidates(bonds={(3, 1): ([4], [0, 5])})
@@ -114,6 +119,7 @@ class Candidates(BaseModel, frozen=True):
     """
 
     atoms: dict[int, tuple[int, ...]] = Field(default_factory=dict)
+    reverse_atoms: dict[int, tuple[int, ...]] = Field(default_factory=dict)
     bonds: dict[Bond, tuple[tuple[int, ...], tuple[int, ...]]] = Field(
         default_factory=dict
     )
@@ -133,10 +139,13 @@ class Candidates(BaseModel, frozen=True):
 
     @model_validator(mode="after")
     def _check(self) -> Self:
-        for atom, neighbors in self.atoms.items():
+        for atom, neighbors in [*self.atoms.items(), *self.reverse_atoms.items()]:
             if len(neighbors) not in (3, 4) or not _distinct(atom, *neighbors):
                 msg = f"An atom candidate needs 3 or 4 distinct neighbors: {atom}"
                 raise ValueError(msg)
+        if extra := sorted(set(self.reverse_atoms) - set(self.atoms)):
+            msg = f"Reverse neighbors of atoms that aren't candidates: {extra}"
+            raise ValueError(msg)
         for bond, sides in self.bonds.items():
             ok = _distinct(*bond) and all(
                 1 <= len(side) <= 3 and _distinct(*bond, *side)  # noqa: PLR2004

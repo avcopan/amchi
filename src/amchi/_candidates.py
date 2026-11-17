@@ -103,11 +103,13 @@ def add_bond_candidate(
         msg = f"A bond candidate needs a neighbor on each side: {key}"
         raise ValueError(msg)
     bonds = {**candidates.bonds, key: (side_i, side_j)}
-    return Candidates(atoms=candidates.atoms, bonds=dict(sorted(bonds.items())))
+    return candidates.model_copy(update={"bonds": dict(sorted(bonds.items()))})
 
 
 def remove_candidate(candidates: Candidates, key: int | Collection[int]) -> Candidates:
     """Remove an atom candidate (an index) or a bond candidate (a pair).
+
+    An atom candidate is removed with its reverse neighbors, if it has them.
 
     Raises:
         KeyError: It isn't a candidate.
@@ -118,23 +120,25 @@ def remove_candidate(candidates: Candidates, key: int | Collection[int]) -> Cand
         ...     atoms={0: (1, 2, 3)}, bonds={(4, 5): ([6], [7])}
         ... )
         >>> amchi.remove_candidate(candidates, 0)
-        Candidates(atoms={}, bonds={(4, 5): ((6,), (7,))})
+        Candidates(atoms={}, reverse_atoms={}, bonds={(4, 5): ((6,), (7,))})
         >>> amchi.remove_candidate(candidates, (5, 4))
-        Candidates(atoms={0: (1, 2, 3)}, bonds={})
+        Candidates(atoms={0: (1, 2, 3)}, reverse_atoms={}, bonds={})
     """
     atoms, bonds = dict(candidates.atoms), dict(candidates.bonds)
+    reverse_atoms = dict(candidates.reverse_atoms)
     if isinstance(key, int):
         if key not in atoms:
             msg = f"Not an atom candidate: {key}"
             raise KeyError(msg)
         del atoms[key]
+        reverse_atoms.pop(key, None)
     else:
         bond = _bond_key(key)
         if bond not in bonds:
             msg = f"Not a bond candidate: {bond}"
             raise KeyError(msg)
         del bonds[bond]
-    return Candidates(atoms=atoms, bonds=bonds)
+    return Candidates(atoms=atoms, reverse_atoms=reverse_atoms, bonds=bonds)
 
 
 def _bond_key(bond: Collection[int]) -> Bond:

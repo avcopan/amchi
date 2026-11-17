@@ -41,6 +41,13 @@ def test__candidates() -> None:
     assert candidates.atoms == {0: (4, 3, 2, 1), 5: (6, 7, 8)}
     assert candidates.bonds == {(1, 2): ((12,), (9, 10, 11))}
     assert Candidates().atoms == Candidates().bonds == {}
+    assert Candidates().reverse_atoms == {}
+
+
+def test__candidates__reverse_atoms() -> None:
+    """A TS atom can have product-side neighbors, in the order given."""
+    candidates = Candidates(atoms={0: [1, 2, 3, 4]}, reverse_atoms={0: [5, 2, 3, 4]})
+    assert candidates.reverse_atoms == {0: (5, 2, 3, 4)}
 
 
 @pytest.mark.parametrize(
@@ -56,6 +63,9 @@ def test__candidates() -> None:
         {"bonds": {(0, 0): ([2], [3])}},  # a self-bond
         {"bonds": {(0, 1, 2): ([3], [4])}},  # not a pair
         {"bonds": 1},  # not a dict
+        {"atoms": {0: [1, 2, 3]}, "reverse_atoms": {0: [1, 2]}},  # 2 neighbors
+        {"atoms": {0: [1, 2, 3]}, "reverse_atoms": {0: [0, 1, 2]}},  # the atom
+        {"atoms": {0: [1, 2, 3]}, "reverse_atoms": {5: [1, 2, 3]}},  # not in atoms
     ],
 )
 def test__candidates__invalid(candidates: dict) -> None:

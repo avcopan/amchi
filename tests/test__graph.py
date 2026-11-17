@@ -10,6 +10,8 @@ from amchi._graph import (
     connected_components,
     explicit_graph,
     implicit_graph,
+    product_graph,
+    reactant_graph,
 )
 
 
@@ -77,7 +79,48 @@ def test__explicit_graph() -> None:
     }
     assert connected_components(graph) == [frozenset({0, 1, 2, 3})]
     graph.nodes[0]["stereo"] = AtomStereo(neighbors=(1, 2, 3), parity=None)
+    graph.nodes[1]["stereo"] = AtomStereo(
+        neighbors=(0, 2, 3),
+        parity=True,
+        reverse_neighbors=(0, 3, 2),
+        reverse_parity=False,
+    )
     graph.validate()
     graph.edges[0, 1]["change"] = "moving"
     with pytest.raises(ValidationError):
         graph.validate()
+
+
+def _pairs(pairs: list) -> set[tuple[int, int]]:
+    return {(min(pair), max(pair)) for pair in pairs}
+
+
+def test__side_graphs(records: list[dict]) -> None:
+    """The reactant and product sides of the 300 TSs are species graphs."""
+    for record in records:
+        if record["kind"] != "ts":
+            continue
+        old = record["old"]
+        connectivity = Connectivity(
+            bonds=old["bonds"], breaking=old["breaking"], forming=old["forming"]
+        )
+        graph = explicit_graph(record["symbols"], connectivity)
+        edges = set(graph.edges)
+        for side, bonds in (
+            (reactant_graph(graph), old["bonds"] + old["breaking"]),
+            (product_graph(graph), old["bonds"] + old["forming"]),
+        ):
+            assert isinstance(side, MolGraph)
+            assert set(side) == set(graph), record["id"]
+            assert {tuple(sorted(e)) for e in side.edges} == _pairs(bonds), record["id"]
+            assert {c for *_, c in side.edges(data="change")} <= {None}
+            side.validate()
+        assert set(graph.edges) == edges  # the TS graph is unchanged
+        assert any(c is not None for *_, c in graph.edges(data="change"))
+
+
+def test__side_graphs__species() -> None:
+    """For a species, both sides are the graph itself."""
+    graph = explicit_graph(["O", "H", "H"], Connectivity(bonds=[(0, 1), (0, 2)]))
+    for side in (reactant_graph(graph), product_graph(graph)):
+        assert set(side.edges) == set(graph.edges)

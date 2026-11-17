@@ -39,10 +39,16 @@ class Graph[NodeT: Node, EdgeT: Edge](nx.Graph):
 
 # The fields of a molecular graph
 class AtomStereo(BaseModel, frozen=True):
-    """The stereo of an atom candidate: its neighbors and its local parity."""
+    """The stereo of an atom candidate: its neighbors and its local parity.
+
+    A TS atom with product-side neighbors of its own (`Candidates.reverse_atoms`) also
+    has those and their local parity, used when the TS is read reversed.
+    """
 
     neighbors: tuple[int, ...]
     parity: bool | None  # None: ill-defined
+    reverse_neighbors: tuple[int, ...] | None = None
+    reverse_parity: bool | None = None
 
 
 class BondStereo(BaseModel, frozen=True):
@@ -114,6 +120,26 @@ def _is_backbone_hydrogen(graph: MolGraph, atom: int) -> bool:
     return len(neighbors) > 1 or any(
         data["change"] is not None for data in neighbors.values()
     )
+
+
+def reactant_graph(graph: MolGraph) -> MolGraph:
+    """The reactant side of a TS graph: without its forming bonds, as a species."""
+    return _side_graph(graph, "forming")
+
+
+def product_graph(graph: MolGraph) -> MolGraph:
+    """The product side of a TS graph: without its breaking bonds, as a species."""
+    return _side_graph(graph, "breaking")
+
+
+def _side_graph(graph: MolGraph, absent: str) -> MolGraph:
+    result = graph.copy()
+    result.remove_edges_from(
+        [(i, j) for i, j, change in graph.edges(data="change") if change == absent]
+    )
+    for *_, data in result.edges(data=True):
+        data["change"] = None
+    return result
 
 
 def connected_components(graph: MolGraph) -> list[frozenset[int]]:
