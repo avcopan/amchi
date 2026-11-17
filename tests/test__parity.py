@@ -6,6 +6,7 @@ import numpy as np
 import pytest
 from numpy.typing import ArrayLike
 
+import amchi
 from amchi import Candidates, Connectivity, parity_margins
 from amchi._graph import MolGraph, explicit_graph, implicit_graph
 from amchi._parity import stereo_graph
@@ -76,6 +77,44 @@ def test__stereo_graph__record(records: list[dict]) -> None:
     assert _parities(graph) == ({2: True, 3: True}, {(0, 1): False})
 
 
+def test__stereo_graph__ts(records: list[dict]) -> None:
+    """The 300 TSs: each neighbor list of an atom gets its own parity (D26).
+
+    With the derived candidates, the reverse parity of an atom is the parity measured
+    with the reverse neighbors as its only list, and every one is well-defined.
+    """
+    count = 0
+    for record in records:
+        if record["kind"] != "ts":
+            continue
+        old, symbols = record["old"], record["symbols"]
+        connectivity = Connectivity(
+            bonds=old["bonds"], breaking=old["breaking"], forming=old["forming"]
+        )
+        candidates = amchi.candidates(symbols, connectivity)
+        geometry = Geometry(symbols, record["xyz"])
+        graph = stereo_graph(
+            explicit_graph(symbols, connectivity), geometry, candidates
+        )
+        graph.validate()
+        reverse = stereo_graph(
+            explicit_graph(symbols, connectivity),
+            geometry,
+            Candidates(atoms=candidates.reverse_atoms),
+        )
+        for atom, stereo in graph.nodes(data="stereo"):
+            if atom in candidates.reverse_atoms:
+                count += 1
+                expected = reverse.nodes[atom]["stereo"]
+                assert stereo.reverse_neighbors == expected.neighbors, record["id"]
+                assert stereo.reverse_parity == expected.parity, record["id"]
+                assert stereo.reverse_parity is not None, record["id"]
+            elif stereo is not None:
+                assert stereo.reverse_neighbors is None, record["id"]
+                assert stereo.reverse_parity is None, record["id"]
+    assert count == 253  # the substitution sites of the sample (W4)
+
+
 # C with four H neighbors at the corners of a tetrahedron
 METHANE = [[0, 0, 0], [1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]]
 # trans-HC(Cl)=C(F)H: C0=C1 along z, Cl2 and H3 on C0, F4 and H5 on C1
@@ -106,6 +145,22 @@ def test__stereo_graph__reflection() -> None:
     _, bonds = _parities(_stereo_graph(ETHENE_SYMBOLS, ETHENE, ETHENE_BOND))
     _, mirror_bonds = _parities(_stereo_graph(ETHENE_SYMBOLS, mirror, ETHENE_BOND))
     assert bonds == mirror_bonds == {(0, 1): True}
+
+
+def test__stereo_graph__reverse() -> None:
+    """Exchanging one neighbor for another in the same place keeps the parity.
+
+    Methane's H4 replaced by a point on the same corner, and by one on the opposite
+    side of the plane of H1, H2 and H3, which inverts the parity.
+    """
+    coordinates = [*METHANE, [-2, -2, 2], [0.2, 0.2, -1.6]]
+    symbols = ["C", *"HHHHHH"]
+    candidates = Candidates(atoms={0: (1, 2, 3, 4)}, reverse_atoms={0: (1, 2, 3, 5)})
+    stereo = _stereo_graph(symbols, coordinates, candidates).nodes[0]["stereo"]
+    assert (stereo.parity, stereo.reverse_parity) == (False, False)
+    candidates = Candidates(atoms={0: (1, 2, 3, 4)}, reverse_atoms={0: (1, 2, 3, 6)})
+    stereo = _stereo_graph(symbols, coordinates, candidates).nodes[0]["stereo"]
+    assert (stereo.reverse_neighbors, stereo.reverse_parity) == ((1, 2, 3, 6), True)
 
 
 @pytest.mark.parametrize(
@@ -169,3 +224,24 @@ def test__parity_margins() -> None:
     linear = [[0, 0, 0], [0, 0, 1.3], [0, 0, -1], [-1, 0, -0.7], [-1, 0, 2], [1, 0, 2]]
     margins = parity_margins(Geometry(ETHENE_SYMBOLS, linear), ETHENE_BOND)
     assert margins.bonds == {(0, 1): 0.0}
+
+
+def test__parity_margins__ts() -> None:
+    """A bond's margin is the smallest over its table; reverse atoms get their own."""
+    # trans-HC(Cl)=C(F)H, with a third neighbor on C1 at 90° to the plane
+    coordinates = [*ETHENE, [0, 1, 1.9]]
+    symbols = [*ETHENE_SYMBOLS, "H"]
+    candidates = Candidates(bonds={(0, 1): ((3, 2), (5, 4, 6))})
+    margins = parity_margins(Geometry(symbols, coordinates), candidates)
+    assert margins.bonds == {(0, 1): pytest.approx(0.0)}
+    candidates = Candidates(bonds={(0, 1): ((3, 2), (5, 4))})
+    assert parity_margins(Geometry(symbols, coordinates), candidates).bonds == {
+        (0, 1): pytest.approx(1.0)
+    }
+
+    # Reverse neighbors H1, H2 and H5 in one plane with the C: margin 0
+    coordinates = [*METHANE, [-1, 0, 0]]
+    candidates = Candidates(atoms={0: (1, 2, 3)}, reverse_atoms={0: (1, 2, 5)})
+    margins = parity_margins(Geometry(["C", *"HHHHH"], coordinates), candidates)
+    assert margins.atoms[0] > 0.5
+    assert margins.reverse_atoms == {0: pytest.approx(0.0)}

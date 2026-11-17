@@ -1,7 +1,8 @@
 """Local parities of the candidates, measured from the coordinates.
 
 A local parity is defined against the neighbor order stored with its candidate. A
-bond has one for each pair of neighbors across it. A local parity is ill-defined
+bond has one for each pair of neighbors across it, and a TS atom with reverse
+neighbors has one for each neighbor list (D26, D27). A local parity is ill-defined
 (`None`) only when its determinant or dot product is exactly zero, as in the old
 AutoMol. How nearly planar a candidate is, is a diagnostic: `parity_margins`.
 """
@@ -10,7 +11,7 @@ from collections.abc import Sequence
 
 import numpy as np
 from numpy.typing import NDArray
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from ._graph import AtomStereo, BondStereo, MolGraph
 from ._types import Bond, Candidates, GeometryLike
@@ -23,8 +24,9 @@ class ParityMargins(BaseModel, frozen=True):
 
     For an atom, `|det| / d**3`, with `d` the mean distance to its neighbors: 3.08 for
     an ideal tetrahedron, 0.77 for an ideal pyramid with a lone pair, and 0 for a
-    planar atom. For a bond, the `|cos|` of the dihedral angle between its reference
-    neighbors: 1 when planar, 0 at 90°.
+    planar atom. `reverse_atoms` gives the same for a TS atom's reverse neighbors. For
+    a bond, the smallest `|cos|` of the dihedral angle over the pairs of neighbors
+    across it: 1 when planar, 0 at 90°.
 
     Examples:
         >>> import amchi
@@ -34,6 +36,7 @@ class ParityMargins(BaseModel, frozen=True):
 
     atoms: dict[int, float]
     bonds: dict[Bond, float]
+    reverse_atoms: dict[int, float] = Field(default_factory=dict)
 
 
 def stereo_graph(
@@ -45,9 +48,15 @@ def stereo_graph(
     """
     coordinates = _coordinates(geometry)
     for atom, neighbors in candidates.atoms.items():
-        det = _atom_determinant(coordinates, atom, neighbors)
-        parity = None if det == 0.0 else bool(det > 0.0)
-        graph.nodes[atom]["stereo"] = AtomStereo(neighbors=neighbors, parity=parity)
+        reverse_neighbors = candidates.reverse_atoms.get(atom)
+        graph.nodes[atom]["stereo"] = AtomStereo(
+            neighbors=neighbors,
+            parity=_atom_parity(coordinates, atom, neighbors),
+            reverse_neighbors=reverse_neighbors,
+            reverse_parity=None
+            if reverse_neighbors is None
+            else _atom_parity(coordinates, atom, reverse_neighbors),
+        )
     for bond, sides in candidates.bonds.items():
         parities = tuple(
             tuple(_bond_parity(coordinates, bond, n0, n1) for n1 in sides[1])
@@ -74,22 +83,43 @@ def parity_margins(geometry: GeometryLike, candidates: Candidates) -> ParityMarg
         3.08
     """
     coordinates = _coordinates(geometry)
-    atoms = {}
-    for atom, neighbors in candidates.atoms.items():
-        det = _atom_determinant(coordinates, atom, neighbors)
-        distances = np.linalg.norm(
-            coordinates[list(neighbors)] - coordinates[atom], axis=1
+    bonds = {
+        bond: min(
+            _bond_margin(coordinates, bond, n0, n1)
+            for n0 in sides[0]
+            for n1 in sides[1]
         )
-        atoms[atom] = float(abs(det) / np.mean(distances) ** 3)
-    bonds = {}
-    for bond, sides in candidates.bonds.items():
-        dot, norms = _bond_dot(coordinates, bond, sides)
-        bonds[bond] = float(abs(dot) / norms) if norms else 0.0
-    return ParityMargins(atoms=atoms, bonds=bonds)
+        for bond, sides in candidates.bonds.items()
+    }
+    return ParityMargins(
+        atoms=_atom_margins(coordinates, candidates.atoms),
+        bonds=bonds,
+        reverse_atoms=_atom_margins(coordinates, candidates.reverse_atoms),
+    )
 
 
 def _coordinates(geometry: GeometryLike) -> _Coordinates:
     return np.asarray(geometry.coordinates, dtype=np.float64)
+
+
+def _atom_margins(
+    coordinates: _Coordinates, atoms: dict[int, tuple[int, ...]]
+) -> dict[int, float]:
+    margins = {}
+    for atom, neighbors in atoms.items():
+        det = _atom_determinant(coordinates, atom, neighbors)
+        distances = np.linalg.norm(
+            coordinates[list(neighbors)] - coordinates[atom], axis=1
+        )
+        margins[atom] = float(abs(det) / np.mean(distances) ** 3)
+    return margins
+
+
+def _atom_parity(
+    coordinates: _Coordinates, atom: int, neighbors: Sequence[int]
+) -> bool | None:
+    det = _atom_determinant(coordinates, atom, neighbors)
+    return None if det == 0.0 else bool(det > 0.0)
 
 
 def _atom_determinant(
@@ -111,6 +141,12 @@ def _bond_parity(
     """The local parity of a bond with `n0` and `n1` as reference neighbors: trans."""
     dot, _ = _bond_dot(coordinates, bond, ((n0,), (n1,)))
     return None if dot == 0.0 else bool(dot < 0.0)
+
+
+def _bond_margin(coordinates: _Coordinates, bond: Bond, n0: int, n1: int) -> float:
+    """The `|cos|` of the dihedral angle with `n0` and `n1` as reference neighbors."""
+    dot, norms = _bond_dot(coordinates, bond, ((n0,), (n1,)))
+    return abs(dot) / norms if norms else 0.0
 
 
 def _bond_dot(
