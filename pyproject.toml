@@ -62,7 +62,7 @@ type = "layers"
 # the module is added.
 layers = [
     "(amchi._amchi)",
-    "(amchi._layers)",
+    "amchi._layers",
     "amchi._canon",
     "amchi._parity",
     "amchi._candidates",
