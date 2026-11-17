@@ -10,4 +10,6 @@ Written by the old AutoMol (never imported here), except `inchi.json`. The first
 - `ts_hand_cases.json`: the nine TSs of the old AutoMol's own tests (radical TSs and halogens included), with their connectivity and the old strings of their four variants.
 - `ts_differences.json`: the 11 TSs whose new string differs from the old one in at least one of four variants (as sampled, reversed, mirrored, both), with the old and the new strings (D28, D29). Written by the planning repo's TS prototype (`walkthroughs/2026-11-16-ts-prototype.py --write`), not by the old AutoMol.
 
+- `achiral_cases.json`: `stjohn:122910_00879f` of the large sample (bicyclo[4.2.2]deca-2,4,7-triene, achiral, with two bond stereocenters), whose `m` layer once depended on the atom order. The geometry is from the planning repo's `baseline/oracle_read.py --ids`, the old string from `baseline/sample_large_ids_mismatches.csv`.
+
 They are regenerated from the planning repo's `baseline/` (`make_test_records.py`, `dump_hand_cases.py`, `dump_components.py`, `inchi_c_layers.py`, `ts_variants.py`, `dump_ts_hand_cases.py`).

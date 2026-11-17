@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- The canonical enantiomer no longer depends on the atom order: the two sides of a bond stereocenter, and stereocenters of equal priority, are compared without reference to the atom indices. An achiral species with bond stereocenters (bicyclo[4.2.2]deca-2,4,7-triene) got an `m` layer for some atom orders; it now has none, as in the old AMChI.
+
 ## [0.0.1] - 2026-11-17
 
 ### Added

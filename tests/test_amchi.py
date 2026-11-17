@@ -411,6 +411,23 @@ def test__from_geometry__hand_cases(hand_cases: dict[str, list[dict]]) -> None:
             _assert_old(amchi.from_geometry(geometry), case["amchi"], case["id"])
 
 
+def test__from_geometry__achiral_bond_stereo() -> None:
+    """An achiral species with bond stereocenters gets no m layer in any atom order.
+
+    The enantiomers of bicyclo[4.2.2]deca-2,4,7-triene compare equal; the sides of a
+    bond candidate once compared in their stored order (stjohn:122910_00879f).
+    """
+    rng = np.random.default_rng(0)
+    for case in json.loads((DATA / "achiral_cases.json").read_text()):
+        geometry = Geometry(case["symbols"], case["xyz"])
+        mirror = Geometry(case["symbols"], np.asarray(case["xyz"]) * [-1, 1, 1])
+        for variant in (geometry, mirror):
+            _assert_old(amchi.from_geometry(variant), case["amchi"], case["id"])
+            for _ in range(8):
+                string = amchi.from_geometry(_shuffled(variant, rng))
+                _assert_old(string, case["amchi"], case["id"])
+
+
 def test__string__override(hand_cases: dict[str, list[dict]]) -> None:
     """The HNNO strings with corrected candidates give the old overridden strings."""
     for case in hand_cases["hnno"]:

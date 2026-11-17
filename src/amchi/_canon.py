@@ -340,9 +340,12 @@ class _Component:
         atom_parities: _AtomParities,
         bond_parities: _BondParities,
     ) -> tuple:
-        """The value that picks the canonical enantiomer, lowest first (W2, step 5)."""
-        atoms = sorted(atom_parities, key=priorities.__getitem__)
-        bonds = sorted(bond_parities, key=lambda b: sorted(priorities[k] for k in b))
+        """The value that picks the canonical enantiomer, lowest first (W2, step 5).
+
+        Nothing in it depends on the atom order: tied stereocenters are ordered by
+        parity, and the two sides of a bond by their ranks.
+        """
+        atoms, bonds = _stereocenters(priorities, atom_parities, bond_parities)
 
         def ranks(neighbors: Sequence[int]) -> tuple[float, ...]:
             return tuple(sorted(priorities.get(n, -math.inf) for n in neighbors))
@@ -352,7 +355,7 @@ class _Component:
             tuple(bond_parities[b] for b in bonds),
             tuple(priorities[a] for a in atoms),
             tuple(ranks(self.atom_candidates[a]) for a in atoms),
-            tuple(tuple(map(ranks, self.bond_candidates[b])) for b in bonds),
+            tuple(tuple(sorted(map(ranks, self.bond_candidates[b]))) for b in bonds),
         )
 
     def key(
@@ -374,8 +377,7 @@ class _Component:
         def numbered(bond: Bond) -> tuple[int, ...]:
             return tuple(sorted(numbers[k] for k in bond))
 
-        atoms = sorted(atom_parities, key=priorities.__getitem__)
-        bonds = sorted(bond_parities, key=lambda b: sorted(priorities[k] for k in b))
+        atoms, bonds = _stereocenters(priorities, atom_parities, bond_parities)
         return (
             (len(self.forming), len(self.breaking)),
             (pairs(self.forming), pairs(self.breaking)),
@@ -407,6 +409,18 @@ class _Component:
             index = max(tied)
             priorities[tied[index][-1]] = index + len(tied[index]) - 1
             priorities = self.refine(priorities, atom_parities, bond_parities)
+
+
+def _stereocenters(
+    priorities: _Priorities, atom_parities: _AtomParities, bond_parities: _BondParities
+) -> tuple[list[int], list[Bond]]:
+    """The stereo atoms and bonds by priority, ties by parity, never by atom index."""
+    atoms = sorted(atom_parities, key=lambda a: (priorities[a], atom_parities[a]))
+    bonds = sorted(
+        bond_parities,
+        key=lambda b: (sorted(priorities[k] for k in b), bond_parities[b]),
+    )
+    return atoms, bonds
 
 
 def _bond(i: int, j: int) -> Bond:
