@@ -89,12 +89,18 @@ def _inchi_graph(layer: str) -> nx.Graph:
     return graph
 
 
-def test__layers(records: list[dict]) -> None:
-    """All layers of the 600 species but the c layer equal the old ones."""
+def test__layers(records: list[dict], ring_ids: set[str]) -> None:
+    """All layers of the 588 species but the c layer equal the old ones.
+
+    The 12 with a para-stereocenter (D32, D33) are left out: their strings are in
+    `test_amchi.py::test__from_geometry`.
+    """
     species = [r for r in records if r["kind"] != "ts"]
     assert len(species) == 600
     counts = Counter()
     for record in species:
+        if record["id"] in ring_ids:
+            continue
         old = record["old"]
         connectivity = Connectivity(bonds=old["bonds"])
         candidates = _old_candidates(old["candidates"])
@@ -104,7 +110,7 @@ def test__layers(records: list[dict]) -> None:
         counts.update(letter for letter in layers if letter in "bts")
         counts.update({f"m{layers['m']}": 1} if "m" in layers else {})
     # The stereo layers are all covered, both values of m included
-    assert counts == {"b": 97, "t": 351, "s": 344, "m0": 179, "m1": 165}
+    assert counts == {"b": 95, "t": 346, "s": 339, "m0": 176, "m1": 163}
 
 
 def test__component_string() -> None:

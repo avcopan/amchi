@@ -108,15 +108,30 @@ def ts_differences() -> dict[str, dict]:
 
 
 @pytest.fixture(scope="module")
+def ring_differences() -> dict[str, dict]:
+    """The 12 species whose strings gain para-stereocenters (D32, D33), by id."""
+    cases = json.loads((DATA / "ring_stereo_differences.json").read_text())
+    return {case["id"]: case for case in cases}
+
+
+@pytest.fixture(scope="module")
 def components() -> list[dict]:
     """Species of the sample put together, written by `baseline/dump_components.py`."""
     return json.loads((DATA / "components.json").read_text())
 
 
-def test__from_geometry(species: list[dict]) -> None:
-    """The 600 species give the old strings (D13), with the c layer of D24."""
+def test__from_geometry(species: list[dict], ring_differences: dict[str, dict]) -> None:
+    """The 600 species give the old strings (D13), with the c layer of D24.
+
+    The 12 with a para-stereocenter (D32, D33) give the new strings of the fixture.
+    """
     for record in species:
-        _assert_old(record["amchi"], record["old"]["amchi"], record["id"])
+        if record["id"] in ring_differences:
+            case = ring_differences[record["id"]]
+            assert record["amchi"] == case["new"], record["id"]
+            assert case["old"] != case["new"], record["id"]
+        else:
+            _assert_old(record["amchi"], record["old"]["amchi"], record["id"])
 
 
 VARIANTS = ("forward", "reversed", "mirrored", "reversed_mirrored")
@@ -380,14 +395,21 @@ def test__from_geometry__components(components: list[dict]) -> None:
     assert "2*1H2" in by_id["water+chiral+water"]
 
 
-def test__from_geometry__stereo_false(species: list[dict]) -> None:
+def test__from_geometry__stereo_false(
+    species: list[dict], ring_differences: dict[str, dict]
+) -> None:
     """Without stereo, the string drops the b, t, m and s layers and nothing else.
 
     The old code does the same on all 600 species (`geom.amchi(geo, stereo=False)`).
+    The 12 with a para-stereocenter give the string of the fixture, whose c layer can
+    differ from the stereo string's, since the stereo splits atoms before the numbering.
     """
     for record in species:
         string = amchi.from_geometry(record["geometry"], stereo=False)
-        assert string == _without_stereo(record["amchi"]), record["id"]
+        if record["id"] in ring_differences:
+            assert string == ring_differences[record["id"]]["new_stereo_false"]
+        else:
+            assert string == _without_stereo(record["amchi"]), record["id"]
 
 
 def test__from_geometry__shuffled(species: list[dict], components: list[dict]) -> None:
@@ -443,14 +465,14 @@ def test__from_geometry__achiral_bond_stereo() -> None:
 
 
 def test__large_differences() -> None:
-    """The records of the large sample whose strings differ from the old ones (D34-D36).
+    """The records of the large sample whose strings differ from the old ones (D34-D37).
 
     Each gives the recorded new string, or fails with the recorded error where the new
     code fails too. The record that can't be read is skipped.
     """
     with gzip.open(DATA / "large_differences.json.gz", "rt") as f:
         cases = json.load(f)
-    assert len(cases) == 190
+    assert len(cases) == 351
     for case in cases:
         if case["decision"] == "reader":
             continue

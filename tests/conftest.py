@@ -32,3 +32,13 @@ def hand_cases() -> dict[str, list[dict]]:
     for case in json.loads((DATA / "hand_cases.json").read_text()):
         groups.setdefault(case["group"], []).append(case)
     return groups
+
+
+@pytest.fixture(scope="session")
+def ring_ids() -> set[str]:
+    """The ids of the 12 species with a para-stereocenter (D32, D33).
+
+    Their old intermediates (priorities, numbers, layers) no longer apply.
+    """
+    cases = json.loads((DATA / "ring_stereo_differences.json").read_text())
+    return {case["id"] for case in cases}
