@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `candidates` and `add_bond_candidate` for a transition state: the rules apply to the reactant and the product side; an atom gets the neighbors of the side where it is tetrahedral (the reactant side first), and also `reverse_atoms`; a bond gets its neighbors from every side where it is rigid and planar, and the small-ring test runs over all the TS's bonds through those neighbors only.
 - `ParityMargins.reverse_atoms`, the margins of a TS atom's reverse neighbors, which get their own local parity. A bond's margin is now the smallest over every pair of neighbors across it, since a TS bond's neighbors needn't lie in one plane.
 - `string` for a transition state: a connectivity with breaking or forming bonds gives the `k` (breaking) and `f` (forming) layers as read in the canonical direction, and an `r` layer (`0` if the given direction is the canonical one, `1` if it is the reverse, none if the two are equal). The layers are written in the order `c`, `h`, `b`, `t`, `m`, `s`, `k`, `f`, `r`. A TS candidate may list only some of its atom's neighbors, since its neighbors come from one side or several.
+- `from_ts_geometries(geometry, reactant_geometry, product_geometry)`, the AMChI string of a transition state with its connectivity (`ts_connectivity`) and candidates derived; `stereo=False` leaves out the `b`, `t`, `m` and `s` layers.
 
 ### Intended differences from the old AMChI
 

@@ -14,6 +14,7 @@ import numpy as np
 from ._candidates import candidates as _candidates
 from ._canon import CanonicalForm, canonical_forms
 from ._connect import connectivity as _connectivity
+from ._connect import ts_connectivity as _ts_connectivity
 from ._element import valence
 from ._graph import MolGraph, explicit_graph, implicit_graph
 from ._layers import component_layers, component_string
@@ -93,6 +94,54 @@ def from_geometry(geometry: GeometryLike, *, stereo: bool = True) -> str:
         'AMChI=2S/CHBrClF/c2-1(3)4/h1H'
     """
     connectivity = _connectivity(geometry)
+    if not stereo:
+        return string(geometry, connectivity, Candidates(), stereo=False)
+    candidates = _candidates(geometry.symbols, connectivity)
+    return string(geometry, connectivity, candidates)
+
+
+def from_ts_geometries(
+    geometry: GeometryLike,
+    reactant_geometry: GeometryLike,
+    product_geometry: GeometryLike,
+    *,
+    stereo: bool = True,
+) -> str:
+    """The AMChI string of a TS, with its connectivity and candidates derived.
+
+    The three geometries are in the same atom order: the TS (for the parities) and
+    its reactant side and product side (for the bonds and the candidates). With
+    `stereo=False` the string has no `b`, `t`, `m` or `s` layer.
+
+    Raises the errors of `string`, and `ValueError` if the atoms differ.
+
+    Examples:
+        >>> import amchi
+        >>> from types import SimpleNamespace
+        >>> symbols = ["C", "H", "H", "H", "H", "O", "H"]
+        >>> ring = [[0, 0, 0.3], [1, 0, 0.3], [-0.5, 0.87, 0.3], [-0.5, -0.87, 0.3]]
+        >>> # CH3 + H2O: H4 moves from O5 to C0
+        >>> ts = SimpleNamespace(
+        ...     symbols=symbols,
+        ...     coordinates=[[0, 0, 0], *ring[1:], [0, 0, -1.3], [0, 0, -2.5],
+        ...                  [0.9, 0, -2.8]],
+        ... )
+        >>> reactant = SimpleNamespace(
+        ...     symbols=symbols,
+        ...     coordinates=[[0, 0, 0], *ring[1:], [-0.5, 0.5, -3.2], [0, 0, -2.5],
+        ...                  [0.9, 0, -2.8]],
+        ... )
+        >>> product = SimpleNamespace(
+        ...     symbols=symbols,
+        ...     coordinates=[[0, 0, 0], *ring[1:], [0, 0, -1.09], [0, 0, -3.2],
+        ...                  [0.9, 0, -3.5]],
+        ... )
+        >>> amchi.from_ts_geometries(ts, reactant, product)
+        'AMChI=2S/CH5O/c1-3-2/h2H,1H3/k3-2/f3-1/r0'
+        >>> amchi.from_ts_geometries(ts, product, reactant)
+        'AMChI=2S/CH5O/c1-3-2/h2H,1H3/k3-2/f3-1/r1'
+    """
+    connectivity = _ts_connectivity(reactant_geometry, product_geometry)
     if not stereo:
         return string(geometry, connectivity, Candidates(), stereo=False)
     candidates = _candidates(geometry.symbols, connectivity)

@@ -154,6 +154,20 @@ def test__string__ts__stereo_false(transition_states: list[dict]) -> None:
     assert len(decided_by_stereo) == 8
 
 
+def test__from_ts_geometries(transition_states: list[dict]) -> None:
+    """The geometries of the 300 TSs give the string of their dumped connectivity."""
+    for record in transition_states:
+        ts, reactant, product = (
+            Geometry(record["symbols"], record[key])
+            for key in ("xyz", "xyz_reactant", "xyz_product")
+        )
+        string = amchi.from_ts_geometries(ts, reactant, product)
+        assert string == record["amchi"], record["id"]
+        string = amchi.from_ts_geometries(ts, reactant, product, stereo=False)
+        expected = amchi.string(ts, record["connectivity"], Candidates(), stereo=False)
+        assert string == expected, record["id"]
+
+
 # CH3 + H2O: H4 moves from O5 to C0
 H_TRANSFER = Geometry(
     ["C", "H", "H", "H", "H", "O", "H"],
