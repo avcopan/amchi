@@ -1,15 +1,19 @@
 """Tests for the canonicalization, against the old code's dumped intermediates."""
 
+import json
 from dataclasses import dataclass
+from pathlib import Path
 
 import numpy as np
 import pytest
 from numpy.typing import ArrayLike
 
-from amchi import Candidates, Connectivity, IllDefinedParityError
+from amchi import Candidates, Connectivity, IllDefinedParityError, candidates
 from amchi._canon import CanonicalForm, _first_pass_parities, canonical_forms
 from amchi._graph import MolGraph, explicit_graph, implicit_graph
 from amchi._parity import stereo_graph
+
+DATA = Path(__file__).parent / "data"
 
 
 @dataclass
@@ -197,3 +201,112 @@ def test__canonical_forms__bond_table() -> None:
     assert graph.edges[0, 1]["stereo"].parities[0][0] is True
     (form,) = canonical_forms(graph)
     assert form.bond_parities == {(0, 1): True}
+
+
+# Transition states (W4) ---------------------------------------------------------------
+# The TSs whose mirror image is their own reverse (D29): reflecting one reverses it
+SELF_REVERSE_MIRROR = {
+    "rgd1:MR_35814_1",
+    "rgd1:MR_448099_1",
+    "rgd1:MR_103507_0",
+    "rgd1:MR_323646_1",
+}
+FLIP = {True: False, False: True, None: None}
+
+
+def _ts_forms(
+    record: dict, *, reverse: bool = False, mirror: bool = False
+) -> list[CanonicalForm]:
+    """The canonical forms of a TS record, read reversed or reflected."""
+    old = record["old"]
+    breaking, forming = old["breaking"], old["forming"]
+    if reverse:
+        breaking, forming = forming, breaking
+    connectivity = Connectivity(bonds=old["bonds"], breaking=breaking, forming=forming)
+    xyz = np.array(record["xyz"]) * ([-1, 1, 1] if mirror else 1)
+    graph = implicit_graph(explicit_graph(record["symbols"], connectivity))
+    geometry = Geometry(record["symbols"], xyz)
+    return canonical_forms(
+        stereo_graph(graph, geometry, candidates(record["symbols"], connectivity))
+    )
+
+
+def _ts(records: list[dict]) -> list[dict]:
+    return [r for r in records if r["kind"] == "ts"]
+
+
+def test__canonical_forms__ts(records: list[dict]) -> None:
+    """The 289 TSs whose string is the old one give the old canonical forms.
+
+    The priorities with their signs, the numbers and both flags, component by
+    component. The other 11 are the intended differences of D28 and D29.
+    """
+    differences = {
+        d["id"] for d in json.loads((DATA / "ts_differences.json").read_text())
+    }
+    checked = [r for r in _ts(records) if r["id"] not in differences]
+    assert len(checked) == 289
+    for record in checked:
+        dumped = {
+            frozenset(k for k, _ in c["priorities"]): c
+            for c in record["old"]["canonical"]
+        }
+        for form in _ts_forms(record):
+            ref = dumped[frozenset(form.priorities)]
+            assert form.priorities == dict(ref["priorities"]), record["id"]
+            assert form.numbers == dict(ref["numbers"]), record["id"]
+            assert form.is_canonical_direction == ref["is_canonical_direction"]
+            assert form.is_canonical_enantiomer == ref["is_canonical_enantiomer"]
+
+
+def test__canonical_forms__ts_reversed(records: list[dict]) -> None:
+    """Swapping breaking and forming flips the direction flag only (D29).
+
+    Where the two directions are equal (no flag), each read keeps its own given
+    direction, so the numbers may differ by a symmetry of the TS.
+    """
+    for record in _ts(records):
+        for form, other in zip(
+            _ts_forms(record), _ts_forms(record, reverse=True), strict=True
+        ):
+            assert other.is_canonical_direction == FLIP[form.is_canonical_direction]
+            assert other.is_canonical_enantiomer == form.is_canonical_enantiomer
+            assert _numbered(other) == _numbered(form), record["id"]
+            if form.is_canonical_direction is not None:
+                assert _same(other, form), record["id"]
+
+
+def test__canonical_forms__ts_mirrored(records: list[dict]) -> None:
+    """Reflecting flips the enantiomer flag only (D29).
+
+    Except for the 4 TSs whose mirror image is their reverse: they have no enantiomer
+    flag, and reflecting flips the direction flag instead.
+    """
+    for record in _ts(records):
+        exception = record["id"] in SELF_REVERSE_MIRROR
+        for form, other in zip(
+            _ts_forms(record), _ts_forms(record, mirror=True), strict=True
+        ):
+            if exception and form.is_canonical_direction is not None:
+                # The mirror image is read as the reversed TS
+                assert form.is_canonical_enantiomer is None
+                assert other.is_canonical_enantiomer is None
+                assert other.is_canonical_direction is not form.is_canonical_direction
+                assert _numbered(other) == _numbered(form), record["id"]
+            else:
+                assert _same(other, form), record["id"]
+                assert (
+                    other.is_canonical_enantiomer == FLIP[form.is_canonical_enantiomer]
+                )
+                assert other.is_canonical_direction == form.is_canonical_direction
+
+
+def _numbered(form: CanonicalForm) -> tuple[list, list]:
+    """The parities by canonical number, as the string gives them."""
+    numbers = form.numbers
+    return (
+        sorted((numbers[a], p) for a, p in form.atom_parities.items()),
+        sorted(
+            (sorted(numbers[k] for k in b), p) for b, p in form.bond_parities.items()
+        ),
+    )
