@@ -7,6 +7,7 @@ the writer itself is tested against InChI in `test__layers.py`.
 
 import json
 import re
+from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -15,7 +16,7 @@ import pytest
 from numpy.typing import ArrayLike
 
 import amchi
-from amchi import Candidates, Connectivity
+from amchi import Bond, Candidates, Connectivity
 
 from .test__layers import _inchi_graph
 
@@ -116,24 +117,181 @@ def test__from_geometry(species: list[dict]) -> None:
         _assert_old(record["amchi"], record["old"]["amchi"], record["id"])
 
 
-def test__string__ts(
-    transition_states: list[dict], ts_differences: dict[str, dict]
-) -> None:
-    """The 300 TSs give the old strings, except the intended differences.
+VARIANTS = ("forward", "reversed", "mirrored", "reversed_mirrored")
 
+
+def _variant(
+    geometry: Geometry, connectivity: Connectivity, variant: str
+) -> tuple[Geometry, Connectivity]:
+    """A TS reversed (breaking and forming swapped), mirrored (x negated), or both."""
+    if "reversed" in variant:
+        connectivity = Connectivity(
+            bonds=connectivity.bonds,
+            breaking=connectivity.forming,
+            forming=connectivity.breaking,
+        )
+    if "mirrored" in variant:
+        coordinates = np.asarray(geometry.coordinates) * [-1, 1, 1]
+        geometry = Geometry(geometry.symbols, coordinates)
+    return geometry, connectivity
+
+
+def _ts_string(geometry: Geometry, connectivity: Connectivity) -> str:
+    candidates = amchi.candidates(geometry.symbols, connectivity)
+    return amchi.string(geometry, connectivity, candidates)
+
+
+@pytest.fixture(scope="module")
+def ts_variants(transition_states: list[dict]) -> dict[str, dict[str, str]]:
+    """The strings of the four variants of the 300 TSs, by id and variant."""
+    return {
+        record["id"]: {
+            variant: _ts_string(
+                *_variant(record["geometry"], record["connectivity"], variant)
+            )
+            for variant in VARIANTS
+        }
+        for record in transition_states
+    }
+
+
+def _assert_variants(
+    strings: dict[str, str],
+    old: dict[str, str],
+    difference: dict | None,
+    name: str,
+) -> int:
+    """Each variant gives the old string, or the new one of the differences file.
+
+    Returns the number of new strings.
+    """
+    differing, new = (
+        (difference["differing"], difference["new"]) if difference else ([], {})
+    )
+    for variant in VARIANTS:
+        if variant in differing:
+            assert strings[variant] == new[variant], (name, variant)
+        else:
+            _assert_old(strings[variant], old[variant], f"{name} {variant}")
+    return len(differing)
+
+
+def test__string__ts(
+    transition_states: list[dict],
+    ts_variants: dict[str, dict[str, str]],
+    ts_differences: dict[str, dict],
+) -> None:
+    """The four variants of the 300 TSs give the old strings, but for 34 (D28, D29).
+
+    That is 1,166 old strings and the 34 new ones of the differences file.
     These include TSs with two components (`/k;3-2,5-1/f;5-3/r;0`) and with the
     canonical direction the reverse of the given one (`/r1`).
     """
+    old_variants = {
+        x["id"]: x for x in json.loads((DATA / "ts_variants.json").read_text())
+    }
     differing = 0
     for record in transition_states:
-        difference = ts_differences.get(record["id"])
-        if difference and "forward" in difference["differing"]:
-            assert record["amchi"] == difference["new"]["forward"], record["id"]
-            differing += 1
-        else:
-            _assert_old(record["amchi"], record["old"]["amchi"], record["id"])
-    forward = [x for x in ts_differences.values() if "forward" in x["differing"]]
-    assert differing == len(forward) == 7
+        name = record["id"]
+        assert old_variants[name]["forward"] == record["old"]["amchi"], name
+        differing += _assert_variants(
+            ts_variants[name], old_variants[name], ts_differences.get(name), name
+        )
+    assert differing == 34
+    assert len(ts_differences) == 11
+
+
+def test__string__ts__old_tests() -> None:
+    """The four variants of the nine TSs of the old tests give the old strings.
+
+    These include radical TSs and halogens, which the sample lacks.
+    """
+    cases = json.loads((DATA / "ts_hand_cases.json").read_text())
+    assert len(cases) == 9
+    for case in cases:
+        geometry = Geometry(case["symbols"], case["xyz"])
+        connectivity = Connectivity(
+            bonds=case["bonds"], breaking=case["breaking"], forming=case["forming"]
+        )
+        strings = {
+            variant: _ts_string(*_variant(geometry, connectivity, variant))
+            for variant in VARIANTS
+        }
+        assert _assert_variants(strings, case, None, case["id"]) == 0
+
+
+def _layer_digits(string: str, layer: str) -> tuple[str, str]:
+    """The string with the digits of a one-digit layer removed, and those digits."""
+    pattern = rf"/{layer}([0-9;*.]*)(?=/|$)"
+    digits = "".join(re.findall(pattern, string))
+    return re.sub(pattern, f"/{layer}", string), digits
+
+
+SWAP_01 = str.maketrans("01", "10")
+
+# The TSs whose mirror image is their own reverse (D29)
+MIRROR_IS_REVERSE = {
+    "rgd1:MR_35814_1",
+    "rgd1:MR_448099_1",
+    "rgd1:MR_103507_0",
+    "rgd1:MR_323646_1",
+}
+
+
+def test__string__ts__reversed_and_mirrored(
+    ts_variants: dict[str, dict[str, str]],
+) -> None:
+    """Reversing changes the digits of r only; reflecting those of m only.
+
+    A TS whose two directions are equal has no r layer, so reversing changes nothing.
+    The exception: a TS whose mirror image is its reverse has no m layer, and
+    reflecting it gives the reversed string.
+    """
+    for name, strings in ts_variants.items():
+        forward = strings["forward"]
+        rest, r = _layer_digits(forward, "r")
+        reversed_rest, reversed_r = _layer_digits(strings["reversed"], "r")
+        assert reversed_rest == rest, name
+        assert r.translate(SWAP_01) == reversed_r, name
+        if name in MIRROR_IS_REVERSE:
+            assert "/m" not in forward, name
+            assert strings["mirrored"] == strings["reversed"], name
+            assert strings["reversed_mirrored"] == forward, name
+            continue
+        rest, m = _layer_digits(forward, "m")
+        mirrored_rest, mirrored_m = _layer_digits(strings["mirrored"], "m")
+        assert mirrored_rest == rest, name
+        assert m.translate(SWAP_01) == mirrored_m, name
+    without_r = {name for name, x in ts_variants.items() if "/r" not in x["forward"]}
+    assert without_r == {"rgd1:MR_348096_1", "rgd1:MR_573487_1"}
+
+
+def _shuffled_ts(
+    geometry: Geometry, connectivity: Connectivity, rng: np.random.Generator
+) -> tuple[Geometry, Connectivity]:
+    order = rng.permutation(len(geometry.symbols))
+    index = {int(old): new for new, old in enumerate(order)}
+
+    def renumber(bonds: Sequence[Bond]) -> list[Bond]:
+        pairs = ((index[i], index[j]) for i, j in bonds)
+        return [(min(pair), max(pair)) for pair in pairs]
+
+    shuffled = Connectivity(
+        bonds=renumber(connectivity.bonds),
+        breaking=renumber(connectivity.breaking),
+        forming=renumber(connectivity.forming),
+    )
+    coordinates = np.asarray(geometry.coordinates)[order]
+    return Geometry([geometry.symbols[k] for k in order], coordinates), shuffled
+
+
+def test__string__ts__shuffled(transition_states: list[dict]) -> None:
+    """Shuffling the atoms of a TS leaves its string unchanged."""
+    rng = np.random.default_rng(0)
+    for record in transition_states:
+        for _ in range(2):
+            shuffled = _shuffled_ts(record["geometry"], record["connectivity"], rng)
+            assert _ts_string(*shuffled) == record["amchi"], record["id"]
 
 
 def test__string__ts__stereo_false(transition_states: list[dict]) -> None:
