@@ -406,11 +406,23 @@ def test__from_geometry__shuffled(species: list[dict], components: list[dict]) -
 
 
 def test__from_geometry__hand_cases(hand_cases: dict[str, list[dict]]) -> None:
-    """The ring pairs, the larger molecules and HNNO give the old strings."""
-    for group in ("hnno", "ring", "ring_control", "scaling"):
+    """The control ring pairs, the larger molecules and HNNO give the old strings.
+
+    The symmetric ring pairs, which the old code gives one string, now differ (W6),
+    and give the old string without stereo.
+    """
+    for group in ("hnno", "ring_control", "scaling"):
         for case in hand_cases[group]:
             geometry = Geometry(case["symbols"], case["xyz"])
             _assert_old(amchi.from_geometry(geometry), case["amchi"], case["id"])
+    strings = {}
+    for case in hand_cases["ring"]:
+        geometry = Geometry(case["symbols"], case["xyz"])
+        string = amchi.from_geometry(geometry, stereo=False)
+        _assert_old(string, case["amchi"], case["id"])
+        strings[case["id"]] = amchi.from_geometry(geometry)
+    for name in ("1,3-dimethylcyclobutane", "1,4-dimethylcyclohexane"):
+        assert strings[f"ring:{name}:a"] != strings[f"ring:{name}:b"], name
 
 
 def test__from_geometry__achiral_bond_stereo() -> None:
@@ -530,3 +542,171 @@ def test__string__errors(
     error_type, match = error
     with pytest.raises(error_type, match=match):
         amchi.string(geometry, connectivity, candidates)
+
+
+# Para-stereocenters (W6) --------------------------------------------------------------
+# Pairs that the old code and `main` give one string, and that now differ
+MUST_SPLIT = [
+    ("cis-1,3-dimethylcyclobutane", "trans-1,3-dimethylcyclobutane"),
+    ("cis-1,4-dimethylcyclohexane", "trans-1,4-dimethylcyclohexane"),
+    ("cis-bicyclo[3.3.0]octane", "trans-bicyclo[3.3.0]octane"),
+    (
+        "3,3'-dimethyl-1,1'-bi(cyclobutylidene) A",
+        "3,3'-dimethyl-1,1'-bi(cyclobutylidene) B",
+    ),
+]
+# Stereoisomers that now get one string each, and how many there are
+ISOMERS = {"bi(3-methylcyclobutyl)": 3, "1,3,5-trimethylcyclohexane": 2}
+# Cases without a kept para-stereocenter, which keep their strings from `main`
+UNCHANGED = [
+    "methylcyclobutane",
+    "propane",
+    "propan-2-ol",
+    "ethylidenecyclobutane",
+    "cis-1,2-dimethylcyclobutane",
+    "trans-1,2-dimethylcyclobutane",
+]
+
+
+@pytest.fixture(scope="module")
+def ring_stereo() -> dict[str, dict]:
+    """The W6 cases by name, each with its geometry and its string."""
+    records = json.loads((DATA / "ring_stereo.json").read_text())
+    for record in records.values():
+        record["geometry"] = Geometry(record["symbols"], record["coordinates"])
+        record["amchi"] = amchi.from_geometry(record["geometry"])
+    return records
+
+
+def test__from_geometry__para(ring_stereo: dict[str, dict]) -> None:
+    """Symmetric rings get their cis/trans stereo; the other cases are unchanged."""
+    for a, b in MUST_SPLIT:
+        assert ring_stereo[a]["main"] == ring_stereo[b]["main"], a
+        assert ring_stereo[a]["amchi"] != ring_stereo[b]["amchi"], a
+    for prefix, count in ISOMERS.items():
+        isomers = [r for name, r in ring_stereo.items() if name.startswith(prefix)]
+        assert len({r["amchi"] for r in isomers}) == len(isomers) == count, prefix
+    chiral = ring_stereo["1-ethylidene-3-methylcyclobutane"]["amchi"]
+    assert chiral.endswith("/b6-3+/t7-/m1/s1"), chiral
+    for name in UNCHANGED:
+        assert ring_stereo[name]["amchi"] == ring_stereo[name]["main"], name
+    # Without stereo, every string is the one of `main` without stereo
+    for name, record in ring_stereo.items():
+        string = amchi.from_geometry(record["geometry"], stereo=False)
+        assert string == _without_stereo(record["main"]), name
+
+
+def test__from_geometry__para_shuffled_and_mirrored(
+    ring_stereo: dict[str, dict],
+) -> None:
+    """Shuffling the atoms changes nothing, and reflecting changes only m."""
+    rng = np.random.default_rng(0)
+    for name, record in ring_stereo.items():
+        for _ in range(4):
+            shuffled = _shuffled(record["geometry"], rng)
+            assert amchi.from_geometry(shuffled) == record["amchi"], name
+        xyz = np.asarray(record["coordinates"]) * [-1, 1, 1]
+        mirrored = amchi.from_geometry(Geometry(record["symbols"], xyz))
+        rest, m = _layer_digits(record["amchi"], "m")
+        mirrored_rest, mirrored_m = _layer_digits(mirrored, "m")
+        assert mirrored_rest == rest, name
+        assert m.translate(SWAP_01) == mirrored_m, name
+
+
+# 1,3-dimethylcyclobutane on a square, with C0 and its neighbors in the plane z = 0
+SQUARE_SYMBOLS = ["C", "C", "C", "C", "C", "C", "H", *["H"] * 11]
+SQUARE_XYZ = [
+    [0, 0, 0], [1, 1, 0], [2, 0, 0], [1, -1, 0],  # the ring: C0, C1, C2, C3
+    [-1, 0, 0], [3, 0, 1],  # the methyls on C0 and C2
+    [-1, 1, 0], [3, 0, -1],  # the ring H on C0 and C2
+    [1, 2, 0.5], [1, 2, -0.5], [1, -2, 0.5], [1, -2, -0.5],  # the CH2 hydrogens
+    [-2, 0, 0.5], [-2, 0.5, -0.5], [-2, -0.5, -0.5],  # methyl on C0
+    [4, 0, 1.5], [3, 1, 1.5], [3, -1, 1.5],  # methyl on C2
+]  # fmt: skip
+SQUARE_BONDS = [
+    (0, 1), (1, 2), (2, 3), (0, 3), (0, 4), (2, 5), (0, 6), (2, 7),
+    (1, 8), (1, 9), (3, 10), (3, 11), (4, 12), (4, 13), (4, 14),
+    (5, 15), (5, 16), (5, 17),
+]  # fmt: skip
+
+
+def test__string__para_ill_defined() -> None:
+    """A kept para-stereocenter with an ill-defined parity raises; a dropped one not.
+
+    C0 of 1,3-dimethylcyclobutane is kept with C2, so it raises. Without the methyl
+    on C2 (methylcyclobutane), C0's flip is a symmetry, and it is dropped.
+    """
+    geometry = Geometry(SQUARE_SYMBOLS, SQUARE_XYZ)
+    connectivity = Connectivity(bonds=SQUARE_BONDS)
+    candidates = amchi.candidates(SQUARE_SYMBOLS, connectivity)
+    assert 0 in candidates.atoms
+    with pytest.raises(amchi.IllDefinedParityError, match="atom 0"):
+        amchi.string(geometry, connectivity, candidates)
+
+    # Methylcyclobutane: the methyl on C2 becomes an H
+    symbols = [*SQUARE_SYMBOLS[:5], "H", *SQUARE_SYMBOLS[6:15]]
+    bonds = SQUARE_BONDS[:-3]
+    geometry = Geometry(symbols, SQUARE_XYZ[:15])
+    connectivity = Connectivity(bonds=bonds)
+    candidates = amchi.candidates(symbols, connectivity)
+    assert amchi.string(geometry, connectivity, candidates) == (
+        "AMChI=2S/C5H10/c1-5-3-2-4-5/h5H,2-4H2,1H3"
+    )
+
+
+def _abstraction(record: dict) -> tuple[Geometry, Connectivity]:
+    """An H atom 1.2 Å beyond a methyl H, which it abstracts."""
+    geometry = record["geometry"]
+    xyz = np.asarray(geometry.coordinates)
+    bonds = amchi.connectivity(geometry).bonds
+    symbols = geometry.symbols
+    hydrogens = {
+        k: sorted(n for b in bonds if k in b for n in b if symbols[n] == "H")
+        for k, s in enumerate(symbols)
+        if s == "C"
+    }
+    carbon = min(k for k, hs in hydrogens.items() if len(hs) == 3)
+    hydrogen = hydrogens[carbon][0]
+    direction = xyz[hydrogen] - xyz[carbon]
+    new = xyz[hydrogen] + 1.2 * direction / np.linalg.norm(direction)
+    breaking = (min(carbon, hydrogen), max(carbon, hydrogen))
+    connectivity = Connectivity(
+        bonds=[b for b in bonds if b != breaking],
+        breaking=[breaking],
+        forming=[(hydrogen, len(symbols))],
+    )
+    return Geometry([*symbols, "H"], np.vstack([xyz, new])), connectivity
+
+
+def test__string__para_ts(ring_stereo: dict[str, dict]) -> None:
+    """H abstraction from cis- and trans-1,3-dimethylcyclobutane: two strings.
+
+    Reversing changes only r, reflecting only m, and shuffling nothing.
+    """
+    rng = np.random.default_rng(0)
+    strings = []
+    for name in MUST_SPLIT[0]:
+        geometry, connectivity = _abstraction(ring_stereo[name])
+        string = _ts_string(geometry, connectivity)
+        assert "/t" in string, name
+        strings.append(string)
+
+        reverse = connectivity.model_copy(
+            update={"breaking": connectivity.forming, "forming": connectivity.breaking}
+        )
+        rest, r = _layer_digits(string, "r")
+        reversed_rest, reversed_r = _layer_digits(_ts_string(geometry, reverse), "r")
+        assert reversed_rest == rest, name
+        assert r.translate(SWAP_01) == reversed_r, name
+
+        xyz = np.asarray(geometry.coordinates) * [-1, 1, 1]
+        mirror = Geometry(geometry.symbols, xyz)
+        rest, m = _layer_digits(string, "m")
+        mirrored_rest, mirrored_m = _layer_digits(_ts_string(mirror, connectivity), "m")
+        assert mirrored_rest == rest, name
+        assert m.translate(SWAP_01) == mirrored_m, name
+
+        for _ in range(4):
+            shuffled = _shuffled_ts(geometry, connectivity, rng)
+            assert _ts_string(*shuffled) == string, name
+    assert strings[0] != strings[1]

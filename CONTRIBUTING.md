@@ -131,7 +131,8 @@ Never import the old code in the tests: they read files.
 Also test properties that need no reference: shuffling the atoms leaves the string unchanged, reflecting the coordinates flips `m` and nothing else, and swapping reactant and product flips `r` and nothing else.
 
 A string that differs from the old one is a bug unless the changelog lists it as an intended difference.
-Known limitations of the old code are kept, with tests that record today's behavior: cis- and trans-1,3-dimethylcyclobutane (and 1,4-dimethylcyclohexane) share one string, and a species with formal charges or hypervalent atoms can get the wrong candidates, which a caller can correct.
+Known limitations of the old code are kept, with tests that record today's behavior: a species with formal charges or hypervalent atoms can get the wrong candidates, which a caller can correct.
+One is fixed, as an intended difference: the old code gives cis- and trans-1,3-dimethylcyclobutane (and 1,4-dimethylcyclohexane) one string, and amchi finds their para-stereocenters.
 
 ### Errors
 

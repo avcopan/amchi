@@ -137,9 +137,10 @@ def test__c_layer__inchi() -> None:
 def test__layers__hand_cases(hand_cases: dict[str, list[dict]]) -> None:
     """The layers of the hand cases, from the helpers, equal the old ones.
 
-    The scaling group has the large polycycles (pyrene, perylene).
+    The scaling group has the large polycycles (pyrene, perylene). The symmetric
+    ring pairs are left out: their stereo is an intended difference (W6).
     """
-    for group in ("hnno", "ring", "ring_control", "scaling"):
+    for group in ("hnno", "ring_control", "scaling"):
         for case in hand_cases[group]:
             geometry = Geometry(case["symbols"], case["xyz"])
             connectivity = amchi.connectivity(geometry)
