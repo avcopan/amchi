@@ -61,7 +61,7 @@ type = "layers"
 # The parentheses make a layer optional until its module exists: remove each pair when
 # the module is added.
 layers = [
-    "(amchi._amchi)",
+    "amchi._amchi",
     "amchi._layers",
     "amchi._canon",
     "amchi._parity",

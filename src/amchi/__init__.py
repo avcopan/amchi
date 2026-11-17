@@ -2,6 +2,7 @@
 
 __version__ = "0.0.0"
 
+from ._amchi import from_geometry, string
 from ._candidates import add_bond_candidate, candidates, remove_candidate
 from ._connect import connectivity
 from ._element import AmchiError, UnsupportedElementError
@@ -20,6 +21,8 @@ __all__ = [
     "add_bond_candidate",
     "candidates",
     "connectivity",
+    "from_geometry",
     "parity_margins",
     "remove_candidate",
+    "string",
 ]
