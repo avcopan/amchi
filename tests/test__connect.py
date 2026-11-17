@@ -58,3 +58,32 @@ def test__connectivity__errors() -> None:
         amchi.connectivity(Geometry(["H", "H"], [[0, 0, 0]]))
     with pytest.raises(amchi.UnsupportedElementError):
         amchi.connectivity(Geometry(["Fe", "H"], [[0, 0, 0], [1.6, 0, 0]]))
+
+
+def test__ts_connectivity(records: list[dict]) -> None:
+    """The old bonds, breaking and forming bonds of the 300 TSs."""
+    for record in records:
+        if record["kind"] != "ts":
+            continue
+        old = record["old"]
+        reactant = Geometry(record["symbols"], record["xyz_reactant"])
+        product = Geometry(record["symbols"], record["xyz_product"])
+        connectivity = amchi.ts_connectivity(reactant, product)
+        for key in ("bonds", "breaking", "forming"):
+            assert set(getattr(connectivity, key)) == _bonds(old[key]), (
+                record["id"],
+                key,
+            )
+        swapped = amchi.ts_connectivity(product, reactant)
+        assert swapped.bonds == connectivity.bonds
+        assert swapped.breaking == connectivity.forming
+        assert swapped.forming == connectivity.breaking
+
+
+def test__ts_connectivity__errors() -> None:
+    """The two geometries must have the same atoms."""
+    with pytest.raises(ValueError, match="different atoms"):
+        amchi.ts_connectivity(
+            Geometry(["H", "H"], [[0, 0, 0], [0.74, 0, 0]]),
+            Geometry(["H", "F"], [[0, 0, 0], [0.92, 0, 0]]),
+        )

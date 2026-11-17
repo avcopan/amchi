@@ -61,6 +61,43 @@ def connectivity(geometry: GeometryLike) -> Connectivity:
     return Connectivity(bonds=bonds)
 
 
+def ts_connectivity(
+    reactant_geometry: GeometryLike, product_geometry: GeometryLike
+) -> Connectivity:
+    """The bonds of a TS, from reactant-side and product-side geometries.
+
+    Both geometries are in the TS atom order. Each side's bonds come from
+    `connectivity`; a bond on both sides is present throughout, one on the reactant
+    side only is breaking, and one on the product side only is forming.
+
+    Examples:
+        >>> import amchi
+        >>> from types import SimpleNamespace
+        >>> # H + H2 -> H2 + H
+        >>> reactant = SimpleNamespace(
+        ...     symbols=["H", "H", "H"],
+        ...     coordinates=[[0, 0, 0], [0.74, 0, 0], [3, 0, 0]],
+        ... )
+        >>> product = SimpleNamespace(
+        ...     symbols=["H", "H", "H"],
+        ...     coordinates=[[0, 0, 0], [2.26, 0, 0], [3, 0, 0]],
+        ... )
+        >>> connectivity = amchi.ts_connectivity(reactant, product)
+        >>> connectivity.breaking, connectivity.forming
+        (((0, 1),), ((1, 2),))
+    """
+    if list(reactant_geometry.symbols) != list(product_geometry.symbols):
+        msg = "The reactant and product geometries have different atoms"
+        raise ValueError(msg)
+    reactant = set(connectivity(reactant_geometry).bonds)
+    product = set(connectivity(product_geometry).bonds)
+    return Connectivity(
+        bonds=reactant & product,
+        breaking=reactant - product,
+        forming=product - reactant,
+    )
+
+
 def _distance_limit(symbol1: str, symbol2: str) -> float:
     """The longest distance at which two atoms are bonded, in Å."""
     covalent = covalent_radius(symbol1) + covalent_radius(symbol2)
