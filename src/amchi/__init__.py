@@ -1,6 +1,6 @@
 """amchi."""
 
-__version__ = "0.0.0"
+__version__ = "0.0.1"
 
 from ._amchi import from_geometry, from_ts_geometries, string
 from ._candidates import add_bond_candidate, candidates, remove_candidate
