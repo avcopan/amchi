@@ -1,11 +1,13 @@
 """Tests for the layer strings.
 
-The formula and h layers are tested against the old strings, and the c layer, which is
-an intended difference (D24), against InChI's c layers (`tests/data/inchi.json`).
+The formula, h, b, t, m and s layers are tested against the old strings, and the c
+layer, which is an intended difference (D24), against InChI's c layers
+(`tests/data/inchi.json`).
 """
 
 import json
 import re
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -17,7 +19,14 @@ import amchi
 from amchi import Candidates, Connectivity
 from amchi._canon import canonical_forms
 from amchi._graph import MolGraph, explicit_graph, implicit_graph
-from amchi._layers import c_layer, canonical_graph, formula_layer, h_layer
+from amchi._layers import (
+    c_layer,
+    canonical_graph,
+    component_layers,
+    component_string,
+    formula_layer,
+    h_layer,
+)
 from amchi._parity import stereo_graph
 
 
@@ -44,17 +53,19 @@ def _old_candidates(old_candidates: dict) -> Candidates:
 
 
 def _layers(graph: MolGraph) -> dict[str, str]:
-    """The formula and h layers of a one-component graph."""
+    """The layers of a one-component graph, except the c layer."""
     (form,) = canonical_forms(graph)
-    canonical = canonical_graph(graph, form)
-    return {"formula": formula_layer(canonical), "h": h_layer(canonical)}
+    layers = component_layers(graph, form)
+    layers.pop("c", None)
+    return layers
 
 
 def _old_layers(string: str) -> dict[str, str]:
-    """The formula and h layers of an old one-component string ("" if absent)."""
+    """The layers of an old one-component string, except the c layer."""
     _, formula, *layers = string.split("/")
-    prefixed = {layer[0]: layer[1:] for layer in layers}
-    return {"formula": formula, "h": prefixed.get("h", "")}
+    return {"formula": formula} | {
+        layer[0]: layer[1:] for layer in layers if layer[0] != "c"
+    }
 
 
 def _inchi_graph(layer: str) -> nx.Graph:
@@ -79,15 +90,27 @@ def _inchi_graph(layer: str) -> nx.Graph:
 
 
 def test__layers(records: list[dict]) -> None:
-    """The formula and h layers of the 600 species equal the old ones."""
+    """All layers of the 600 species but the c layer equal the old ones."""
     species = [r for r in records if r["kind"] != "ts"]
     assert len(species) == 600
+    counts = Counter()
     for record in species:
         old = record["old"]
         connectivity = Connectivity(bonds=old["bonds"])
         candidates = _old_candidates(old["candidates"])
         graph = _graph(record["symbols"], record["xyz"], connectivity, candidates)
-        assert _layers(graph) == _old_layers(old["amchi"]), record["id"]
+        layers = _layers(graph)
+        assert layers == _old_layers(old["amchi"]), record["id"]
+        counts.update(letter for letter in layers if letter in "bts")
+        counts.update({f"m{layers['m']}": 1} if "m" in layers else {})
+    # The stereo layers are all covered, both values of m included
+    assert counts == {"b": 97, "t": 351, "s": 344, "m0": 179, "m1": 165}
+
+
+def test__component_string() -> None:
+    """The prefix, then the formula and the layers in order."""
+    layers = {"formula": "C4H8", "c": "1-3-4-2", "h": "3-4H,1-2H3", "b": "4-3-"}
+    assert component_string(layers) == "AMChI=2S/C4H8/c1-3-4-2/h3-4H,1-2H3/b4-3-"
 
 
 def test__c_layer__inchi() -> None:
