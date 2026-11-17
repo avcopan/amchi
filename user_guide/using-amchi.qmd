@@ -1,0 +1,152 @@
+---
+title: Using amchi
+---
+
+amchi computes the AMChI string of a species or a transition state (TS) from a 3D structure.
+The string names a species the way InChI does, plus its stereochemistry (`b`, `t`, `m`, `s` layers) from the coordinates.
+A TS adds its breaking and forming bonds (`k`, `f`) and its direction (`r`); see [Transition states](#transition-states).
+
+## The three inputs
+
+`amchi.string(geometry, connectivity, candidates)` takes everything it needs explicitly:
+
+- **`geometry`** is anything with `symbols` and `coordinates` (N × 3, in Å): the `GeometryLike` protocol.
+  Hydrogens must be explicit. Supported elements: main group, H to Xe.
+- **`connectivity`** is `amchi.Connectivity(bonds=[(0, 1), ...])`, with atoms as indices into the geometry.
+- **`candidates`** is `amchi.Candidates(atoms=..., bonds=...)`: the atoms and bonds that may be stereocenters, each with its stereo-determining neighbors.
+
+```python
+import amchi
+from types import SimpleNamespace
+
+water = SimpleNamespace(
+    symbols=["O", "H", "H"],
+    coordinates=[[0, 0, 0], [0.96, 0, 0], [-0.24, 0.93, 0]],
+)
+connectivity = amchi.Connectivity(bonds=[(0, 1), (0, 2)])
+amchi.string(water, connectivity, amchi.Candidates())
+# 'AMChI=2S/H2O/h1H2'
+```
+
+The candidates depend on the graph alone, so the string of a species changes with the conformer only through the parities.
+
+## The helpers
+
+Two helpers derive the second and third inputs from a geometry, and `from_geometry` chains them with `string`:
+
+```python
+connectivity = amchi.connectivity(geometry)
+candidates = amchi.candidates(geometry.symbols, connectivity)
+amchi.string(geometry, connectivity, candidates)
+# the same as
+amchi.from_geometry(geometry)
+```
+
+- `connectivity(geometry)` bonds two atoms within 1.05 times the larger of the sum of their covalent radii and the mean of their van der Waals radii, then drops the longest bonds of an atom with more bonds than its valence.
+- `candidates(symbols, connectivity)` finds the tetrahedral atoms and the rigid planar bonds (the old AutoMol's rules).
+- `parity_margins(geometry, candidates)` is a diagnostic: how nearly planar each candidate is.
+
+## Corrections
+
+The helpers perceive bonds and resonance without formal charges, so they can be wrong, and the explicit inputs let you correct them.
+HN=N(O)OH is the known case: the helpers miss its zwitterionic form HN=N(+)(O−)OH, so they call N1 a tetrahedral stereocenter and miss the rigid planar N0=N1 bond, and both geometries get the same string.
+Remove the atom candidate and add the bond candidate:
+
+```python
+connectivity = amchi.connectivity(geometry)
+candidates = amchi.candidates(geometry.symbols, connectivity)
+candidates = amchi.remove_candidate(candidates, 1)
+candidates = amchi.add_bond_candidate(candidates, connectivity, (0, 1))
+amchi.string(geometry, connectivity, candidates)
+```
+
+With the two geometries of HNNO in `tests/data/hand_cases.json`, `from_geometry` gives `AMChI=2S/H2N2O2/c1-2(3)4/h1,4H/t2-/m1/s1` for both, and the corrected candidates give `.../b2-1+` and `.../b2-1-`.
+
+`remove_candidate(candidates, 1)` takes an atom index or a bond pair, and raises `KeyError` for a non-candidate.
+`add_bond_candidate` applies no filter, since it is meant to override, and raises `ValueError` if the pair isn't a bond or an atom has no other neighbor.
+
+## No stereo
+
+`stereo=False`, on `string` and `from_geometry`, ignores the candidates and writes no `b`, `t`, `m` or `s` layer:
+
+```python
+amchi.from_geometry(geometry, stereo=False)
+# 'AMChI=2S/CHBrClF/c2-1(3)4/h1H'
+```
+
+## Several components
+
+A geometry with several components gives one string. Components are sorted as in the old AutoMol, and repeated layers are written once behind a multiplier (`C4H6N.C2H5NO2.H2O`, `2*`).
+
+## Transition states
+
+A TS takes the same three inputs.
+Its connectivity also lists the bonds that break and form, as atom pairs of the TS geometry:
+the reactant side has the `bonds` and the `breaking` bonds, the product side the `bonds` and the `forming` bonds.
+Here `ts` is the saddle point of CH3 + H2O → CH4 + OH, where H4 moves from O5 to C0 (the example of `from_ts_geometries`):
+
+```python
+connectivity = amchi.Connectivity(
+    bonds=[(0, 1), (0, 2), (0, 3), (5, 6)], breaking=[(4, 5)], forming=[(0, 4)]
+)
+candidates = amchi.candidates(ts.symbols, connectivity)
+amchi.string(ts, connectivity, candidates)
+# 'AMChI=2S/CH5O/c1-3-2/h2H,1H3/k3-2/f3-1/r0'
+```
+
+The geometry is the saddle point, which gives the parities; the bonds and the candidates come from the two sides.
+`from_ts_geometries` derives both from a reactant-side and a product-side geometry in the TS atom order (for example, the end points of an IRC):
+
+```python
+amchi.from_ts_geometries(ts, reactant, product)
+# 'AMChI=2S/CH5O/c1-3-2/h2H,1H3/k3-2/f3-1/r0'
+amchi.from_ts_geometries(ts, product, reactant)
+# 'AMChI=2S/CH5O/c1-3-2/h2H,1H3/k3-2/f3-1/r1'
+```
+
+- `ts_connectivity(reactant, product)` bonds each side as `connectivity` does: bonds of both sides are `bonds`, the rest `breaking` or `forming`.
+- `candidates` applies the species rules to each side. An atom that is tetrahedral on both sides with different neighbors (a substitution site) has two neighbor lists, `atoms` for the reactant side and `reverse_atoms` for the product side, and each gets its own parity.
+  A bond gets its neighbors from every side where it is rigid and planar, so it can have three neighbors at one end.
+- A transferring hydrogen is an atom of the backbone: it has a canonical number and appears in the `c` layer (`H` 3 above).
+
+### The layers k, f and r
+
+- **`k`** lists the breaking bonds and **`f`** the forming bonds, as `j-i` in canonical numbers, read in the canonical direction.
+  Above, H3 leaves O2 (`k3-2`) and bonds to C1 (`f3-1`).
+- **`r`** says how the given direction relates to the canonical one: `r0` if they are the same, `r1` if the given TS is the reverse. A TS whose two directions are equal (a degenerate rearrangement such as an identity H transfer) has no `r` layer.
+
+The layers come in the order `c`, `h`, `b`, `t`, `m`, `s`, `k`, `f`, `r`, and several components join `k`, `f` and `r` like the other layers (`/k;3-2,5-1/f;5-3/r;0`).
+
+### What r and m mean together
+
+A TS has up to four forms: each direction, as it is and reflected.
+amchi canonicalizes the smallest of them (decision D29), and the string describes that form; `m` says whether the given TS is it or its mirror image, and `r` whether it is it or its reverse.
+So:
+
+- Swapping the reactant and the product changes the digit of `r` and nothing else.
+- Reflecting the geometry changes the digit of `m` and nothing else.
+- A TS whose mirror image is its own reverse is the exception: reflecting it gives the reversed TS, so `m` and `r` would say the same thing. It gets no `m` layer, and reflecting it changes `r`. 4 of the 300 sampled TSs are like this.
+
+The `r` layer depends on which geometry you call the reactant. Two records of the same saddle point with the end points swapped differ only in `r`, so drop it if the identity should not depend on the direction.
+
+## Errors
+
+All errors that amchi raises on its own inherit from `amchi.AmchiError`:
+
+| error | when |
+|---|---|
+| `UnsupportedElementError` | A symbol has no element data |
+| `IllDefinedParityError` | A stereocenter's parity is exactly zero (all its neighbors in one plane) |
+| `ValueError` (not an `AmchiError`) | The inputs don't fit each other: the coordinates aren't N × 3, a bond names a missing atom, a candidate's neighbors aren't those of its atom or bond, or the reactant and product geometries of a TS have different atoms |
+
+A parity is ill-defined only when its determinant or dot product is exactly zero, as in the old AutoMol, so a nearly planar nitrogen still gets a parity. Check `parity_margins` to find such cases.
+
+## Differences from the old AutoMol
+
+The strings equal the old `AMChI=1` strings, except in these intended ways:
+
+- The version prefix is `AMChI=2S` (D24).
+- The `c` layer is written the way InChI writes its connections layer, with one depth-first writer (D24). The old code used two writers, one of which depends on Python's set hash order. The layer describes the same graph in the same canonical numbers; every other layer is unchanged.
+- A TS is canonicalized as the smallest of its four forms (D29), and its atoms are told apart by which neighbor carries which reacting bond (D28). Where the old code was consistent, its strings are kept. It wasn't for 11 of the 300 sampled TSs: their old strings depended on the atom order, or broke the rules of [What r and m mean together](#what-r-and-m-mean-together).
+
+Known limitations of the old code are kept: cis- and trans-1,3-dimethylcyclobutane share a string, and a species with formal charges or hypervalent atoms can get the wrong candidates, which you can correct as above.
