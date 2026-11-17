@@ -27,8 +27,9 @@ def _old_candidates(old_candidates: dict) -> Candidates:
 
 
 def _parities(graph: MolGraph) -> tuple[dict, dict]:
+    """The atom parities, and each bond's table entry of its last two neighbors."""
     atoms = {a: s.parity for a, s in graph.nodes(data="stereo") if s is not None}
-    bonds = {(a, b): s.parity for a, b, s in graph.edges(data="stereo") if s}
+    bonds = {(a, b): s.parities[-1][-1] for a, b, s in graph.edges(data="stereo") if s}
     return atoms, bonds
 
 
@@ -81,6 +82,15 @@ METHANE = [[0, 0, 0], [1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]]
 ETHENE = [[0, 0, 0], [0, 0, 1.3], [1, 0, -0.7], [-1, 0, -0.7], [-1, 0, 2], [1, 0, 2]]
 ETHENE_SYMBOLS = ["C", "C", "Cl", "H", "F", "H"]
 ETHENE_BOND = Candidates(bonds={(0, 1): ((3, 2), (5, 4))})
+
+
+def test__stereo_graph__table() -> None:
+    """A bond has a parity for each pair of neighbors across it: trans is True."""
+    graph = _stereo_graph(ETHENE_SYMBOLS, ETHENE, ETHENE_BOND)
+    stereo = graph.edges[0, 1]["stereo"]
+    assert stereo.neighbors == ((3, 2), (5, 4))
+    # H3-H5 and Cl2-F4 are trans, H3-F4 and Cl2-H5 cis
+    assert stereo.parities == ((True, False), (False, True))
 
 
 def test__stereo_graph__reflection() -> None:

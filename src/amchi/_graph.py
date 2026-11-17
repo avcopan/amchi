@@ -52,10 +52,14 @@ class AtomStereo(BaseModel, frozen=True):
 
 
 class BondStereo(BaseModel, frozen=True):
-    """The stereo of a bond candidate: the neighbors of each end and its parity."""
+    """The stereo of a bond candidate: the neighbors of each end and a parity table.
+
+    `parities[i][j]` is the local parity with `neighbors[0][i]` and `neighbors[1][j]`
+    as the reference neighbors (D27).
+    """
 
     neighbors: tuple[tuple[int, ...], tuple[int, ...]]
-    parity: bool | None  # None: ill-defined
+    parities: tuple[tuple[bool | None, ...], ...]  # None: ill-defined
 
 
 class Atom(Node):

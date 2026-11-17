@@ -8,7 +8,7 @@ out of the graph once per component, and the loops run on plain dicts and tuples
 import functools
 import itertools
 import math
-from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Iterable, Sequence
 
 from pydantic import BaseModel
 
@@ -19,6 +19,7 @@ type _Priorities = dict[int, int]
 type _AtomParities = dict[int, bool]
 type _BondParities = dict[Bond, bool]
 type _Sides = tuple[tuple[int, ...], tuple[int, ...]]
+type _Table = tuple[tuple[bool | None, ...], ...]
 
 
 class CanonicalForm(BaseModel, frozen=True):
@@ -91,12 +92,12 @@ class _Component:
                 self.atom_candidates[k] = stereo.neighbors
                 self.local_atom_parities[k] = stereo.parity
         self.bond_candidates: dict[Bond, _Sides] = {}
-        self.local_bond_parities: dict[Bond, bool | None] = {}
+        self.local_bond_parities: dict[Bond, _Table] = {}
         for i, j, stereo in graph.subgraph(atoms).edges(data="stereo"):
             if stereo is not None:
                 bond = _bond(i, j)
                 self.bond_candidates[bond] = stereo.neighbors
-                self.local_bond_parities[bond] = stereo.parity
+                self.local_bond_parities[bond] = stereo.parities
 
     def canonical_form(self) -> CanonicalForm:
         """Steps 4 to 6 of W2: the stereo loop, the enantiomer, the numbers."""
@@ -215,7 +216,7 @@ class _Component:
             for atom, neighbors in self.atom_candidates.items():
                 if atom in atom_parities or not _all_differ(map(rank, neighbors)):
                     continue
-                local = _defined(local_atom_parities, atom, "atom")
+                local = _defined(local_atom_parities[atom], "atom", atom)
                 ordered = sorted(neighbors, key=rank)
                 atom_parities[atom] = local ^ _is_odd_permutation(neighbors, ordered)
                 assigned = True
@@ -224,10 +225,10 @@ class _Component:
                     _all_differ(map(rank, side)) for side in sides
                 ):
                     continue
-                local = _defined(self.local_bond_parities, bond, "bond")
-                for side in sides:
-                    local ^= max(side, key=rank) != side[-1]
-                bond_parities[bond] = local
+                # D27: the table entry of the highest-priority neighbor of each side
+                i, j = (side.index(max(side, key=rank)) for side in sides)
+                table = self.local_bond_parities[bond]
+                bond_parities[bond] = _defined(table[i][j], "bond", bond)
                 assigned = True
             if not assigned:
                 break
@@ -299,9 +300,8 @@ def _all_differ(values: Iterable[float]) -> bool:
     return len(set(values)) == len(values)
 
 
-def _defined[K](parities: Mapping[K, bool | None], key: K, kind: str) -> bool:
+def _defined(parity: bool | None, kind: str, key: int | Bond) -> bool:  # noqa: FBT001
     """The local parity of a stereocenter, which must be defined."""
-    parity = parities[key]
     if parity is None:
         msg = f"The parity of the stereocenter at {kind} {key} is ill-defined"
         raise IllDefinedParityError(msg)

@@ -1,8 +1,9 @@
 """Local parities of the candidates, measured from the coordinates.
 
-A local parity is defined against the neighbor order stored with its candidate. It is
-ill-defined (`None`) only when its determinant or dot product is exactly zero, as in
-the old AutoMol. How nearly planar a candidate is, is a diagnostic: `parity_margins`.
+A local parity is defined against the neighbor order stored with its candidate. A
+bond has one for each pair of neighbors across it. A local parity is ill-defined
+(`None`) only when its determinant or dot product is exactly zero, as in the old
+AutoMol. How nearly planar a candidate is, is a diagnostic: `parity_margins`.
 """
 
 from collections.abc import Sequence
@@ -38,7 +39,7 @@ class ParityMargins(BaseModel, frozen=True):
 def stereo_graph(
     graph: MolGraph, geometry: GeometryLike, candidates: Candidates
 ) -> MolGraph:
-    """Write each candidate's neighbors and local parity on the graph, in place.
+    """Write each candidate's neighbors and local parities on the graph, in place.
 
     Each candidate atom must be a node of the graph, and each candidate bond an edge.
     """
@@ -48,9 +49,11 @@ def stereo_graph(
         parity = None if det == 0.0 else bool(det > 0.0)
         graph.nodes[atom]["stereo"] = AtomStereo(neighbors=neighbors, parity=parity)
     for bond, sides in candidates.bonds.items():
-        dot, _ = _bond_dot(coordinates, bond, sides)
-        parity = None if dot == 0.0 else bool(dot < 0.0)
-        graph.edges[bond]["stereo"] = BondStereo(neighbors=sides, parity=parity)
+        parities = tuple(
+            tuple(_bond_parity(coordinates, bond, n0, n1) for n1 in sides[1])
+            for n0 in sides[0]
+        )
+        graph.edges[bond]["stereo"] = BondStereo(neighbors=sides, parities=parities)
     return graph
 
 
@@ -100,6 +103,14 @@ def _atom_determinant(
     matrix = np.ones((4, 4))
     matrix[:, 1:] = coordinates[points]
     return float(np.linalg.det(matrix))
+
+
+def _bond_parity(
+    coordinates: _Coordinates, bond: Bond, n0: int, n1: int
+) -> bool | None:
+    """The local parity of a bond with `n0` and `n1` as reference neighbors: trans."""
+    dot, _ = _bond_dot(coordinates, bond, ((n0,), (n1,)))
+    return None if dot == 0.0 else bool(dot < 0.0)
 
 
 def _bond_dot(

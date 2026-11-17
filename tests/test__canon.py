@@ -174,3 +174,26 @@ def test__canonical_forms__components() -> None:
     )
     forms = canonical_forms(graph)
     assert [f.numbers for f in forms] == [{0: 0}, {3: 0}]
+
+
+def test__canonical_forms__bond_table() -> None:
+    """A bond's parity is the table entry of its highest-priority neighbors (D27).
+
+    HClC=CFH, with Cl perpendicular to F but H not perpendicular to H. The stored
+    order puts the hydrogens last, so only the Cl-F entry is ill-defined.
+    """
+    symbols = ["C", "C", "Cl", "H", "F", "H"]
+    bonds = [(0, 1), (0, 2), (0, 3), (1, 4), (1, 5)]
+    xyz = [[0, 0, 0], [0, 0, 1.3], [1, 0, -0.7], [-1, 0.5, -0.7], [0, 1, 2], [0, -1, 2]]
+    candidates = Candidates(bonds={(0, 1): ((2, 3), (4, 5))})
+    graph = _graph(symbols, xyz, bonds, candidates)
+    assert graph.edges[0, 1]["stereo"].parities == ((None, None), (False, True))
+    with pytest.raises(IllDefinedParityError, match=r"bond \(0, 1\)"):
+        canonical_forms(graph)
+
+    # Turned so that Cl and F are trans: the Cl-F entry is the parity
+    xyz[4], xyz[5] = [-1, 0, 2], [1, 0.3, 2]
+    graph = _graph(symbols, xyz, bonds, candidates)
+    assert graph.edges[0, 1]["stereo"].parities[0][0] is True
+    (form,) = canonical_forms(graph)
+    assert form.bond_parities == {(0, 1): True}
