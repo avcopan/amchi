@@ -20,6 +20,13 @@ Read `CONTRIBUTING.md` for the workflow and the design rules (the flat API, the 
 - **Only `_connect` and `_parity` read coordinates.** The candidates depend on the graph alone.
 - **Parities are stored local**, against the neighbor order stored with them. Canonical parities exist only inside `_canon`, derived from the local ones and the current priorities.
 - **Hydrogens are explicit in the inputs and implicit in the canonicalized graph**, except backbone hydrogens such as a transferring H in a TS.
+- **A bond's local stereo is a table:** one parity for each pair of neighbors across the bond (`BondStereo.parities`), and `_canon` looks up the entry of the highest-priority neighbor at each end.
+  Don't derive it by flipping one parity: a TS bond can have three neighbors at one end and needn't be planar, and the flip is then wrong.
+- **A TS is canonicalized as the smallest of up to four forms:** each direction, as it is and reflected (`_canon`, a 9-part key).
+  The `r` and `m` layers say how the given TS relates to the kept form, so reversing changes only `r` and reflecting only `m`.
+  The exception is a TS whose mirror image is its own reverse: it has no `m`, and reflecting it changes `r`. Don't choose the direction first and the enantiomer afterwards, as the old code did: the two passes disagree for some TSs.
+- **A TS atom can have two neighbor lists:** `Candidates.atoms` for one side and `reverse_atoms` for the other, each with its own measured parity.
+  Reading the TS reversed uses `reverse_atoms`. Don't derive one parity from the other: a substitution site inverts only about half the time.
 - **Validate at the boundary** (the input models and the tests), not inside loops. Build the graph once per record and never copy it in a loop.
 - **An unsupported element raises a named error.** Don't guess.
 - **A local parity is ill-defined (`None`) only when its determinant or dot product is exactly zero**, as in the old code, so a nearly planar nitrogen still gets a parity.
