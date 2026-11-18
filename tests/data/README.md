@@ -15,4 +15,6 @@ Written by the old AutoMol (never imported here), except `inchi.json`. The first
 - `ring_stereo_differences.json`: the 12 of the 600 species whose strings gain para-stereocenters (D32, D33): the old string, `main`'s (amchi 0.0.1) and the new one, with and without stereo. The new strings are those of this package; the list is from the planning repo's `baseline/ring_stereo_changed.tsv`.
 - `ring_stereo.json`: the 20 geometries of the planning repo's ring-stereo prototype (`walkthroughs/2026-11-17-ring-stereo-geometries.json`, embedded by RDKit, with their SMILES and InChI), and `main`, the string of amchi 0.0.1, before para-stereocenters. Written by the planning repo's `baseline/ring_stereo_data.py`, not by the old AutoMol.
 
+- `metamorphic.json`: the records of the full datasets that broke a metamorphic rule of the planning repo's `baseline/metamorphic.py` (`finding` says which), with their geometries from its `baseline/oracle_read.py --ids` and, once fixed, the new string (`amchi`). Not written by the old AutoMol.
+
 They are regenerated from the planning repo's `baseline/` (`make_test_records.py`, `dump_hand_cases.py`, `dump_components.py`, `inchi_c_layers.py`, `ts_variants.py`, `dump_ts_hand_cases.py`, `dump_large_differences.py`).

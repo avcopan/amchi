@@ -732,3 +732,25 @@ def test__string__para_ts(ring_stereo: dict[str, dict]) -> None:
             shuffled = _shuffled_ts(geometry, connectivity, rng)
             assert _ts_string(*shuffled) == string, name
     assert strings[0] != strings[1]
+
+
+# Findings of the metamorphic tests on the full datasets -----------------------------
+@pytest.fixture(scope="module")
+def metamorphic() -> dict[str, dict]:
+    """The records of the full datasets that broke a metamorphic rule, by id."""
+    records = json.loads((DATA / "metamorphic.json").read_text())
+    return {r["id"]: r for r in records}
+
+
+def test__from_geometry__cage(metamorphic: dict[str, dict]) -> None:
+    """A C10H10 cage whose tied atoms are not all symmetric: shuffles change nothing.
+
+    Promoting any atom of a tied class gave three different c layers.
+    """
+    record = metamorphic["stjohn:138545_0"]
+    geometry = Geometry(record["symbols"], record["xyz"])
+    string = amchi.from_geometry(geometry)
+    assert string == record["amchi"]
+    rng = np.random.default_rng(0)
+    for _ in range(20):
+        assert amchi.from_geometry(_shuffled(geometry, rng)) == string

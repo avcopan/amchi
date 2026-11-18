@@ -18,6 +18,7 @@ import functools
 import itertools
 import math
 from collections.abc import Callable, Iterable, Sequence
+from typing import NamedTuple, cast
 
 import networkx as nx
 from pydantic import BaseModel
@@ -465,29 +466,48 @@ class _Component:
         atom_parities: _AtomParities,
         bond_parities: _BondParities,
     ) -> _Form:
-        """The canonical numbers: promote the last atom of the highest tied class.
+        """The canonical numbers: the lowest leaf of a search over the tie-breaks.
 
-        Returns the numbers and the parities. A para-stereocenter gets its parity as
-        soon as its neighbors differ, and the priorities are refined again (W6, rule 3).
+        Returns the numbers and the parities. Each step promotes one atom of the
+        highest tied class and refines. Promoting the last one, as the old code does,
+        is canonical only if the tied atoms are symmetric, which they needn't be in a
+        cage (`stjohn:138545_0`). So each atom is tried in turn, and the leaf with the
+        lowest `leaf_key` is kept (`_TieSearch`). The old choice is tried first and
+        kept on a tie, so the numbers change only where the old ones depended on the
+        atom order. A para-stereocenter gets its parity as soon as its neighbors
+        differ, and the priorities are refined again (W6, rule 3).
         """
         priorities = {k: abs(p) for k, p in priorities.items()}
-        atom_parities, bond_parities = dict(atom_parities), dict(bond_parities)
-        while True:
-            if self.viewers and self.assign_para(
-                priorities, atom_parities, bond_parities
-            ):
-                priorities = self.refine(priorities, atom_parities, bond_parities)
-                continue
-            tied = {
-                i: atoms
-                for i, atoms in _classes(self.keys, priorities).items()
-                if len(atoms) > 1
-            }
-            if not tied:
-                return priorities, atom_parities, bond_parities
-            index = max(tied)
-            priorities[tied[index][-1]] = index + len(tied[index]) - 1
+        search = _TieSearch(self)
+        search.node((), priorities, dict(atom_parities), dict(bond_parities))
+        return cast("_Leaf", search.best).numbered
+
+    def settle(
+        self,
+        priorities: _Priorities,
+        atom_parities: _AtomParities,
+        bond_parities: _BondParities,
+    ) -> _Priorities:
+        """Assign the para parities whose neighbors differ, and refine, until none."""
+        while self.viewers and self.assign_para(
+            priorities, atom_parities, bond_parities
+        ):
             priorities = self.refine(priorities, atom_parities, bond_parities)
+        return priorities
+
+    def leaf_key(self, numbered: _Form) -> tuple:
+        """Everything the string says about the component, in canonical numbers."""
+        numbers, atom_parities, bond_parities = numbered
+
+        def bond(b: Bond) -> tuple[int, ...]:
+            return tuple(sorted(numbers[k] for k in b))
+
+        return (
+            sorted((bond(b), _BOND_TYPE[c]) for b, c in self.change.items()),
+            sorted((numbers[k], self.fixed[k]) for k in self.keys),
+            sorted((bond(b), p) for b, p in bond_parities.items()),
+            sorted((numbers[a], p) for a, p in atom_parities.items()),
+        )
 
     # Para-stereocenters (W6) ---------------------------------------------------------
     def full_form(
@@ -760,6 +780,104 @@ class _Component:
             bond_parities[bond] = _defined(table[i][j], "bond", bond)
             assigned = True
         return assigned
+
+
+class _Leaf(NamedTuple):
+    key: tuple
+    path: tuple[int, ...]  # the promoted atoms, in order
+    numbered: _Form
+
+
+class _TieSearch:
+    """The search tree of the tie-breaking, pruned by the automorphisms it finds.
+
+    As in nauty: two leaves with equal keys give an automorphism, which maps the
+    first one's path to the other's. The subtree where they diverge is then a copy of
+    one already searched, and is left. At each node, an atom in the orbit of one
+    already tried, under the automorphisms that fix the node's path, is skipped.
+    """
+
+    def __init__(self, component: "_Component") -> None:
+        self.component = component
+        self.first: _Leaf | None = None
+        self.best: _Leaf | None = None
+        self.automorphisms: list[dict[int, int]] = []
+
+    def node(
+        self,
+        path: tuple[int, ...],
+        priorities: _Priorities,
+        atom_parities: _AtomParities,
+        bond_parities: _BondParities,
+    ) -> int | None:
+        """Search below a node; return the depth to go back to, if a copy was found."""
+        c = self.component
+        priorities = c.settle(priorities, atom_parities, bond_parities)
+        tied = {
+            i: atoms
+            for i, atoms in _classes(c.keys, priorities).items()
+            if len(atoms) > 1
+        }
+        if not tied:
+            return self.leaf(path, (priorities, atom_parities, bond_parities))
+        index = max(tied)
+        tried: list[int] = []
+        for atom in reversed(tied[index]):  # the old choice first
+            if tried and self.is_equivalent(atom, tried, path):
+                continue
+            tried.append(atom)
+            child = dict(priorities)
+            child[atom] = index + len(tied[index]) - 1
+            child_atom_parities, child_bond_parities = (
+                dict(atom_parities),
+                dict(bond_parities),
+            )
+            child = c.refine(child, child_atom_parities, child_bond_parities)
+            depth = self.node(
+                (*path, atom), child, child_atom_parities, child_bond_parities
+            )
+            if depth is not None and depth < len(path):
+                return depth
+        return None
+
+    def leaf(self, path: tuple[int, ...], numbered: _Form) -> int | None:
+        leaf = _Leaf(self.component.leaf_key(numbered), path, numbered)
+        if self.first is None or self.best is None:
+            self.first = self.best = leaf
+            return None
+        for other in (self.first, self.best):
+            if leaf.key == other.key:
+                atom = {n: k for k, n in leaf.numbered[0].items()}
+                self.automorphisms.append(
+                    {k: atom[n] for k, n in other.numbered[0].items()}
+                )
+                return next(
+                    (
+                        d
+                        for d, (a, b) in enumerate(zip(path, other.path, strict=False))
+                        if a != b
+                    ),
+                    min(len(path), len(other.path)),
+                )
+        if leaf.key < self.best.key:
+            self.best = leaf
+        return None
+
+    def is_equivalent(self, atom: int, tried: list[int], path: tuple[int, ...]) -> bool:
+        """Is `atom` in the orbit of a tried atom, under automorphisms fixing `path`?"""
+        parent = {k: k for k in self.component.keys}
+
+        def find(k: int) -> int:
+            while parent[k] != k:
+                parent[k] = parent[parent[k]]
+                k = parent[k]
+            return k
+
+        for g in self.automorphisms:
+            if all(g[k] == k for k in path):
+                for k, image in g.items():
+                    parent[find(k)] = find(image)
+        return find(atom) in {find(k) for k in tried}
 
 
 def _stereocenters(
