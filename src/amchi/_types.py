@@ -102,9 +102,10 @@ class Candidates(BaseModel, frozen=True):
     """The stereocenter candidates, each with its stereo-determining neighbors.
 
     `atoms` maps an atom to its 3 or 4 neighbors. `bonds` maps a bond `(i, j)` to
-    the neighbors of `i`, then of `j`, without the other bond atom (1 to 3 on each
-    side). Any neighbor order is valid: a local parity is measured against the order
-    given. A bond given as `(j, i)` is sorted, with its two sides swapped.
+    the neighbors of `i`, then of `j`, without the other bond atom (1 to 4 on each
+    side: 4 in a TS where `i` swaps both its other neighbors). Any neighbor order is
+    valid: a local parity is measured against the order given. A bond given as
+    `(j, i)` is sorted, with its two sides swapped.
 
     For a TS, `atoms` holds the reactant-side neighbors, or the product-side ones if
     the atom is tetrahedral only there. `reverse_atoms` holds the product-side
@@ -148,11 +149,11 @@ class Candidates(BaseModel, frozen=True):
             raise ValueError(msg)
         for bond, sides in self.bonds.items():
             ok = _distinct(*bond) and all(
-                1 <= len(side) <= 3 and _distinct(*bond, *side)  # noqa: PLR2004
+                1 <= len(side) <= 4 and _distinct(*bond, *side)  # noqa: PLR2004
                 for side in sides
             )
             if not ok:
-                msg = f"A bond candidate needs 1 to 3 distinct neighbors a side: {bond}"
+                msg = f"A bond candidate needs 1 to 4 distinct neighbors a side: {bond}"
                 raise ValueError(msg)
         return self
 

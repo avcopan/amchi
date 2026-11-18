@@ -785,3 +785,19 @@ def test__from_ts_geometries__equal_components(metamorphic: dict[str, dict]) -> 
         order = rng.permutation(len(symbols))
         shuffled = [Geometry([symbols[k] for k in order], xyz[order]) for xyz in xyzs]
         assert amchi.from_ts_geometries(*shuffled) == given
+
+
+def test__from_ts_geometries__four_neighbors(metamorphic: dict[str, dict]) -> None:
+    """8 TSs where an atom of a planar bond swaps both its other neighbors.
+
+    The bond's side lists the 4 neighbors of both sides, and the strings equal the old
+    ones; in `rgd1:MR_447071_2` the bond is a stereocenter (`b6-1-`).
+    """
+    cases = [r for r in metamorphic.values() if r["finding"] == "four-neighbors"]
+    assert len(cases) == 8
+    for record in cases:
+        symbols = record["symbols"]
+        geometries = [
+            Geometry(symbols, record[k]) for k in ("xyz_ts", "xyz_r", "xyz_p")
+        ]
+        _assert_old(amchi.from_ts_geometries(*geometries), record["old"], record["id"])

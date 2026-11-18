@@ -58,7 +58,7 @@ def test__candidates__reverse_atoms() -> None:
         {"atoms": {0: [1, 2, 2]}},  # a repeated neighbor
         {"atoms": {0: [0, 1, 2]}},  # the atom itself
         {"bonds": {(0, 1): ([], [2])}},  # an empty side
-        {"bonds": {(0, 1): ([2, 3, 4, 5], [6])}},  # 4 on a side
+        {"bonds": {(0, 1): ([2, 3, 4, 5, 6], [7])}},  # 5 on a side
         {"bonds": {(0, 1): ([1], [2])}},  # the other bond atom
         {"bonds": {(0, 0): ([2], [3])}},  # a self-bond
         {"bonds": {(0, 1, 2): ([3], [4])}},  # not a pair
