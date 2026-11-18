@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- The components of a TS are sorted by their breaking and forming bonds before their `m` layer, unlike the old AMChI. Two components equal but for the reacting bonds, as in a TS of RGD1 (`rgd1:MR_242866_0`, `2CH4N2`), were ordered by their `m`, so reflecting the TS swapped them in the `k` and `r` layers. No string of the large sample changes.
 - The canonical numbers no longer depend on the atom order where the refinement leaves atoms tied that are not symmetric, as in a C10H10 cage of St. John's dataset (`stjohn:138545_0`), whose `c` layer had three forms. Promoting the last atom of the highest tied class, as the old AMChI does, is replaced by a search over every choice, which keeps the lowest numbered graph and is pruned by the automorphisms it finds. The old choice is tried first and kept on a tie, so no string changes where the old one was consistent (none of the large sample's 21,948 records changes).
 - The canonical enantiomer no longer depends on the atom order: the two sides of a bond stereocenter, and stereocenters of equal priority, are compared without reference to the atom indices. An achiral species with bond stereocenters (bicyclo[4.2.2]deca-2,4,7-triene) got an `m` layer for some atom orders; it now has none, as in the old AMChI.
 

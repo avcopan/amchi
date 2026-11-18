@@ -754,3 +754,34 @@ def test__from_geometry__cage(metamorphic: dict[str, dict]) -> None:
     rng = np.random.default_rng(0)
     for _ in range(20):
         assert amchi.from_geometry(_shuffled(geometry, rng)) == string
+
+
+def test__from_ts_geometries__equal_components(metamorphic: dict[str, dict]) -> None:
+    """A TS with two components equal but for the reacting bonds (`2CH4N2`).
+
+    Reflecting changes only m, reversing only r, and shuffling nothing: the order of
+    the components doesn't follow their m.
+    """
+    record = metamorphic["rgd1:MR_242866_0"]
+    symbols = record["symbols"]
+    xyzs = [np.asarray(record[k]) for k in ("xyz_ts", "xyz_r", "xyz_p")]
+
+    def string(ts: ArrayLike, reactant: ArrayLike, product: ArrayLike) -> str:
+        geometries = (Geometry(symbols, xyz) for xyz in (ts, reactant, product))
+        return amchi.from_ts_geometries(*geometries)
+
+    ts, reactant, product = xyzs
+    given = string(ts, reactant, product)
+    assert given == record["amchi"]
+    mirror = [xyz * [-1, 1, 1] for xyz in xyzs]
+    rest, m = _layer_digits(given, "m")
+    mirrored_rest, mirrored_m = _layer_digits(string(*mirror), "m")
+    assert (mirrored_rest, mirrored_m) == (rest, m.translate(SWAP_01))
+    rest, r = _layer_digits(given, "r")
+    reversed_rest, reversed_r = _layer_digits(string(ts, product, reactant), "r")
+    assert (reversed_rest, reversed_r) == (rest, r.translate(SWAP_01))
+    rng = np.random.default_rng(0)
+    for _ in range(4):
+        order = rng.permutation(len(symbols))
+        shuffled = [Geometry([symbols[k] for k in order], xyz[order]) for xyz in xyzs]
+        assert amchi.from_ts_geometries(*shuffled) == given

@@ -237,6 +237,9 @@ def _sort_key(graph: MolGraph, form: CanonicalForm, symbols: Sequence[str]) -> t
     The formula counts, the neighbors and the hydrogen count of each atom by
     canonical number, the bond and atom parities in the order of their layers, and
     whether it is the inverted enantiomer. The charge, always 0 here, is left out.
+    Before the last, unlike the old key: the breaking and forming bonds as read in the
+    canonical direction, so that two components equal but for them are ordered by
+    them, and not by their `m` (which reflecting flips; `rgd1:MR_242866_0`).
     """
     atoms = sorted(form.numbers, key=form.numbers.__getitem__)
     counts = Counter(graph.nodes[k]["symbol"] for k in atoms)
@@ -252,8 +255,27 @@ def _sort_key(graph: MolGraph, form: CanonicalForm, symbols: Sequence[str]) -> t
         )
     ]
     atom_parities = [form.atom_parities[k] for k in atoms if k in form.atom_parities]
+    changes = ("breaking", "forming")
+    if form.is_canonical_direction is False:
+        changes = changes[::-1]
+    reacting = [
+        sorted(
+            sorted((form.numbers[i], form.numbers[j]), reverse=True)
+            for i, j, change in graph.edges(atoms, data="change")
+            if change == value
+        )
+        for value in changes
+    ]
     # None (no m layer) sorts below both values, where the old code would fail
     inverted = (
         -1 if form.is_canonical_enantiomer is None else not form.is_canonical_enantiomer
     )
-    return (formula, neighbors, hydrogens, bond_parities, atom_parities, inverted)
+    return (
+        formula,
+        neighbors,
+        hydrogens,
+        bond_parities,
+        atom_parities,
+        reacting,
+        inverted,
+    )
