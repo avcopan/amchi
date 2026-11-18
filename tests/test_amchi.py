@@ -416,22 +416,18 @@ def test__string__ts__candidates() -> None:
         amchi.string(H_TRANSFER, connectivity, Candidates(bonds={(0, 5): ((1,), (6,))}))
 
 
-def test__from_geometry__components(
-    components: list[dict], low_t: dict[str, dict[str, dict]]
-) -> None:
+def test__from_geometry__components(components: list[dict]) -> None:
     """Components are sorted, counted (`2*`) and joined as by the old code.
 
-    The chiral species is CH3ONHCHO, whose stereocenter was its conjugated N: with D41
-    all four strings lose their `t` and `m`, and the two enantiomers become one species.
+    The chiral species is 3,4-dihydroxybutanoic acid, with one carbon stereocenter (D41
+    and D42 change none of the four strings). A pair of enantiomers gives `m10`.
     """
     for case in components:
         string = amchi.from_geometry(Geometry(case["symbols"], case["xyz"]))
-        _assert_old_or_new(string, case["amchi"], low_t["components"], case["id"])
+        _assert_old(string, case["amchi"], case["id"])
     by_id = {case["id"]: case["amchi"] for case in components}
     assert "/m10/" in by_id["enantiomers"]
-    assert "2*1H2" in by_id["water+chiral+water"]
-    by_id = {name: case["new"] for name, case in low_t["components"].items()}
-    assert by_id["enantiomers"] == "AMChI=2S/2C2H5NO2/c2*1-5-3-2-4/h2*2-3H,1H3"
+    assert "/t2*4-/" in by_id["enantiomers"]
     assert "2*1H2" in by_id["water+chiral+water"]
 
 
