@@ -541,21 +541,36 @@ def test__large_differences(low_t: dict[str, dict[str, dict]]) -> None:
             assert case["new"] != case["old"], case["id"]
 
 
-def test__string__override(hand_cases: dict[str, list[dict]]) -> None:
-    """The HNNO strings with corrected candidates give the old overridden strings.
+HNNO_CORRECTED = {
+    "hnno:1": "AMChI=2S/H2N2O2/c1-2(3)4/h1,4H/b2-1+",
+    "hnno:2": "AMChI=2S/H2N2O2/c1-2(3)4/h1,4H/b2-1-",
+}
 
-    The atom that the override removes is no candidate any more (D41), so adding the
-    N=N bond is enough.
+
+def test__string__override(hand_cases: dict[str, list[dict]]) -> None:
+    """The HNNO test: the two HN=N(O)OH geometries, as is and with the N=N bond added.
+
+    With D41 the central N is no candidate, so nothing is a candidate and both
+    geometries give one string (the known limitation: the N=N bond is missed). Adding
+    the bond candidate gives the two strings, which equal the old overridden ones.
     """
-    for case in hand_cases["hnno"]:
+    cases = hand_cases["hnno"]
+    assert {case["id"] for case in cases} == set(HNNO_CORRECTED)
+    plain = set()
+    for case in cases:
         geometry = Geometry(case["symbols"], case["xyz"])
         connectivity = amchi.connectivity(geometry)
         candidates = amchi.candidates(case["symbols"], connectivity)
         assert not set(case["override"]["remove_atoms"]) & set(candidates.atoms)
+        assert not candidates.atoms
+        assert not candidates.bonds
+        plain.add(amchi.from_geometry(geometry))
         for bond in case["override"]["add_bonds"]:
             candidates = amchi.add_bond_candidate(candidates, connectivity, bond)
         string = amchi.string(geometry, connectivity, candidates)
+        assert string == HNNO_CORRECTED[case["id"]]
         _assert_old(string, case["amchi_overridden"], case["id"])
+    assert plain == {"AMChI=2S/H2N2O2/c1-2(3)4/h1,4H"}
 
 
 # CHFClBr: C0 with H1, F2, Cl3, Br4 at the corners of a tetrahedron
