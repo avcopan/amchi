@@ -240,17 +240,21 @@ def _ts(records: list[dict]) -> list[dict]:
     return [r for r in records if r["kind"] == "ts"]
 
 
-def test__canonical_forms__ts(records: list[dict]) -> None:
-    """The 289 TSs whose string is the old one give the old canonical forms.
+def test__canonical_forms__ts(
+    records: list[dict], low_t: dict[str, dict[str, dict]]
+) -> None:
+    """The 185 TSs whose string is the old one give the old canonical forms.
 
     The priorities with their signs, the numbers and both flags, component by
-    component. The other 11 are the intended differences of D28 and D29.
+    component. The other 115 are the intended differences of D28 and D29 (11) and of
+    D41 (106, 2 of them also D28 or D29).
     """
     differences = {
         d["id"] for d in json.loads((DATA / "ts_differences.json").read_text())
     }
+    differences |= set(low_t["records"])
     checked = [r for r in _ts(records) if r["id"] not in differences]
-    assert len(checked) == 289
+    assert len(checked) == 185
     for record in checked:
         dumped = {
             frozenset(k for k, _ in c["priorities"]): c

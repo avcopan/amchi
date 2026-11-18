@@ -56,6 +56,16 @@ def _assert_old(string: str, old: str, name: str) -> None:
     assert rest == old_rest, name
 
 
+def _assert_old_or_new(
+    string: str, old: str, low_t: dict[str, dict], name: str
+) -> None:
+    """The old string, or the new one where D41 or D42 changes it."""
+    if name in low_t:
+        assert string == low_t[name]["new"], name
+    else:
+        _assert_old(string, old, name)
+
+
 def _without_stereo(string: str) -> str:
     return "/".join(x for x in string.split("/") if x[0] not in "btms")
 
@@ -120,13 +130,23 @@ def components() -> list[dict]:
     return json.loads((DATA / "components.json").read_text())
 
 
-def test__from_geometry(species: list[dict], ring_differences: dict[str, dict]) -> None:
+def test__from_geometry(
+    species: list[dict],
+    ring_differences: dict[str, dict],
+    low_t: dict[str, dict[str, dict]],
+) -> None:
     """The 600 species give the old strings (D13), with the c layer of D24.
 
-    The 12 with a para-stereocenter (D32, D33) give the new strings of the fixture.
+    The 12 with a para-stereocenter (D32, D33) and the 148 whose candidates D41 or D42
+    change (65 closed shells, 83 radicals) give the new strings of the fixtures. One,
+    `stjohn:53107_0`, is in both, and gives the string of D41.
     """
+    changed = {k for k, v in low_t["records"].items() if isinstance(v["new"], str)}
+    assert len(changed) == 148
     for record in species:
-        if record["id"] in ring_differences:
+        if record["id"] in changed:
+            assert record["amchi"] == low_t["records"][record["id"]]["new"]
+        elif record["id"] in ring_differences:
             case = ring_differences[record["id"]]
             assert record["amchi"] == case["new"], record["id"]
             assert case["old"] != case["new"], record["id"]
@@ -177,16 +197,20 @@ def _assert_variants(
     old: dict[str, str],
     difference: dict | None,
     name: str,
+    low_t: dict | None = None,
 ) -> int:
-    """Each variant gives the old string, or the new one of the differences file.
+    """Each variant gives the old string, or the new one of the differences files.
 
-    Returns the number of new strings.
+    The strings that D41 and D42 change (`low_t`) take precedence. Returns the number of
+    new strings of D28 and D29.
     """
     differing, new = (
         (difference["differing"], difference["new"]) if difference else ([], {})
     )
     for variant in VARIANTS:
-        if variant in differing:
+        if low_t is not None:
+            assert strings[variant] == low_t["new"][variant], (name, variant)
+        elif variant in differing:
             assert strings[variant] == new[variant], (name, variant)
         else:
             _assert_old(strings[variant], old[variant], f"{name} {variant}")
@@ -197,10 +221,12 @@ def test__string__ts(
     transition_states: list[dict],
     ts_variants: dict[str, dict[str, str]],
     ts_differences: dict[str, dict],
+    low_t: dict[str, dict[str, dict]],
 ) -> None:
     """The four variants of the 300 TSs give the old strings, but for 34 (D28, D29).
 
-    That is 1,166 old strings and the 34 new ones of the differences file.
+    That is 1,166 old strings and the 34 new ones of the differences file, except for
+    the 106 TSs whose candidates D41 changes, which give the strings of its fixture.
     These include TSs with two components (`/k;3-2,5-1/f;5-3/r;0`) and with the
     canonical direction the reverse of the given one (`/r1`).
     """
@@ -212,8 +238,13 @@ def test__string__ts(
         name = record["id"]
         assert old_variants[name]["forward"] == record["old"]["amchi"], name
         differing += _assert_variants(
-            ts_variants[name], old_variants[name], ts_differences.get(name), name
+            ts_variants[name],
+            old_variants[name],
+            ts_differences.get(name),
+            name,
+            low_t["records"].get(name),
         )
+    assert sum(not isinstance(v["new"], str) for v in low_t["records"].values()) == 106
     assert differing == 34
     assert len(ts_differences) == 11
 
@@ -385,13 +416,22 @@ def test__string__ts__candidates() -> None:
         amchi.string(H_TRANSFER, connectivity, Candidates(bonds={(0, 5): ((1,), (6,))}))
 
 
-def test__from_geometry__components(components: list[dict]) -> None:
-    """Components are sorted, counted (`2*`) and joined as by the old code."""
+def test__from_geometry__components(
+    components: list[dict], low_t: dict[str, dict[str, dict]]
+) -> None:
+    """Components are sorted, counted (`2*`) and joined as by the old code.
+
+    The chiral species is CH3ONHCHO, whose stereocenter was its conjugated N: with D41
+    all four strings lose their `t` and `m`, and the two enantiomers become one species.
+    """
     for case in components:
         string = amchi.from_geometry(Geometry(case["symbols"], case["xyz"]))
-        _assert_old(string, case["amchi"], case["id"])
+        _assert_old_or_new(string, case["amchi"], low_t["components"], case["id"])
     by_id = {case["id"]: case["amchi"] for case in components}
     assert "/m10/" in by_id["enantiomers"]
+    assert "2*1H2" in by_id["water+chiral+water"]
+    by_id = {name: case["new"] for name, case in low_t["components"].items()}
+    assert by_id["enantiomers"] == "AMChI=2S/2C2H5NO2/c2*1-5-3-2-4/h2*2-3H,1H3"
     assert "2*1H2" in by_id["water+chiral+water"]
 
 
@@ -427,16 +467,22 @@ def test__from_geometry__shuffled(species: list[dict], components: list[dict]) -
             assert amchi.from_geometry(shuffled) == string, name
 
 
-def test__from_geometry__hand_cases(hand_cases: dict[str, list[dict]]) -> None:
-    """The control ring pairs, the larger molecules and HNNO give the old strings.
+def test__from_geometry__hand_cases(
+    hand_cases: dict[str, list[dict]], low_t: dict[str, dict[str, dict]]
+) -> None:
+    """The control ring pairs and the larger molecules give the old strings.
 
-    The symmetric ring pairs, which the old code gives one string, now differ (W6),
-    and give the old string without stereo.
+    HNNO loses its fictitious atom stereocenter (D41), so its two geometries give one
+    string. The symmetric ring pairs, which the old code gives one string, now differ
+    (W6), and give the old string without stereo.
     """
     for group in ("hnno", "ring_control", "scaling"):
         for case in hand_cases[group]:
             geometry = Geometry(case["symbols"], case["xyz"])
-            _assert_old(amchi.from_geometry(geometry), case["amchi"], case["id"])
+            changed = low_t.get(f"hand_cases:{group}", {})
+            string = amchi.from_geometry(geometry)
+            _assert_old_or_new(string, case["amchi"], changed, case["id"])
+    assert len({case["new"] for case in low_t["hand_cases:hnno"].values()}) == 1
     strings = {}
     for case in hand_cases["ring"]:
         geometry = Geometry(case["symbols"], case["xyz"])
@@ -464,11 +510,12 @@ def test__from_geometry__achiral_bond_stereo() -> None:
                 _assert_old(string, case["amchi"], case["id"])
 
 
-def test__large_differences() -> None:
+def test__large_differences(low_t: dict[str, dict[str, dict]]) -> None:
     """The records of the large sample whose strings differ from the old ones (D34-D37).
 
     Each gives the recorded new string, or fails with the recorded error where the new
-    code fails too. The record that can't be read is skipped.
+    code fails too. The record that can't be read is skipped. Where D41 or D42 changes
+    the string, it is the one of their fixture.
     """
     with gzip.open(DATA / "large_differences.json.gz", "rt") as f:
         cases = json.load(f)
@@ -485,7 +532,11 @@ def test__large_differences() -> None:
             run = functools.partial(
                 amchi.from_geometry, Geometry(case["symbols"], case["xyz"])
             )
-        if case["new"] is None:
+        if case["id"] in low_t["large_differences"]:
+            expected = low_t["large_differences"][case["id"]]["new"]
+            assert run() == expected, case["id"]
+            assert expected != case["old"], case["id"]
+        elif case["new"] is None:
             error = getattr(amchi, case["new_error"].split(":")[0])
             with pytest.raises(error):
                 run()
@@ -495,13 +546,16 @@ def test__large_differences() -> None:
 
 
 def test__string__override(hand_cases: dict[str, list[dict]]) -> None:
-    """The HNNO strings with corrected candidates give the old overridden strings."""
+    """The HNNO strings with corrected candidates give the old overridden strings.
+
+    The atom that the override removes is no candidate any more (D41), so adding the
+    N=N bond is enough.
+    """
     for case in hand_cases["hnno"]:
         geometry = Geometry(case["symbols"], case["xyz"])
         connectivity = amchi.connectivity(geometry)
         candidates = amchi.candidates(case["symbols"], connectivity)
-        for atom in case["override"]["remove_atoms"]:
-            candidates = amchi.remove_candidate(candidates, atom)
+        assert not set(case["override"]["remove_atoms"]) & set(candidates.atoms)
         for bond in case["override"]["add_bonds"]:
             candidates = amchi.add_bond_candidate(candidates, connectivity, bond)
         string = amchi.string(geometry, connectivity, candidates)
@@ -756,7 +810,9 @@ def test__from_geometry__cage(metamorphic: dict[str, dict]) -> None:
         assert amchi.from_geometry(_shuffled(geometry, rng)) == string
 
 
-def test__from_ts_geometries__equal_components(metamorphic: dict[str, dict]) -> None:
+def test__from_ts_geometries__equal_components(
+    metamorphic: dict[str, dict], low_t: dict[str, dict[str, dict]]
+) -> None:
     """A TS with two components equal but for the reacting bonds (`2CH4N2`).
 
     Reflecting changes only m, reversing only r, and shuffling nothing: the order of
@@ -772,7 +828,7 @@ def test__from_ts_geometries__equal_components(metamorphic: dict[str, dict]) -> 
 
     ts, reactant, product = xyzs
     given = string(ts, reactant, product)
-    assert given == record["amchi"]
+    assert given == low_t["metamorphic"][record["id"]]["new"]  # D41
     mirror = [xyz * [-1, 1, 1] for xyz in xyzs]
     rest, m = _layer_digits(given, "m")
     mirrored_rest, mirrored_m = _layer_digits(string(*mirror), "m")
@@ -787,11 +843,14 @@ def test__from_ts_geometries__equal_components(metamorphic: dict[str, dict]) -> 
         assert amchi.from_ts_geometries(*shuffled) == given
 
 
-def test__from_ts_geometries__four_neighbors(metamorphic: dict[str, dict]) -> None:
+def test__from_ts_geometries__four_neighbors(
+    metamorphic: dict[str, dict], low_t: dict[str, dict[str, dict]]
+) -> None:
     """8 TSs where an atom of a planar bond swaps both its other neighbors.
 
     The bond's side lists the 4 neighbors of both sides, and the strings equal the old
-    ones; in `rgd1:MR_447071_2` the bond is a stereocenter (`b6-1-`).
+    ones, or the new ones where D41 changes them; in `rgd1:MR_447071_2` the bond is a
+    stereocenter (`b6-1-`).
     """
     cases = [r for r in metamorphic.values() if r["finding"] == "four-neighbors"]
     assert len(cases) == 8
@@ -800,4 +859,16 @@ def test__from_ts_geometries__four_neighbors(metamorphic: dict[str, dict]) -> No
         geometries = [
             Geometry(symbols, record[k]) for k in ("xyz_ts", "xyz_r", "xyz_p")
         ]
-        _assert_old(amchi.from_ts_geometries(*geometries), record["old"], record["id"])
+        string = amchi.from_ts_geometries(*geometries)
+        _assert_old_or_new(string, record["old"], low_t["metamorphic"], record["id"])
+        if record["id"] == "rgd1:MR_447071_2":
+            assert "/b6-1-" in string
+
+
+def test__from_geometry__ring_radical(species: list[dict]) -> None:
+    """The radical C3 of 2-methoxy-3-methylcyclopropyl is a stereocenter (D42)."""
+    (record,) = [r for r in species if r["id"] == "stjohn:143459_0"]
+    assert record["old"]["amchi"].endswith("/t4-,5+/m0/s1")
+    assert (
+        record["amchi"] == "AMChI=2S/C5H9O/c1-4-3-5(4)6-2/h3-5H,1-2H3/t3-,4+,5-/m1/s1"
+    )

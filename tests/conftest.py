@@ -42,3 +42,17 @@ def ring_ids() -> set[str]:
     """
     cases = json.loads((DATA / "ring_stereo_differences.json").read_text())
     return {case["id"] for case in cases}
+
+
+@pytest.fixture(scope="session")
+def low_t() -> dict[str, dict[str, dict]]:
+    """The records whose strings D41 and D42 change, by fixture and id.
+
+    Each has `decisions` and `new`: the string, or for a TS of `records` or
+    `ts_hand_cases` the strings of its four variants. `fixture` is the file name, or
+    `hand_cases:<group>`. The old strings stay in their own fixtures.
+    """
+    result: dict[str, dict[str, dict]] = {}
+    for entry in json.loads((DATA / "low_t_differences.json").read_text()):
+        result.setdefault(entry["fixture"], {})[entry["id"]] = entry
+    return result

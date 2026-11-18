@@ -112,7 +112,7 @@ def test__stereo_graph__ts(records: list[dict]) -> None:
             elif stereo is not None:
                 assert stereo.reverse_neighbors is None, record["id"]
                 assert stereo.reverse_parity is None, record["id"]
-    assert count == 253  # the substitution sites of the sample (W4)
+    assert count == 205  # the substitution sites of the sample (W4), 48 N less (D41)
 
 
 # C with four H neighbors at the corners of a tetrahedron

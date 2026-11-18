@@ -43,26 +43,25 @@ amchi.from_geometry(geometry)
 ```
 
 - `connectivity(geometry)` bonds two atoms within 1.05 times the larger of the sum of their covalent radii and the mean of their van der Waals radii, then drops the longest bonds of an atom with more bonds than its valence.
-- `candidates(symbols, connectivity)` finds the tetrahedral atoms and the rigid planar bonds (the old AutoMol's rules).
+- `candidates(symbols, connectivity)` finds the pyramidal atoms and the rigid planar bonds: the old AutoMol's rules, except that a nitrogen with an unsaturated neighbor (amides, anilines, enamines) is planar and no candidate, and that an atom with 3 neighbors in a 3-membered ring is a candidate even when conjugated, including a radical such as cyclopropyl.
 - `parity_margins(geometry, candidates)` is a diagnostic: how nearly planar each candidate is.
 
 ## Corrections
 
 The helpers perceive bonds and resonance without formal charges, so they can be wrong, and the explicit inputs let you correct them.
-HN=N(O)OH is the known case: the helpers miss its zwitterionic form HN=N(+)(O−)OH, so they call N1 a tetrahedral stereocenter and miss the rigid planar N0=N1 bond, and both geometries get the same string.
-Remove the atom candidate and add the bond candidate:
+HN=N(O)OH is the known case: the helpers miss its zwitterionic form HN=N(+)(O−)OH, so they miss the rigid planar N0=N1 bond, and both geometries get the same string.
+Add the bond candidate:
 
 ```python
 connectivity = amchi.connectivity(geometry)
 candidates = amchi.candidates(geometry.symbols, connectivity)
-candidates = amchi.remove_candidate(candidates, 1)
 candidates = amchi.add_bond_candidate(candidates, connectivity, (0, 1))
 amchi.string(geometry, connectivity, candidates)
 ```
 
-With the two geometries of HNNO in `tests/data/hand_cases.json`, `from_geometry` gives `AMChI=2S/H2N2O2/c1-2(3)4/h1,4H/t2-/m1/s1` for both, and the corrected candidates give `.../b2-1+` and `.../b2-1-`.
+With the two geometries of HNNO in `tests/data/hand_cases.json`, `from_geometry` gives `AMChI=2S/H2N2O2/c1-2(3)4/h1,4H` for both, and the corrected candidates give `.../b2-1+` and `.../b2-1-`.
 
-`remove_candidate(candidates, 1)` takes an atom index or a bond pair, and raises `KeyError` for a non-candidate.
+`remove_candidate(candidates, key)` removes a candidate the helpers found wrongly: it takes an atom index or a bond pair, and raises `KeyError` for a non-candidate.
 `add_bond_candidate` applies no filter, since it is meant to override, and raises `ValueError` if the pair isn't a bond or an atom has no other neighbor.
 
 ## No stereo
@@ -105,7 +104,7 @@ amchi.from_ts_geometries(ts, product, reactant)
 ```
 
 - `ts_connectivity(reactant, product)` bonds each side as `connectivity` does: bonds of both sides are `bonds`, the rest `breaking` or `forming`.
-- `candidates` applies the species rules to each side. An atom that is tetrahedral on both sides with different neighbors (a substitution site) has two neighbor lists, `atoms` for the reactant side and `reverse_atoms` for the product side, and each gets its own parity.
+- `candidates` applies the species rules to each side, except that a nitrogen planar on one side is a candidate on neither, and a 3-membered ring counts only if none of its bonds is breaking or forming. An atom that is tetrahedral on both sides with different neighbors (a substitution site) has two neighbor lists, `atoms` for the reactant side and `reverse_atoms` for the product side, and each gets its own parity.
   A bond gets its neighbors from every side where it is rigid and planar, so it can have three neighbors at one end.
 - A transferring hydrogen is an atom of the backbone: it has a canonical number and appears in the `c` layer (`H` 3 above).
 

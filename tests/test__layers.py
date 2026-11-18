@@ -140,13 +140,18 @@ def test__c_layer__inchi() -> None:
     assert all(rings.values()), rings
 
 
-def test__layers__hand_cases(hand_cases: dict[str, list[dict]]) -> None:
+def test__layers__hand_cases(
+    hand_cases: dict[str, list[dict]], low_t: dict[str, dict[str, dict]]
+) -> None:
     """The layers of the hand cases, from the helpers, equal the old ones.
 
     The scaling group has the large polycycles (pyrene, perylene). The symmetric
-    ring pairs are left out: their stereo is an intended difference (W6).
+    ring pairs are left out: their stereo is an intended difference (W6), and so is
+    HNNO's lost atom stereocenter (D41).
     """
-    for group in ("hnno", "ring_control", "scaling"):
+    assert set(low_t["hand_cases:hnno"]) == {c["id"] for c in hand_cases["hnno"]}
+    for group in ("ring_control", "scaling"):
+        assert f"hand_cases:{group}" not in low_t
         for case in hand_cases[group]:
             geometry = Geometry(case["symbols"], case["xyz"])
             connectivity = amchi.connectivity(geometry)

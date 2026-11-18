@@ -3,32 +3,42 @@
 The rules are the old AutoMol's (`tetrahedral_atoms`, `rigid_planar_bonds`,
 `stereocenter_candidates`), on the graph alone: the candidates never change with the
 conformer (W3; decision D21). A TS applies them to each side, reactant and product (W4).
+Two rules for atoms follow the low-temperature principle instead: conjugated nitrogens
+are planar (D41), and atoms in 3-membered rings are pyramidal (D42).
 """
 
 from collections import deque
 from collections.abc import Collection, Iterable, Sequence
+
+import networkx as nx
 
 from ._element import lone_pairs
 from ._graph import MolGraph, explicit_graph, product_graph, reactant_graph
 from ._resonance import rigid_planar_bonds, unsaturations
 from ._types import Bond, Candidates, Connectivity
 
-# Valence + lone pairs of a tetrahedral atom, and the largest ring that a stereo bond
-# can't be in
+# Valence + lone pairs of a tetrahedral atom, the number of neighbors of a pyramidal
+# atom, and the largest ring that a stereo bond can't be in
 _OCTET = 4
+_PYRAMIDAL_DEGREE = 3
 _MAX_RING_SIZE = 7
 
 
 def candidates(symbols: Sequence[str], connectivity: Connectivity) -> Candidates:
     """The stereocenter candidates of a species or a TS, with their neighbors.
 
-    An atom candidate has at least 3 neighbors and neighbors + lone pairs = 4. A bond
+    An atom candidate has at least 3 neighbors and neighbors + lone pairs = 4, except
+    a nitrogen with 3 neighbors whose lone pair is conjugated (D41). An atom with 3
+    neighbors in a 3-membered ring is a candidate whatever its conjugation, which
+    includes a carbon radical whose neighbors are saturated (D42). A bond
     candidate is rigid and planar, has a neighbor on each side, is in no ring of fewer
     than 8 atoms, and doesn't join two atom candidates. The neighbors are listed
     hydrogens first, then the other atoms, each by ascending index (D21).
 
-    For a TS, the rules apply to each side. An atom's neighbors are those of the
-    reactant side if it is a candidate there, else of the product side; an atom that is
+    For a TS, the rules apply to each side, except that a nitrogen conjugated on one
+    side is a candidate on neither: its TS geometry can be exactly planar (D41). An
+    atom's neighbors are those of the reactant side if it is a candidate there, else
+    of the product side; an atom that is
     a candidate on both sides with different neighbors also gets the product-side ones
     in `reverse_atoms` (D26). A bond's neighbors are united over the sides where it is
     rigid and planar, and the ring test follows the bonds of the whole TS, leaving and
@@ -58,15 +68,18 @@ def candidates(symbols: Sequence[str], connectivity: Connectivity) -> Candidates
     def ordered(neighbors: Iterable[int]) -> tuple[int, ...]:
         return tuple(sorted(neighbors, key=lambda n: (symbols[n] != "H", n)))
 
-    def tetrahedral(side: MolGraph) -> dict[int, tuple[int, ...]]:
-        return {
-            atom: ordered(side[atom])
-            for atom in side
-            if side.degree(atom) >= 3  # noqa: PLR2004
-            and side.degree(atom) + lone_pairs(symbols[atom]) == _OCTET
-        }
-
-    on_side = [tetrahedral(side) for side in sides]
+    # In a TS, a 3-membered ring counts only if it has no reacting bond (D42), and a
+    # nitrogen planar on one side is a candidate on neither (D41)
+    in_3_ring = {
+        atom for atom, count in nx.triangles(_fixed_graph(graph)).items() if count
+    }
+    pyramidal, planar = zip(
+        *(_pyramidal_atoms(side, in_3_ring) for side in sides), strict=True
+    )
+    on_side = [
+        {atom: ordered(side[atom]) for atom in sorted(atoms - set().union(*planar))}
+        for side, atoms in zip(sides, pyramidal, strict=True)
+    ]
     atoms = on_side[-1] | on_side[0]  # the reactant side wins
     reverse_atoms = {
         atom: on_side[-1][atom]
@@ -97,6 +110,45 @@ def candidates(symbols: Sequence[str], connectivity: Connectivity) -> Candidates
         and not (i in atoms and j in atoms)
     }
     return Candidates(atoms=atoms, reverse_atoms=reverse_atoms, bonds=bonds)
+
+
+def _pyramidal_atoms(
+    graph: MolGraph, in_3_ring: Collection[int]
+) -> tuple[set[int], set[int]]:
+    """The atoms that are pyramidal in the electron model, and the planar nitrogens.
+
+    An atom is pyramidal if it has at least 3 neighbors and neighbors + lone pairs = 4,
+    unless it is a planar nitrogen: one with 3 neighbors, one of them unsaturated
+    (D41). An atom with 3 neighbors in a 3-membered ring is pyramidal whatever its
+    conjugation, and so is a radical there without an unsaturated neighbor (D42).
+    """
+    unsaturation = unsaturations(graph)
+    pyramidal, planar_nitrogens = set(), set()
+    for atom, symbol in graph.nodes(data="symbol"):
+        degree = graph.degree(atom)
+        octet = degree + lone_pairs(symbol) == _OCTET
+        if degree != _PYRAMIDAL_DEGREE:
+            if degree > _PYRAMIDAL_DEGREE and octet:
+                pyramidal.add(atom)
+            continue
+        conjugated = any(unsaturation[n] > 0 for n in graph[atom])
+        if atom in in_3_ring:
+            if octet or (unsaturation[atom] == 1 and not conjugated):
+                pyramidal.add(atom)
+        elif symbol == "N" and conjugated:
+            planar_nitrogens.add(atom)
+        elif octet:
+            pyramidal.add(atom)
+    return pyramidal, planar_nitrogens
+
+
+def _fixed_graph(graph: MolGraph) -> MolGraph:
+    """The graph without its breaking and forming bonds."""
+    result = graph.copy()
+    result.remove_edges_from(
+        [(i, j) for i, j, change in graph.edges(data="change") if change is not None]
+    )
+    return result
 
 
 def add_bond_candidate(

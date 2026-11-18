@@ -1,0 +1,3252 @@
+[
+ {
+  "fixture": "records",
+  "id": "stjohn:289431_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8NO4/c1-6(3-4(7)9)5(8)10-2/h9H,1,3H2,2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:209088_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H10NO/c1-6-5-4-9(3)8(10)7(6)2/h5H,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:201177_77ea63",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H7N4O2/c5-7-4(10)8-3(9)2-1-6-8/h1,6-7H,2,5H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:523297_533156",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H6NO3/c1-10-6-3-4(8)2-5(9)7-6/h2-3,7H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:208941_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H9N2O/c1-5-9-4-6-7-2-3-8-6/h2-4,8H,5H2,1H3/b6-4-"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:223741_4e11ab",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H4NO2/c8-5-7-2-1-6(9)3-4-7/h2-5H"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:463990_7248d2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H11N2/c1-7-3-9-8-5-2-4-6-10(7)8/h2-3H,4-6H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:336666_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H9N2O/c1-5-3-4(8)6-7(5)2/h3,5-6H,1-2H3/t5-,7+/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:90716_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N/c1-5-3-2-4-6-5/h1,6H,2-4H2/b5-1+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:230533_56f0c9",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H13N2O/c1-4-5-6(2)8-7-3-9/h6-8H,4-5H2,1-2H3/t6-,8+/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:162570_79dc63",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H5N2/c1-2-3-4-6-5-1/h2-6H"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:86308_c42402",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H4NO2/c4-1-3-2-5/h1-3,5H"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:194856_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H16NO/c1-3-9(6-7-10)2-8-4-5-8/h2,8,10H,3-7H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:342126_2bd777",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H11N2/c8-6-4-5-7-1-9-3-2-7/h2-3,9H,4-6,8H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:78229_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8NO/c1-6-5(7)4-2-3-4/h6H,2-3H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:56160_21af89",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H3N4/c5-1-2-8-4-3-6-7-8/h2-4H"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:390259_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H7N4/c1-8-4(3-5)2-6-7-8/h2,5H,3H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:158362_758414",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H12N3/c1-10-3-7(9-4-10)2-5-6-8/h2-4H,5-6,8H2,1H3/b7-2-"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:67102_a351f5",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10NO/c1-2-4-7-5-3-6-1/h1,6H,2-5H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:82759_cae878",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H6N3O2/c5-2-1-4(9)7-3(8)6-2/h4-5,7,9H,1H2/b5-2-/t4-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:273448_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10NO2/c1-9-7-2-3-6(8)4-5-7/h2H,3-5H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:424781_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H5N2O/c1-5-4-7(10)2-6(3-8)9-5/h4,9H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:513897_212167",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N3O2/c1-4(9)7-3-2-5(10)8-6/h6-8H,2-3H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:270410_7e7d8d",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H5N2O2/c8-1-5-9-7-4-2-3-6-7/h2-4H,5H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:127617_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H6N3O/c1-4-3-8(9)5(6)2-7-4/h3,6,9H,1H3/b6-5+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:117056_867fef",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H8NO2/c8-2-7-5(9)6-3-1-4-6/h1-2,6-7H,3-4H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:170340_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H12N3O/c1-3-4-8(2)5(6)7-9/h9H,1,3-4,6H2,2H3/b7-5+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:157023_27cfe2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H6N/c1-3-5-4-2/h1,3-5H,2H2/b3-1+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:379459_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H6N3O2/c1-10-5(9)4-2-7-3-8(4)6/h2-3H,1,6H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:49553_852acb",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H6N3O/c1-4(9)7-5-2-3-6-8-5/h3,7-8H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:186455_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H10N3/c1-10-7-3-2-5(9)4-6(7)8/h2-4,8,10H,9H2,1H3/b8-6+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:498207_eaabfc",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11N2O/c1-7-6(5-4-9)8(2)3/h5,7H,1-3H3/b6-5+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:269435_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H10NO2/c1-3-8-4-2-6(9)5-7(8)10/h2H,3-5H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:93507_a2946c",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H7N2O/c8-1-7-3-2-4-9(7)5-6-10/h2-4H,5-6H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:95598_21bb41",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10NO2/c1-5(7)6(2)3-4-8/h3,8H,4H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:254314_4c2d8e",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H9N2/c1-4-7-5-9(3)8-6(7)2/h4-5H,1-2H2,3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:126438_78d2d5",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H8NO2/c1-7(10)6(9)5-3-2-4-8-5/h2-4,7-8,10H,1H2/t7-/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:24347_0",
+  "decisions": [
+   "D42"
+  ],
+  "new": "AMChI=2S/C7H11O/c1-5(8)6-4-7(6,2)3/h4,6H,1-3H3/t4-,6+/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:298621_113a68",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H13N2O/c1-7-6-4-8-2-5(6)3-9/h5-9H,1-4H2/t5-,6-,8+/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:350230_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H12NO3/c1-7-6(2,3-4-9)5(8)10/h7,9-10H,1,3-4H2,2H3/t6-/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:50786_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10N3/c1-5-3-8-9(4-2)6(5)7/h3H,1,4,7H2,2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:313642_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H11N2O3/c1-9-7(10-4-2)5(8)6-3/h6H,1,4H2,2-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:247996_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H7N4O/c1-8-5-7-4(10)2-3(6)9-5/h2,8-9H,1,6H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:2849_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H16NO/c1-4-8(5-6-9)7(2)3/h4,7,9H,5-6H2,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:513361_b97b99",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10NO/c1-2-4-5-6-7-3-8/h1-3,7H,4-6H2/b2-1+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:154670_b89f02",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N3/c1-3-7-8-5-4-2-6/h3-4,8H,5H2,1H3/b7-3+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:170516_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H19N2/c1-5-4-10(8-6-2)9-7-3/h4,9H,5-8H2,1-3H3/t9-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:460988_6c2b9a",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C9H8N/c1-8-5-4-7-10-6-3-2-9(8)10/h3-7H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:189287_afa84e",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H10NO/c1-8-4-2-3-7(8)5-6-9/h3-4,9H,5-6H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:301952_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N5/c1-10-3-7-5(8-2-6)9-4-10/h8-9H,1,3-4H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:282275_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H11N2O3/c1-7(6-8)4-5(9-2)10-3/h4-5H,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:369729_afb060",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H16NO/c1-8(3)7(9)6-5-4-2/h7,9H,1,4-6H2,2-3H3/t7-/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:16354_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H12NO3/c1-3-2-4-5-10-6(8)7-9/h2,7,9H,3-5H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:465732_36c42f",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H5N4/c1-5-3-6-7-2-8-10(6)4-9-5/h3-4H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:466079_7b9550",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H12NO/c1-9-6-5-8(7(9)10)3-2-4-8/h2H,3-6H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:202812_6d8b76",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H3N2O3/c8-3-1-2-4(9)6-5(3)7-10/h2,7,10H"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:82177_37af63",
+  "decisions": [
+   "D42"
+  ],
+  "new": "AMChI=2S/C10H17/c1-7(2)10-4-9(10)8(3)5-6-10/h4,7-9H,5-6H2,1-3H3/t4-,8-,9+,10-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:323227_4b446a",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N3O/c1-5-3-8(6)4(9)7(5)2/h5H,1,3,6H2,2H3/t5-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:98150_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H5N4/c1-10-6-5(2-7)4-8-3-9-6/h4,10H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:163871_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H12N3/c1-9-3-6-7-4-10(2)5-8-7/h3-5,9H,6H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:201564_ce4b86",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10NO2/c1-3-6(2)4-7-5(8)9-6/h3,7H,4H2,1-2H3/t6-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:138949_04f82c",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H8NO2/c1-5(8)7-3-2-6(9)4-7/h1-4H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:465420_5a62db",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H7N2O/c10-7-2-6-5(1-9-7)3-4-8-6/h1-2,9H,3-4H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:460354_9ea527",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H15N2/c1-9-5-2-3-6-10(1)8-4-7-9/h1H,2-8H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:63510_b5d1d9",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H12N/c1-5-3-7-4-6(5)2/h3,5-7H,4H2,1-2H3/t5-,6+/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:178999_e4ca5e",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N3/c1-8-4-7-3-2-5(8)6/h2-5H,1,6H2/t5-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:283424_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10NO2/c1-5(8-2)4-6-3-7/h3,6H,4H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:332500_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H13N2O/c1-9(7(8)10)6-4-2-3-5-6/h2-5,8H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:152131_e6627d",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H9N2/c1-3-7-10-6-8-2-4-5-9-8/h3-6,10H,1,7H2/b8-6+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:156950_755603",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H6N3O/c1-8-2-6-3-5(8)4-7-9/h3-4,9H,1H3/b7-4+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:133340_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H11N2/c1-5(2)7-4-6(3)9-8-7/h4,9H,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:349490_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10NO3/c1-2-10-6(9)7-5-4-3-8/h2-3,7H,4-5H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:91044_0df734",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10NO/c1-4-5(2)7-6(3)8/h7H,1-2,4H2,3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:165683_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H9N2O/c1-4-8-5(2)3-7-6(8)9/h3,7H,1,4H2,2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:397000_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H5N2O/c1-3-2-6-4(7)5-3/h6H,1-2H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:372415_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H7N2O/c1-5(9)8-3-2-4-6(8)7/h2-3H,4H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:118240_0522f7",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H9N2O2/c1-5(2)3(8)7-4(6)9/h5-7H,1-2H3/b6-4-"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:512367_23fb12",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H12NO2/c1-7(9)3-4-8(2)5-6-10/h4,10H,5-6H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:128319_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H12N3/c1-5-10(6-2)7-3-8-9-4-7/h4,9H,5-6H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:24394_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H7N2O/c1-4-2-6-5(3-8)7-4/h2-3,7-8H,1H3/b5-3+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:143459_0",
+  "decisions": [
+   "D42"
+  ],
+  "new": "AMChI=2S/C5H9O/c1-4-3-5(4)6-2/h3-5H,1-2H3/t3-,4+,5-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:324844_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H8N3/c7-5-1-4(9-8-5)6-2-3-6/h1,6-7,9H,2-3H2/b7-5-"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:114450_cdaef1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H12NO2/c1-7-4-3-2-8(7)5-6(9)10/h2,7,10H,3-5H2,1H3/t7-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:255749_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N4/c1-3-4-9-5(2)6-7-8-9/h3-4H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:224109_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H13NO/c1-9-8(10)7-2-3-4-5-6-7/h2,9H,3-6H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:260521_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H6N2O/c1-5-3-4-9-7(10)6(5)2-8/h3-4,9H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:302060_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H8N2O2/c1-6-4(7)3-5-8-2/h3,6H,1-2H3/b5-3+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:437488_c34d73",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H6N2O4/c6-2(4-8)1-3(7)5-9/h4-5,8-9H,1H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:438737_dbb7a5",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H6N4/c6-1-4-5-9-3-2-7-8-9/h2-3H,4-5H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:403466_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N2O/c1-4-2-6-7-5(4)3-8/h2,7-8H,3H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:437720_585502",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H8N2O/c1-3(2)4(7)6-5/h6H,1,5H2,2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:213628_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H11NO2/c1-5(2,3)6-4(7)8/h6,8H,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:445338_e421b8",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H12N2/c1-6-7-4-5(2)3/h5,7H,1,4H2,2-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:373426_138fc9",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N2O/c1-5(2)4(6)3(8)7-5/h4,7H,6H2,1-2H3/t4-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:353386_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N2O2/c1-5-4(9)7-3(8)2-6-5/h5-7H,2H2,1H3/t5-,6-/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:54780_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H10N2/c1-4-6-3-5-2/h3,6H,4H2,1-2H3/b5-3+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:517332_d8426a",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11NO2/c1-6(2)4-3-5(8)7(6)9/h9H,3-4H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:401540_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H12N2/c1-4-10-3-2-7(9-10)8-5-6-8/h2-3,8H,4-6H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:300684_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11N3O/c7-6-1-2-8-9(6)4-3-5-10/h1-2,10H,3-5,7H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:443675_3080a5",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H12N2O/c1-7(2,10)5-6-3-4-8-9-6/h3-4,9-10H,5H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:446787_0d6608",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H5N3O3/c5-2-4(10)7(1-8)3(9)6-2/h1,4,10H,5H2/t4-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:443278_dbb97c",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H7N3O2/c1-4-2(8)7(5)3(9)6-4/h4,6H,5H2,1H3/t4-/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:16599_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H12N2O/c1-5(2)3-7-4(6)8/h5,7H,3,6H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:46852_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H13NO/c1-3-5-7-6(8)4-2/h7H,3-5H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:288284_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H7N3/c1-6-7-5-3-2-4-8(1)5/h1H,2-4H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:445339_3291ea",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H7N3/c1-6-7-4-3-2-5/h7H,1,3-4H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:114063_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H11NO/c1-5-6(2)8-4-7(5)9-3/h4,8H,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:372904_055a4d",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H9N3O/c6-5-1-7-2-8(5)3-4-9/h1-2,9H,3-4,6H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:46495_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H16N2O/c1-7(10)8-5-4-6-9(2)3/h8H,4-6H2,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:342513_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11N3/c1-6-2-8-3-9(6)5-4-7/h2-3H,4-5,7H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:191716_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N2/c1-4-5(2)7-3-6/h5,7H,4H2,1-2H3/t5-/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:434267_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H9N3O/c1-4-9-7-5(2)6(3-10)8-9/h3H,4H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:159052_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H18N2/c1-7(2)6-9-10-8(3,4)5/h6-7,10H,1-5H3/b9-6+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:425728_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11NO/c1-7(2-8)5-6-3-4-6/h2,6H,3-5H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:516621_8306b3",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H7NO/c10-7-3-1-6-2-4-9-8(6)5-7/h1-5,9-10H"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:329859_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H12N2O3/c6-1-2-7(3-4-9)5(8)10/h9-10H,1-4,6H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:25614_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N2/c1-4-3-6-5(2)7-4/h3,7H,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:50440_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11N3O/c1-10-6-8-2-5(9-6)3-4-7/h2,9H,3-4,7H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:165681_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10N2O/c1-4-8-5(2)3-7-6(8)9/h3,7H,4H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:203274_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H7N5/c1-2-8-3(4)5-6-7-8/h2,4H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:434083_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H13N3/c1-5-9-6-7-3-4-8-10(7)2/h3-4,9H,5-6H2,1-2H3/t9-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:518445_012ab4",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H11NO/c1-2-3-6-9-7-4-5-8(9)10/h1H,3-7H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:206379_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H7N/c1-3-7-5-8-4-6(7)2/h1,4-5,8H,2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:95546_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H14N2O/c1-5(9)8-6(2,3)4-7/h8H,4,7H2,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:416313_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H12N2O2/c7-8-5(9)3-10-4-6-1-2-6/h6,8H,1-4,7H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:85629_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H13NO/c1-4-5(8)7-6(2)3/h6-7H,4H2,1-3H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:237462_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H9N3/c8-1-4-5-6-7-2-9-10-3-7/h2-3,10H,4-6H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:200996_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H11NO/c1-5-7-3-9-4-8(7)6(2)10/h3-4,9H,5H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:305509_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H9N3/c1-6-7(5-4-2-8)9-3-10-6/h3,10H,4-5H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:427271_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H6N2O/c1-5-3-7(10)6(2-8)4-9-5/h3-4,9H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:8242_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H3N5/c1-4-3-6-5-2-8(3)7-1/h1-2,7H"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:443544_9e0600",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H7NO2/c1-5(10)7-4-8-2-6(7)3-9/h2-4,8H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:519435_c3579a",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H8N2O2/c1-4-3-6(9)7-5(2)8(4)10/h3,10H,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:380247_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11N3/c1-8-5-6-3-4-9(2)7-6/h3-4,8H,5H2,1-2H3/t8-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:305006_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H8N2O/c1-5(9)6-3-4-7-8(6)2/h3-4H,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:447605_db5a33",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H13NO/c1-6-4-9(3)8(2)5-7(6)10/h4,8H,5H2,1-3H3/t8-/m1/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:264518_285c5a",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N4/c1-3-4(6)5(7)9(2)8-3/h6-7H2,1-2H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:53107_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H13NO/c1-9-6(10)7-2-5-8(9)4-3-7/h7-8H,2-5H2,1H3/t7+,8+"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:437859_238cc9",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H8N2O2/c1-3(7)2(6)5-4/h3,5,7H,4H2,1H3/t3-/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:235063_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H8N2/c1-3-4-6-2-5/h6H,3-4H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:436448_4f4c3b",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H11NO/c1-6-4-3-5-8(2)7(10)9-6/h3-5,8-9H,1-2H3/t8-/m0/s1"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:346420_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C9H11N/c1-10-7-6-5-8-3-2-4-9(8)10/h2-5H,6-7H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:446427_744ebb",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N2O/c1-4-6-2-5(3-8)7-4/h2,7-8H,3H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:344575_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H10N2O3/c1-9-4(7)6(5)2-3-8/h8H,2-3,5H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:519049_6fc752",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H7NO/c1-4-2-5(7)3-6-4/h2-3,6-7H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:66516_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H11NO3/c1-2-6(3-4-8)5(7)9/h8-9H,2-4H2,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:116720_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H6N2O2/c8-5(9)4-7-2-1-6-3-7/h1-3,9H,4H2"
+ },
+ {
+  "fixture": "records",
+  "id": "stjohn:138807_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H5NO2/c1-5-3-2-4/h2-3H,1H3"
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_417488_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H10N2O2/c2-1-4(8,9)5(6)7(1)3/h6,9H,1H2,2-3H3/b6-5+/k5-4,7-1/f4-1/r0",
+   "reversed": "AMChI=2S/C5H10N2O2/c2-1-4(8,9)5(6)7(1)3/h6,9H,1H2,2-3H3/b6-5+/k5-4,7-1/f4-1/r1",
+   "mirrored": "AMChI=2S/C5H10N2O2/c2-1-4(8,9)5(6)7(1)3/h6,9H,1H2,2-3H3/b6-5+/k5-4,7-1/f4-1/r0",
+   "reversed_mirrored": "AMChI=2S/C5H10N2O2/c2-1-4(8,9)5(6)7(1)3/h6,9H,1H2,2-3H3/b6-5+/k5-4,7-1/f4-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_484800_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C2H5N3O2/c4-1(5)2(7)3(1)6-8-3/h4,6H,5H2/b4-1+/k2-1,6-3,8-3/f3-1,8-6/r1",
+   "reversed": "AMChI=2S/C2H5N3O2/c4-1(5)2(7)3(1)6-8-3/h4,6H,5H2/b4-1+/k2-1,6-3,8-3/f3-1,8-6/r0",
+   "mirrored": "AMChI=2S/C2H5N3O2/c4-1(5)2(7)3(1)6-8-3/h4,6H,5H2/b4-1+/k2-1,6-3,8-3/f3-1,8-6/r1",
+   "reversed_mirrored": "AMChI=2S/C2H5N3O2/c4-1(5)2(7)3(1)6-8-3/h4,6H,5H2/b4-1+/k2-1,6-3,8-3/f3-1,8-6/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_673792_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H8N2O3/c1-6(4-8)5-3(7)9(2)10-5/h4H,1-2H3/k9-3,10-5/f10-9/r1",
+   "reversed": "AMChI=2S/C4H8N2O3/c1-6(4-8)5-3(7)9(2)10-5/h4H,1-2H3/k9-3,10-5/f10-9/r0",
+   "mirrored": "AMChI=2S/C4H8N2O3/c1-6(4-8)5-3(7)9(2)10-5/h4H,1-2H3/k9-3,10-5/f10-9/r1",
+   "reversed_mirrored": "AMChI=2S/C4H8N2O3/c1-6(4-8)5-3(7)9(2)10-5/h4H,1-2H3/k9-3,10-5/f10-9/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_580333_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H9N3O2/c1-2(4)5(6)3(8)7-2/h3-5,8H,6H2,1H3/b4-2-/t3-/m0/s1/k5-3,7-2/f5-2/r1",
+   "reversed": "AMChI=2S/C3H9N3O2/c1-2(4)5(6)3(8)7-2/h3-5,8H,6H2,1H3/b4-2-/t3-/m0/s1/k5-3,7-2/f5-2/r0",
+   "mirrored": "AMChI=2S/C3H9N3O2/c1-2(4)5(6)3(8)7-2/h3-5,8H,6H2,1H3/b4-2-/t3-/m1/s1/k5-3,7-2/f5-2/r1",
+   "reversed_mirrored": "AMChI=2S/C3H9N3O2/c1-2(4)5(6)3(8)7-2/h3-5,8H,6H2,1H3/b4-2-/t3-/m1/s1/k5-3,7-2/f5-2/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_299157_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H10N2O/c2-4(5)1-3-6-7-4/h5H,3H2,1-2H3/b5-4-/k3-1,4-2,7-6/f4-1,7-4/r0",
+   "reversed": "AMChI=2S/C3H10N2O/c2-4(5)1-3-6-7-4/h5H,3H2,1-2H3/b5-4-/k3-1,4-2,7-6/f4-1,7-4/r1",
+   "mirrored": "AMChI=2S/C3H10N2O/c2-4(5)1-3-6-7-4/h5H,3H2,1-2H3/b5-4-/k3-1,4-2,7-6/f4-1,7-4/r0",
+   "reversed_mirrored": "AMChI=2S/C3H10N2O/c2-4(5)1-3-6-7-4/h5H,3H2,1-2H3/b5-4-/k3-1,4-2,7-6/f4-1,7-4/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_93457_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H6O.C2H5N/c1-3(2)4;3-1-2(3)4-1/h4H,1H2,2H3;1,3H,2H2/t;1-/m.1/s1/k;2-1,4-1/f;4-2/r;0",
+   "reversed": "AMChI=2S/C3H6O.C2H5N/c1-3(2)4;3-1-2(3)4-1/h4H,1H2,2H3;1,3H,2H2/t;1-/m.1/s1/k;2-1,4-1/f;4-2/r;1",
+   "mirrored": "AMChI=2S/C3H6O.C2H5N/c1-3(2)4;3-1-2(3)4-1/h4H,1H2,2H3;1,3H,2H2/t;1-/m.0/s1/k;2-1,4-1/f;4-2/r;0",
+   "reversed_mirrored": "AMChI=2S/C3H6O.C2H5N/c1-3(2)4;3-1-2(3)4-1/h4H,1H2,2H3;1,3H,2H2/t;1-/m.0/s1/k;2-1,4-1/f;4-2/r;1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_689417_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N2O2/c4-8-6-1(7)2-3-9-5-6/h1,5H,2-3H2,4H3/b6-5-/t5-/m0/s1/k6-1,9-5/f2-1,9-3/r0",
+   "reversed": "AMChI=2S/C4H10N2O2/c4-8-6-1(7)2-3-9-5-6/h1,5H,2-3H2,4H3/b6-5-/t5-/m0/s1/k6-1,9-5/f2-1,9-3/r1",
+   "mirrored": "AMChI=2S/C4H10N2O2/c4-8-6-1(7)2-3-9-5-6/h1,5H,2-3H2,4H3/b6-5-/t5-/m1/s1/k6-1,9-5/f2-1,9-3/r0",
+   "reversed_mirrored": "AMChI=2S/C4H10N2O2/c4-8-6-1(7)2-3-9-5-6/h1,5H,2-3H2,4H3/b6-5-/t5-/m1/s1/k6-1,9-5/f2-1,9-3/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_612750_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H11N3O/c2-4-1(9-4)8(7)5(3)6/h4,6-7H,1H2,2-3H3/b6-5+,8-7-/t4-/m1/s1/k8-1/f4-1/r1",
+   "reversed": "AMChI=2S/C5H11N3O/c2-4-1(9-4)8(7)5(3)6/h4,6-7H,1H2,2-3H3/b6-5+,8-7-/t4-/m1/s1/k8-1/f4-1/r0",
+   "mirrored": "AMChI=2S/C5H11N3O/c2-4-1(9-4)8(7)5(3)6/h4,6-7H,1H2,2-3H3/b6-5+,8-7-/t4-/m0/s1/k8-1/f4-1/r1",
+   "reversed_mirrored": "AMChI=2S/C5H11N3O/c2-4-1(9-4)8(7)5(3)6/h4,6-7H,1H2,2-3H3/b6-5+,8-7-/t4-/m0/s1/k8-1/f4-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_419997_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/CH7N3O/c2-1(3)4-5-7-6-1/h4H,2-3H2/k6-1,7-5/f7-6/r1",
+   "reversed": "AMChI=2S/CH7N3O/c2-1(3)4-5-7-6-1/h4H,2-3H2/k6-1,7-5/f7-6/r0",
+   "mirrored": "AMChI=2S/CH7N3O/c2-1(3)4-5-7-6-1/h4H,2-3H2/k6-1,7-5/f7-6/r1",
+   "reversed_mirrored": "AMChI=2S/CH7N3O/c2-1(3)4-5-7-6-1/h4H,2-3H2/k6-1,7-5/f7-6/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_515058_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H6N2O3/c1-4-2(8,6-4)3(9)5(4,10)7-3/h6-7,10H,1H3/t4-,5+/m0/s1/k4-2,5-3/f3-2/r1",
+   "reversed": "AMChI=2S/C5H6N2O3/c1-4-2(8,6-4)3(9)5(4,10)7-3/h6-7,10H,1H3/t4-,5+/m0/s1/k4-2,5-3/f3-2/r0",
+   "mirrored": "AMChI=2S/C5H6N2O3/c1-4-2(8,6-4)3(9)5(4,10)7-3/h6-7,10H,1H3/t4-,5+/m1/s1/k4-2,5-3/f3-2/r1",
+   "reversed_mirrored": "AMChI=2S/C5H6N2O3/c1-4-2(8,6-4)3(9)5(4,10)7-3/h6-7,10H,1H3/t4-,5+/m1/s1/k4-2,5-3/f3-2/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_477327_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H7N3/c5-2-1-3(6)4-2/h1-2,4H,5-6H2/b2-1+,4-3+/t2-/m0/s1/k4-2/r1",
+   "reversed": "AMChI=2S/C3H7N3/c5-2-1-3(6)4-2/h1-2,4H,5-6H2/b2-1+,4-3+/t2-/m0/s1/k4-2/r0",
+   "mirrored": "AMChI=2S/C3H7N3/c5-2-1-3(6)4-2/h1-2,4H,5-6H2/b2-1+,4-3+/t2-/m1/s1/k4-2/r1",
+   "reversed_mirrored": "AMChI=2S/C3H7N3/c5-2-1-3(6)4-2/h1-2,4H,5-6H2/b2-1+,4-3+/t2-/m1/s1/k4-2/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_603030_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H3NO/c5-2-3-1-4(2)3/h3H,1H2/t3-/m0/s1/k3-2,4-1/r1",
+   "reversed": "AMChI=2S/C3H3NO/c5-2-3-1-4(2)3/h3H,1H2/t3-/m0/s1/k3-2,4-1/r0",
+   "mirrored": "AMChI=2S/C3H3NO/c5-2-3-1-4(2)3/h3H,1H2/t3-/m1/s1/k3-2,4-1/r1",
+   "reversed_mirrored": "AMChI=2S/C3H3NO/c5-2-3-1-4(2)3/h3H,1H2/t3-/m1/s1/k3-2,4-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_307696_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H6N2O/c2-4-1(6)8-5(3)7-4/h6-7H,2-3H2/b6-1-/k4-1,7-5,8-1/r0",
+   "reversed": "AMChI=2S/C5H6N2O/c2-4-1(6)8-5(3)7-4/h6-7H,2-3H2/b6-1-/k4-1,7-5,8-1/r1",
+   "mirrored": "AMChI=2S/C5H6N2O/c2-4-1(6)8-5(3)7-4/h6-7H,2-3H2/b6-1-/k4-1,7-5,8-1/r0",
+   "reversed_mirrored": "AMChI=2S/C5H6N2O/c2-4-1(6)8-5(3)7-4/h6-7H,2-3H2/b6-1-/k4-1,7-5,8-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_503528_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H15N3/c3-5(7)2-1-4(6)8-5/h4,8H,6-7H2,1-3H3/t4-,5-/m1/s1/k4-1,5-2/f2-1/r1",
+   "reversed": "AMChI=2S/C5H15N3/c3-5(7)2-1-4(6)8-5/h4,8H,6-7H2,1-3H3/t4-,5-/m1/s1/k4-1,5-2/f2-1/r0",
+   "mirrored": "AMChI=2S/C5H15N3/c3-5(7)2-1-4(6)8-5/h4,8H,6-7H2,1-3H3/t4-,5-/m0/s1/k4-1,5-2/f2-1/r1",
+   "reversed_mirrored": "AMChI=2S/C5H15N3/c3-5(7)2-1-4(6)8-5/h4,8H,6-7H2,1-3H3/t4-,5-/m0/s1/k4-1,5-2/f2-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_249346_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H9N3/c2-5-1(6)9-3-8(4)7-5/h7H,2-3H2,4H3/t8-/m1/s1/k5-1,8-7,9-3/f9-1/r1",
+   "reversed": "AMChI=2S/C5H9N3/c2-5-1(6)9-3-8(4)7-5/h7H,2-3H2,4H3/t8-/m1/s1/k5-1,8-7,9-3/f9-1/r0",
+   "mirrored": "AMChI=2S/C5H9N3/c2-5-1(6)9-3-8(4)7-5/h7H,2-3H2,4H3/t8-/m0/s1/k5-1,8-7,9-3/f9-1/r1",
+   "reversed_mirrored": "AMChI=2S/C5H9N3/c2-5-1(6)9-3-8(4)7-5/h7H,2-3H2,4H3/t8-/m0/s1/k5-1,8-7,9-3/f9-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_621327_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H13N3O2/c2-1-7(3)4(6)5-10-8(1)9/h5,9H,1,6H2,2-3H3/b5-4+,7-4-/k7-1,10-8/f8-1,10-5/r1",
+   "reversed": "AMChI=2S/C4H13N3O2/c2-1-7(3)4(6)5-10-8(1)9/h5,9H,1,6H2,2-3H3/b5-4+,7-4-/k7-1,10-8/f8-1,10-5/r0",
+   "mirrored": "AMChI=2S/C4H13N3O2/c2-1-7(3)4(6)5-10-8(1)9/h5,9H,1,6H2,2-3H3/b5-4+,7-4-/k7-1,10-8/f8-1,10-5/r1",
+   "reversed_mirrored": "AMChI=2S/C4H13N3O2/c2-1-7(3)4(6)5-10-8(1)9/h5,9H,1,6H2,2-3H3/b5-4+,7-4-/k7-1,10-8/f8-1,10-5/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_86374_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H9N3/c5-3-1-2-7-4-6-3/h5-6H,1-2,4H2/b5-3+/k3-1,6-4,7-2/f7-4/r0",
+   "reversed": "AMChI=2S/C3H9N3/c5-3-1-2-7-4-6-3/h5-6H,1-2,4H2/b5-3+/k3-1,6-4,7-2/f7-4/r1",
+   "mirrored": "AMChI=2S/C3H9N3/c5-3-1-2-7-4-6-3/h5-6H,1-2,4H2/b5-3+/k3-1,6-4,7-2/f7-4/r0",
+   "reversed_mirrored": "AMChI=2S/C3H9N3/c5-3-1-2-7-4-6-3/h5-6H,1-2,4H2/b5-3+/k3-1,6-4,7-2/f7-4/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_99616_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H11NO3/c2-1-5(8)4(3,7)6-1/h5-6,8H,1H2,2-3H3/k5-4,6-1/f5-1,6-4/r0",
+   "reversed": "AMChI=2S/C4H11NO3/c2-1-5(8)4(3,7)6-1/h5-6,8H,1H2,2-3H3/k5-4,6-1/f5-1,6-4/r1",
+   "mirrored": "AMChI=2S/C4H11NO3/c2-1-5(8)4(3,7)6-1/h5-6,8H,1H2,2-3H3/k5-4,6-1/f5-1,6-4/r0",
+   "reversed_mirrored": "AMChI=2S/C4H11NO3/c2-1-5(8)4(3,7)6-1/h5-6,8H,1H2,2-3H3/k5-4,6-1/f5-1,6-4/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_121898_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C7H20N2O/c3-1-10(6)12-8-9(2-11-1)7(4)5/h7-8H,1-2H2,3-6H3/t8-/m1/s1/k10-1,11-2,12-8/f11-1,12-10/r1",
+   "reversed": "AMChI=2S/C7H20N2O/c3-1-10(6)12-8-9(2-11-1)7(4)5/h7-8H,1-2H2,3-6H3/t8-/m1/s1/k10-1,11-2,12-8/f11-1,12-10/r0",
+   "mirrored": "AMChI=2S/C7H20N2O/c3-1-10(6)12-8-9(2-11-1)7(4)5/h7-8H,1-2H2,3-6H3/t8-/m0/s1/k10-1,11-2,12-8/f11-1,12-10/r1",
+   "reversed_mirrored": "AMChI=2S/C7H20N2O/c3-1-10(6)12-8-9(2-11-1)7(4)5/h7-8H,1-2H2,3-6H3/t8-/m0/s1/k10-1,11-2,12-8/f11-1,12-10/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_152309_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C2H5N3/c1-2-4(3)5(2)6-2/h1,3H2/b5-4+/k4-2,6-5/f6-2/r1",
+   "reversed": "AMChI=2S/C2H5N3/c1-2-4(3)5(2)6-2/h1,3H2/b5-4+/k4-2,6-5/f6-2/r0",
+   "mirrored": "AMChI=2S/C2H5N3/c1-2-4(3)5(2)6-2/h1,3H2/b5-4+/k4-2,6-5/f6-2/r1",
+   "reversed_mirrored": "AMChI=2S/C2H5N3/c1-2-4(3)5(2)6-2/h1,3H2/b5-4+/k4-2,6-5/f6-2/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_346780_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H12N2/c2-5-1-9-7(5)4-6(3)8-5/h4,6,8H,1H2,2-3H3/t5-,6-/m0/s1/k7-5,9-1/f9-7/r0",
+   "reversed": "AMChI=2S/C6H12N2/c2-5-1-9-7(5)4-6(3)8-5/h4,6,8H,1H2,2-3H3/t5-,6-/m0/s1/k7-5,9-1/f9-7/r1",
+   "mirrored": "AMChI=2S/C6H12N2/c2-5-1-9-7(5)4-6(3)8-5/h4,6,8H,1H2,2-3H3/t5-,6-/m1/s1/k7-5,9-1/f9-7/r0",
+   "reversed_mirrored": "AMChI=2S/C6H12N2/c2-5-1-9-7(5)4-6(3)8-5/h4,6,8H,1H2,2-3H3/t5-,6-/m1/s1/k7-5,9-1/f9-7/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_695933_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H9N3O/c3-7(8)4-2-5-1-9-6-4/h1,6,8H,2H2,3H3/b6-4-/k5-2,9-1/f9-6/r0",
+   "reversed": "AMChI=2S/C4H9N3O/c3-7(8)4-2-5-1-9-6-4/h1,6,8H,2H2,3H3/b6-4-/k5-2,9-1/f9-6/r1",
+   "mirrored": "AMChI=2S/C4H9N3O/c3-7(8)4-2-5-1-9-6-4/h1,6,8H,2H2,3H3/b6-4-/k5-2,9-1/f9-6/r0",
+   "reversed_mirrored": "AMChI=2S/C4H9N3O/c3-7(8)4-2-5-1-9-6-4/h1,6,8H,2H2,3H3/b6-4-/k5-2,9-1/f9-6/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_633987_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H14N4O/c1-3-4-6-11-10-5(2)7(9-5)12-8-4/h6-9H,3H2,1-2H3/b6-4+,8-4-/t5-,7-/m1/s1/k7-5,11-10,12-8/f11-6,12-7/r0",
+   "reversed": "AMChI=2S/C5H14N4O/c1-3-4-6-11-10-5(2)7(9-5)12-8-4/h6-9H,3H2,1-2H3/b6-4+,8-4-/t5-,7-/m1/s1/k7-5,11-10,12-8/f11-6,12-7/r1",
+   "mirrored": "AMChI=2S/C5H14N4O/c1-3-4-6-11-10-5(2)7(9-5)12-8-4/h6-9H,3H2,1-2H3/b6-4+,8-4-/t5-,7-/m0/s1/k7-5,11-10,12-8/f11-6,12-7/r0",
+   "reversed_mirrored": "AMChI=2S/C5H14N4O/c1-3-4-6-11-10-5(2)7(9-5)12-8-4/h6-9H,3H2,1-2H3/b6-4+,8-4-/t5-,7-/m0/s1/k7-5,11-10,12-8/f11-6,12-7/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_481360_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H11NO2/c1-4-7(2)5-3-6(5)8(4)10-9-4/h5-6H,3H2,1-2H3/t4-,5-,6+/m0/s1/k8-4,10-9/f10-8/r0",
+   "reversed": "AMChI=2S/C6H11NO2/c1-4-7(2)5-3-6(5)8(4)10-9-4/h5-6H,3H2,1-2H3/t4-,5-,6+/m0/s1/k8-4,10-9/f10-8/r1",
+   "mirrored": "AMChI=2S/C6H11NO2/c1-4-7(2)5-3-6(5)8(4)10-9-4/h5-6H,3H2,1-2H3/t4-,5-,6+/m1/s1/k8-4,10-9/f10-8/r0",
+   "reversed_mirrored": "AMChI=2S/C6H11NO2/c1-4-7(2)5-3-6(5)8(4)10-9-4/h5-6H,3H2,1-2H3/t4-,5-,6+/m1/s1/k8-4,10-9/f10-8/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_478444_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C2H6N2O3/c1-2(5)3(7)4-6-8-2/h4,7H,1H3/k3-2,8-6/f8-2/r0",
+   "reversed": "AMChI=2S/C2H6N2O3/c1-2(5)3(7)4-6-8-2/h4,7H,1H3/k3-2,8-6/f8-2/r1",
+   "mirrored": "AMChI=2S/C2H6N2O3/c1-2(5)3(7)4-6-8-2/h4,7H,1H3/k3-2,8-6/f8-2/r0",
+   "reversed_mirrored": "AMChI=2S/C2H6N2O3/c1-2(5)3(7)4-6-8-2/h4,7H,1H3/k3-2,8-6/f8-2/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_273063_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H5NO2/c2-5-4-8-3-1(7)6(3)5/h1,4H,2H3/k6-1/f3-1/r0",
+   "reversed": "AMChI=2S/C5H5NO2/c2-5-4-8-3-1(7)6(3)5/h1,4H,2H3/k6-1/f3-1/r1",
+   "mirrored": "AMChI=2S/C5H5NO2/c2-5-4-8-3-1(7)6(3)5/h1,4H,2H3/k6-1/f3-1/r0",
+   "reversed_mirrored": "AMChI=2S/C5H5NO2/c2-5-4-8-3-1(7)6(3)5/h1,4H,2H3/k6-1/f3-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_515431_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H12N2O/c2-6-4(9)1-5(7)8(4)3/h7-8H,1,6H2,2-3H3/b7-5-/k4-1,8-5/f8-4/r1",
+   "reversed": "AMChI=2S/C6H12N2O/c2-6-4(9)1-5(7)8(4)3/h7-8H,1,6H2,2-3H3/b7-5-/k4-1,8-5/f8-4/r0",
+   "mirrored": "AMChI=2S/C6H12N2O/c2-6-4(9)1-5(7)8(4)3/h7-8H,1,6H2,2-3H3/b7-5-/k4-1,8-5/f8-4/r1",
+   "reversed_mirrored": "AMChI=2S/C6H12N2O/c2-6-4(9)1-5(7)8(4)3/h7-8H,1,6H2,2-3H3/b7-5-/k4-1,8-5/f8-4/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_620496_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H8N2O2/c1-3-4(2,8)7(6)5(3)9/h8-9H,1-2,6H2/b7-5-/k7-4/f4-3/r1",
+   "reversed": "AMChI=2S/C5H8N2O2/c1-3-4(2,8)7(6)5(3)9/h8-9H,1-2,6H2/b7-5-/k7-4/f4-3/r0",
+   "mirrored": "AMChI=2S/C5H8N2O2/c1-3-4(2,8)7(6)5(3)9/h8-9H,1-2,6H2/b7-5-/k7-4/f4-3/r1",
+   "reversed_mirrored": "AMChI=2S/C5H8N2O2/c1-3-4(2,8)7(6)5(3)9/h8-9H,1-2,6H2/b7-5-/k7-4/f4-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_31299_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H6N2O/c1-3-2-5-4(3,7)6-5/h2,6-7H,1H3/t4-/m0/s1/k5-4/r1",
+   "reversed": "AMChI=2S/C4H6N2O/c1-3-2-5-4(3,7)6-5/h2,6-7H,1H3/t4-/m0/s1/k5-4/r0",
+   "mirrored": "AMChI=2S/C4H6N2O/c1-3-2-5-4(3,7)6-5/h2,6-7H,1H3/t4-/m1/s1/k5-4/r1",
+   "reversed_mirrored": "AMChI=2S/C4H6N2O/c1-3-2-5-4(3,7)6-5/h2,6-7H,1H3/t4-/m1/s1/k5-4/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_357416_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H12N2/c2-4-1(8-4)7(3)6-5-4/h4H,1,5H2,2-3H3/b7-6+/t4-/m1/s1/k7-1,8-4/f4-1,8-1/r1",
+   "reversed": "AMChI=2S/C5H12N2/c2-4-1(8-4)7(3)6-5-4/h4H,1,5H2,2-3H3/b7-6+/t4-/m1/s1/k7-1,8-4/f4-1,8-1/r0",
+   "mirrored": "AMChI=2S/C5H12N2/c2-4-1(8-4)7(3)6-5-4/h4H,1,5H2,2-3H3/b7-6+/t4-/m0/s1/k7-1,8-4/f4-1,8-1/r1",
+   "reversed_mirrored": "AMChI=2S/C5H12N2/c2-4-1(8-4)7(3)6-5-4/h4H,1,5H2,2-3H3/b7-6+/t4-/m0/s1/k7-1,8-4/f4-1,8-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_473202_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/CH7N3.H4N4/c1-3-4-2;4-3-1-2-5-3/h3-4H,2H2,1H3;3H,4H2/t3-,4+;/m1./s1/k;3-1,5-2/f;5-3/r;0",
+   "reversed": "AMChI=2S/CH7N3.H4N4/c1-3-4-2;4-3-1-2-5-3/h3-4H,2H2,1H3;3H,4H2/t3-,4+;/m1./s1/k;3-1,5-2/f;5-3/r;1",
+   "mirrored": "AMChI=2S/CH7N3.H4N4/c1-3-4-2;4-3-1-2-5-3/h3-4H,2H2,1H3;3H,4H2/t3-,4+;/m0./s1/k;3-1,5-2/f;5-3/r;0",
+   "reversed_mirrored": "AMChI=2S/CH7N3.H4N4/c1-3-4-2;4-3-1-2-5-3/h3-4H,2H2,1H3;3H,4H2/t3-,4+;/m0./s1/k;3-1,5-2/f;5-3/r;1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_242702_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H5NO4/c5-2-1-9-6-3(4-8)7-2/h4,8H,1H2/k7-2,9-1/f9-6/r1",
+   "reversed": "AMChI=2S/C3H5NO4/c5-2-1-9-6-3(4-8)7-2/h4,8H,1H2/k7-2,9-1/f9-6/r0",
+   "mirrored": "AMChI=2S/C3H5NO4/c5-2-1-9-6-3(4-8)7-2/h4,8H,1H2/k7-2,9-1/f9-6/r1",
+   "reversed_mirrored": "AMChI=2S/C3H5NO4/c5-2-1-9-6-3(4-8)7-2/h4,8H,1H2/k7-2,9-1/f9-6/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_43401_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H11N/c1-3-6(4-5-6)8-7(3)2/h7H,1,4-5H2,2H3/k7-3,8-6/f8-7/r1",
+   "reversed": "AMChI=2S/C6H11N/c1-3-6(4-5-6)8-7(3)2/h7H,1,4-5H2,2H3/k7-3,8-6/f8-7/r0",
+   "mirrored": "AMChI=2S/C6H11N/c1-3-6(4-5-6)8-7(3)2/h7H,1,4-5H2,2H3/k7-3,8-6/f8-7/r1",
+   "reversed_mirrored": "AMChI=2S/C6H11N/c1-3-6(4-5-6)8-7(3)2/h7H,1,4-5H2,2H3/k7-3,8-6/f8-7/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_200078_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H11N3O/c4-3-1(6)8(5,7)2(3)9/h2H,3,7H2,4-5H3/k3-2,8-1/f3-1,8-2/r1",
+   "reversed": "AMChI=2S/C5H11N3O/c4-3-1(6)8(5,7)2(3)9/h2H,3,7H2,4-5H3/k3-2,8-1/f3-1,8-2/r0",
+   "mirrored": "AMChI=2S/C5H11N3O/c4-3-1(6)8(5,7)2(3)9/h2H,3,7H2,4-5H3/k3-2,8-1/f3-1,8-2/r1",
+   "reversed_mirrored": "AMChI=2S/C5H11N3O/c4-3-1(6)8(5,7)2(3)9/h2H,3,7H2,4-5H3/k3-2,8-1/f3-1,8-2/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_448099_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/CH7N5O2/c3-5-1(7)6(4)2(5)8/h2,7-8H,3-4H2/b5-1-,6-1-/t2-/k6-2/f5-2/r1",
+   "reversed": "AMChI=2S/CH7N5O2/c3-5-1(7)6(4)2(5)8/h2,7-8H,3-4H2/b5-1-,6-1-/t2-/k6-2/f5-2/r0",
+   "mirrored": "AMChI=2S/CH7N5O2/c3-5-1(7)6(4)2(5)8/h2,7-8H,3-4H2/b5-1-,6-1-/t2-/k6-2/f5-2/r0",
+   "reversed_mirrored": "AMChI=2S/CH7N5O2/c3-5-1(7)6(4)2(5)8/h2,7-8H,3-4H2/b5-1-,6-1-/t2-/k6-2/f5-2/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_237480_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H9N3/c2-1-4(6,7)3-5-1/h1,3,5H,2,6-7H2/b5-3+/k5-1/f4-1/r0",
+   "reversed": "AMChI=2S/C4H9N3/c2-1-4(6,7)3-5-1/h1,3,5H,2,6-7H2/b5-3+/k5-1/f4-1/r1",
+   "mirrored": "AMChI=2S/C4H9N3/c2-1-4(6,7)3-5-1/h1,3,5H,2,6-7H2/b5-3+/k5-1/f4-1/r0",
+   "reversed_mirrored": "AMChI=2S/C4H9N3/c2-1-4(6,7)3-5-1/h1,3,5H,2,6-7H2/b5-3+/k5-1/f4-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_233389_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H5N3O/c4-1-2(5)6-8-7-3-1/h3-6H/b4-1-,5-2+/k2-1,8-6/f8-7/r1",
+   "reversed": "AMChI=2S/C3H5N3O/c4-1-2(5)6-8-7-3-1/h3-6H/b4-1-,5-2+/k2-1,8-6/f8-7/r0",
+   "mirrored": "AMChI=2S/C3H5N3O/c4-1-2(5)6-8-7-3-1/h3-6H/b4-1-,5-2+/k2-1,8-6/f8-7/r1",
+   "reversed_mirrored": "AMChI=2S/C3H5N3O/c4-1-2(5)6-8-7-3-1/h3-6H/b4-1-,5-2+/k2-1,8-6/f8-7/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_450219_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H12N2O/c1-5(3)7(4)6-2-8-9-6/h8H,1-2H2,3-4H3/t6-/m0/s1/k8-2,9-6/f9-8/r1",
+   "reversed": "AMChI=2S/C5H12N2O/c1-5(3)7(4)6-2-8-9-6/h8H,1-2H2,3-4H3/t6-/m0/s1/k8-2,9-6/f9-8/r0",
+   "mirrored": "AMChI=2S/C5H12N2O/c1-5(3)7(4)6-2-8-9-6/h8H,1-2H2,3-4H3/t6-/m1/s1/k8-2,9-6/f9-8/r1",
+   "reversed_mirrored": "AMChI=2S/C5H12N2O/c1-5(3)7(4)6-2-8-9-6/h8H,1-2H2,3-4H3/t6-/m1/s1/k8-2,9-6/f9-8/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_11824_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H14N2/c2-5(3)1-9-7-8-6(5)4/h6-7H,2H2,1,3-4H3/b8-6+,8-7+/t6-/m1/s1/k5-1,9-7/f6-5,9-1/r0",
+   "reversed": "AMChI=2S/C6H14N2/c2-5(3)1-9-7-8-6(5)4/h6-7H,2H2,1,3-4H3/b8-6+,8-7+/t6-/m1/s1/k5-1,9-7/f6-5,9-1/r1",
+   "mirrored": "AMChI=2S/C6H14N2/c2-5(3)1-9-7-8-6(5)4/h6-7H,2H2,1,3-4H3/b8-6+,8-7+/t6-/m0/s1/k5-1,9-7/f6-5,9-1/r0",
+   "reversed_mirrored": "AMChI=2S/C6H14N2/c2-5(3)1-9-7-8-6(5)4/h6-7H,2H2,1,3-4H3/b8-6+,8-7+/t6-/m0/s1/k5-1,9-7/f6-5,9-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_142726_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H13N3/c1-3(6)4(2)7-5-8-3/h3-5,7H,6H2,1-2H3/t3-,4-,5+/m0/s1/k4-3,8-5/f8-3/r0",
+   "reversed": "AMChI=2S/C4H13N3/c1-3(6)4(2)7-5-8-3/h3-5,7H,6H2,1-2H3/t3-,4-,5+/m0/s1/k4-3,8-5/f8-3/r1",
+   "mirrored": "AMChI=2S/C4H13N3/c1-3(6)4(2)7-5-8-3/h3-5,7H,6H2,1-2H3/t3-,4-,5+/m1/s1/k4-3,8-5/f8-3/r0",
+   "reversed_mirrored": "AMChI=2S/C4H13N3/c1-3(6)4(2)7-5-8-3/h3-5,7H,6H2,1-2H3/t3-,4-,5+/m1/s1/k4-3,8-5/f8-3/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_4470_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N2/c2-1-5(3)6(4)7-1/h1,6H,2-3H2,4H3/k5-1,7-6/f6-5,7-1/r0",
+   "reversed": "AMChI=2S/C4H10N2/c2-1-5(3)6(4)7-1/h1,6H,2-3H2,4H3/k5-1,7-6/f6-5,7-1/r1",
+   "mirrored": "AMChI=2S/C4H10N2/c2-1-5(3)6(4)7-1/h1,6H,2-3H2,4H3/k5-1,7-6/f6-5,7-1/r0",
+   "reversed_mirrored": "AMChI=2S/C4H10N2/c2-1-5(3)6(4)7-1/h1,6H,2-3H2,4H3/k5-1,7-6/f6-5,7-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_422953_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/CH11N7/c7-8-1-3-10-6-5-2-9-4-1/h3-6,8H,2,7H2/b3-1+,4-1+/t5-,6+/m0/s1/k5-2,9-4,10-6/f9-2,10-3/r1",
+   "reversed": "AMChI=2S/CH11N7/c7-8-1-3-10-6-5-2-9-4-1/h3-6,8H,2,7H2/b3-1+,4-1+/t5-,6+/m0/s1/k5-2,9-4,10-6/f9-2,10-3/r0",
+   "mirrored": "AMChI=2S/CH11N7/c7-8-1-3-10-6-5-2-9-4-1/h3-6,8H,2,7H2/b3-1+,4-1+/t5-,6+/m1/s1/k5-2,9-4,10-6/f9-2,10-3/r1",
+   "reversed_mirrored": "AMChI=2S/CH11N7/c7-8-1-3-10-6-5-2-9-4-1/h3-6,8H,2,7H2/b3-1+,4-1+/t5-,6+/m1/s1/k5-2,9-4,10-6/f9-2,10-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_652475_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H11N3O/c2-1-3(6,5-1)4(7)8/h5,8H,1,6-7H2,2H3/b4-3+,5-3+/k4-3,5-1/f3-1/r0",
+   "reversed": "AMChI=2S/C4H11N3O/c2-1-3(6,5-1)4(7)8/h5,8H,1,6-7H2,2H3/b4-3+,5-3+/k4-3,5-1/f3-1/r1",
+   "mirrored": "AMChI=2S/C4H11N3O/c2-1-3(6,5-1)4(7)8/h5,8H,1,6-7H2,2H3/b4-3+,5-3+/k4-3,5-1/f3-1/r0",
+   "reversed_mirrored": "AMChI=2S/C4H11N3O/c2-1-3(6,5-1)4(7)8/h5,8H,1,6-7H2,2H3/b4-3+,5-3+/k4-3,5-1/f3-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_600970_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H7N3/c1-6-5-3-7-4(5,2)8-5/h3,8H,1H2,2H3/t4-,5-/m0/s1/k5-4/r0",
+   "reversed": "AMChI=2S/C5H7N3/c1-6-5-3-7-4(5,2)8-5/h3,8H,1H2,2H3/t4-,5-/m0/s1/k5-4/r1",
+   "mirrored": "AMChI=2S/C5H7N3/c1-6-5-3-7-4(5,2)8-5/h3,8H,1H2,2H3/t4-,5-/m1/s1/k5-4/r0",
+   "reversed_mirrored": "AMChI=2S/C5H7N3/c1-6-5-3-7-4(5,2)8-5/h3,8H,1H2,2H3/t4-,5-/m1/s1/k5-4/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_29097_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N2O/c1-4-3(7,8-4)6(4,2)5/h4H,5H2,1-2H3/t4-/m1/s1/k6-3,8-4/f6-4,8-3/r1",
+   "reversed": "AMChI=2S/C4H10N2O/c1-4-3(7,8-4)6(4,2)5/h4H,5H2,1-2H3/t4-/m1/s1/k6-3,8-4/f6-4,8-3/r0",
+   "mirrored": "AMChI=2S/C4H10N2O/c1-4-3(7,8-4)6(4,2)5/h4H,5H2,1-2H3/t4-/m0/s1/k6-3,8-4/f6-4,8-3/r1",
+   "reversed_mirrored": "AMChI=2S/C4H10N2O/c1-4-3(7,8-4)6(4,2)5/h4H,5H2,1-2H3/t4-/m0/s1/k6-3,8-4/f6-4,8-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_360916_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H8N2O2/c1-5-3(6)4(8,9)7(5)2/h6,9H,1-2H3/b6-3+,7-5+/k7-4/f4-3/r1",
+   "reversed": "AMChI=2S/C5H8N2O2/c1-5-3(6)4(8,9)7(5)2/h6,9H,1-2H3/b6-3+,7-5+/k7-4/f4-3/r0",
+   "mirrored": "AMChI=2S/C5H8N2O2/c1-5-3(6)4(8,9)7(5)2/h6,9H,1-2H3/b6-3+,7-5+/k7-4/f4-3/r1",
+   "reversed_mirrored": "AMChI=2S/C5H8N2O2/c1-5-3(6)4(8,9)7(5)2/h6,9H,1-2H3/b6-3+,7-5+/k7-4/f4-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_108733_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C2H4N4/c5-6-2-3-7-1-4-6/h1H,5H2/k6-4,7-1/f7-3/r0",
+   "reversed": "AMChI=2S/C2H4N4/c5-6-2-3-7-1-4-6/h1H,5H2/k6-4,7-1/f7-3/r1",
+   "mirrored": "AMChI=2S/C2H4N4/c5-6-2-3-7-1-4-6/h1H,5H2/k6-4,7-1/f7-3/r0",
+   "reversed_mirrored": "AMChI=2S/C2H4N4/c5-6-2-3-7-1-4-6/h1H,5H2/k6-4,7-1/f7-3/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_47231_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H7NO/c1-4-2-3(5)6-4/h2-3,5H,1H3/b3-2+,4-2+/t3-/m0/s1/k6-4/f6-3/r0",
+   "reversed": "AMChI=2S/C3H7NO/c1-4-2-3(5)6-4/h2-3,5H,1H3/b3-2+,4-2+/t3-/m0/s1/k6-4/f6-3/r1",
+   "mirrored": "AMChI=2S/C3H7NO/c1-4-2-3(5)6-4/h2-3,5H,1H3/b3-2+,4-2+/t3-/m1/s1/k6-4/f6-3/r0",
+   "reversed_mirrored": "AMChI=2S/C3H7NO/c1-4-2-3(5)6-4/h2-3,5H,1H3/b3-2+,4-2+/t3-/m1/s1/k6-4/f6-3/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_147459_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H4N2O/c2-5-1(4)6-3-5/h3H,2H3/b5-3+/k6-1/f5-1/r1",
+   "reversed": "AMChI=2S/C3H4N2O/c2-5-1(4)6-3-5/h3H,2H3/b5-3+/k6-1/f5-1/r0",
+   "mirrored": "AMChI=2S/C3H4N2O/c2-5-1(4)6-3-5/h3H,2H3/b5-3+/k6-1/f5-1/r1",
+   "reversed_mirrored": "AMChI=2S/C3H4N2O/c2-5-1(4)6-3-5/h3H,2H3/b5-3+/k6-1/f5-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_138598_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H6N2O2/c1-3-2(5)4(3,7-3)6-8-2/h3,5-6H,1H3/b5-2-/t3-,4-/m1/s1/k4-2,7-3/f3-2/r0",
+   "reversed": "AMChI=2S/C4H6N2O2/c1-3-2(5)4(3,7-3)6-8-2/h3,5-6H,1H3/b5-2-/t3-,4-/m1/s1/k4-2,7-3/f3-2/r1",
+   "mirrored": "AMChI=2S/C4H6N2O2/c1-3-2(5)4(3,7-3)6-8-2/h3,5-6H,1H3/b5-2-/t3-,4-/m0/s1/k4-2,7-3/f3-2/r0",
+   "reversed_mirrored": "AMChI=2S/C4H6N2O2/c1-3-2(5)4(3,7-3)6-8-2/h3,5-6H,1H3/b5-2-/t3-,4-/m0/s1/k4-2,7-3/f3-2/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_230285_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H7N3O/c1-4-2-5(4)8-7-3(4)6/h2,7H,6H2,1H3/t4-/m0/s1/k8-5/f5-4/r1",
+   "reversed": "AMChI=2S/C4H7N3O/c1-4-2-5(4)8-7-3(4)6/h2,7H,6H2,1H3/t4-/m0/s1/k8-5/f5-4/r0",
+   "mirrored": "AMChI=2S/C4H7N3O/c1-4-2-5(4)8-7-3(4)6/h2,7H,6H2,1H3/t4-/m1/s1/k8-5/f5-4/r1",
+   "reversed_mirrored": "AMChI=2S/C4H7N3O/c1-4-2-5(4)8-7-3(4)6/h2,7H,6H2,1H3/t4-/m1/s1/k8-5/f5-4/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_675739_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H10N4/c3-6-1(5)4-2-7-6/h1,5,7H,2,4H2,3H3/b5-1-/k4-2,6-1/f4-1/r1",
+   "reversed": "AMChI=2S/C3H10N4/c3-6-1(5)4-2-7-6/h1,5,7H,2,4H2,3H3/b5-1-/k4-2,6-1/f4-1/r0",
+   "mirrored": "AMChI=2S/C3H10N4/c3-6-1(5)4-2-7-6/h1,5,7H,2,4H2,3H3/b5-1-/k4-2,6-1/f4-1/r1",
+   "reversed_mirrored": "AMChI=2S/C3H10N4/c3-6-1(5)4-2-7-6/h1,5,7H,2,4H2,3H3/b5-1-/k4-2,6-1/f4-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_561206_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H9N3/c1-3-4(6)7-2-5-3/h2-3,5,7H,6H2,1H3/b4-3+,5-2+/t3-/m0/s1/k5-3/r1",
+   "reversed": "AMChI=2S/C4H9N3/c1-3-4(6)7-2-5-3/h2-3,5,7H,6H2,1H3/b4-3+,5-2+/t3-/m0/s1/k5-3/r0",
+   "mirrored": "AMChI=2S/C4H9N3/c1-3-4(6)7-2-5-3/h2-3,5,7H,6H2,1H3/b4-3+,5-2+/t3-/m1/s1/k5-3/r1",
+   "reversed_mirrored": "AMChI=2S/C4H9N3/c1-3-4(6)7-2-5-3/h2-3,5,7H,6H2,1H3/b4-3+,5-2+/t3-/m1/s1/k5-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_82572_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H9NO3/c1-3(6)4(2,7)8-5-3/h5,7H,1-2H3/k4-3,8-5/f5-3,8-4/r0",
+   "reversed": "AMChI=2S/C3H9NO3/c1-3(6)4(2,7)8-5-3/h5,7H,1-2H3/k4-3,8-5/f5-3,8-4/r1",
+   "mirrored": "AMChI=2S/C3H9NO3/c1-3(6)4(2,7)8-5-3/h5,7H,1-2H3/k4-3,8-5/f5-3,8-4/r0",
+   "reversed_mirrored": "AMChI=2S/C3H9NO3/c1-3(6)4(2,7)8-5-3/h5,7H,1-2H3/k4-3,8-5/f5-3,8-4/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_609372_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H11N3O/c1-5-8-4(9-5)6-7(2)3/h4,6H,1H2,2-3H3/t4-/m0/s1/k8-5,9-4/f9-5/r0",
+   "reversed": "AMChI=2S/C4H11N3O/c1-5-8-4(9-5)6-7(2)3/h4,6H,1H2,2-3H3/t4-/m0/s1/k8-5,9-4/f9-5/r1",
+   "mirrored": "AMChI=2S/C4H11N3O/c1-5-8-4(9-5)6-7(2)3/h4,6H,1H2,2-3H3/t4-/m1/s1/k8-5,9-4/f9-5/r0",
+   "reversed_mirrored": "AMChI=2S/C4H11N3O/c1-5-8-4(9-5)6-7(2)3/h4,6H,1H2,2-3H3/t4-/m1/s1/k8-5,9-4/f9-5/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_298086_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H10N2O/c2-5(7)6-8(3)4-1-9-6/h4,7H,1H2,2-3H3/b6-5+,7-5+/k9-1/r1",
+   "reversed": "AMChI=2S/C6H10N2O/c2-5(7)6-8(3)4-1-9-6/h4,7H,1H2,2-3H3/b6-5+,7-5+/k9-1/r0",
+   "mirrored": "AMChI=2S/C6H10N2O/c2-5(7)6-8(3)4-1-9-6/h4,7H,1H2,2-3H3/b6-5+,7-5+/k9-1/r1",
+   "reversed_mirrored": "AMChI=2S/C6H10N2O/c2-5(7)6-8(3)4-1-9-6/h4,7H,1H2,2-3H3/b6-5+,7-5+/k9-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_616813_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H7N3O2/c4-1-2(7)3(8)6(1)5/h1,7-8H,4-5H2/b2-1-,6-3-/t1-/m0/s1/k6-1/r1",
+   "reversed": "AMChI=2S/C3H7N3O2/c4-1-2(7)3(8)6(1)5/h1,7-8H,4-5H2/b2-1-,6-3-/t1-/m0/s1/k6-1/r0",
+   "mirrored": "AMChI=2S/C3H7N3O2/c4-1-2(7)3(8)6(1)5/h1,7-8H,4-5H2/b2-1-,6-3-/t1-/m1/s1/k6-1/r1",
+   "reversed_mirrored": "AMChI=2S/C3H7N3O2/c4-1-2(7)3(8)6(1)5/h1,7-8H,4-5H2/b2-1-,6-3-/t1-/m1/s1/k6-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_598360_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H7NO/c2-4-5-6-1-3-7-5/h2,6H,3H2,1H3/b6-5-/k6-1/f3-1/r0",
+   "reversed": "AMChI=2S/C5H7NO/c2-4-5-6-1-3-7-5/h2,6H,3H2,1H3/b6-5-/k6-1/f3-1/r1",
+   "mirrored": "AMChI=2S/C5H7NO/c2-4-5-6-1-3-7-5/h2,6H,3H2,1H3/b6-5-/k6-1/f3-1/r0",
+   "reversed_mirrored": "AMChI=2S/C5H7NO/c2-4-5-6-1-3-7-5/h2,6H,3H2,1H3/b6-5-/k6-1/f3-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_176857_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H12N2O2/c2-4-5-9-1-3(6)8-10-7-4/h3,5H,6H2,1-2H3/b5-4-/t3-/m1/s1/k3-1,9-5,10-8/f9-1,10-7/r1",
+   "reversed": "AMChI=2S/C4H12N2O2/c2-4-5-9-1-3(6)8-10-7-4/h3,5H,6H2,1-2H3/b5-4-/t3-/m1/s1/k3-1,9-5,10-8/f9-1,10-7/r0",
+   "mirrored": "AMChI=2S/C4H12N2O2/c2-4-5-9-1-3(6)8-10-7-4/h3,5H,6H2,1-2H3/b5-4-/t3-/m0/s1/k3-1,9-5,10-8/f9-1,10-7/r1",
+   "reversed_mirrored": "AMChI=2S/C4H12N2O2/c2-4-5-9-1-3(6)8-10-7-4/h3,5H,6H2,1-2H3/b5-4-/t3-/m0/s1/k3-1,9-5,10-8/f9-1,10-7/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_597361_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N2O3/c1-5-4(9,8-10-5)3(7)6-2/h5-6,9H,1-2H3/t4-,5-/m1/s1/k5-4,10-8/f10-5/r0",
+   "reversed": "AMChI=2S/C4H10N2O3/c1-5-4(9,8-10-5)3(7)6-2/h5-6,9H,1-2H3/t4-,5-/m1/s1/k5-4,10-8/f10-5/r1",
+   "mirrored": "AMChI=2S/C4H10N2O3/c1-5-4(9,8-10-5)3(7)6-2/h5-6,9H,1-2H3/t4-,5-/m0/s1/k5-4,10-8/f10-5/r0",
+   "reversed_mirrored": "AMChI=2S/C4H10N2O3/c1-5-4(9,8-10-5)3(7)6-2/h5-6,9H,1-2H3/t4-,5-/m0/s1/k5-4,10-8/f10-5/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_123600_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H11N/c3-2-1-6(4)5-7-8-2/h3,5-7H,1,4H3/b6-5-,7-5+/t6-/m1/s1/k2-1,8-7/f6-1,8-2/r1",
+   "reversed": "AMChI=2S/C6H11N/c3-2-1-6(4)5-7-8-2/h3,5-7H,1,4H3/b6-5-,7-5+/t6-/m1/s1/k2-1,8-7/f6-1,8-2/r0",
+   "mirrored": "AMChI=2S/C6H11N/c3-2-1-6(4)5-7-8-2/h3,5-7H,1,4H3/b6-5-,7-5+/t6-/m0/s1/k2-1,8-7/f6-1,8-2/r1",
+   "reversed_mirrored": "AMChI=2S/C6H11N/c3-2-1-6(4)5-7-8-2/h3,5-7H,1,4H3/b6-5-,7-5+/t6-/m0/s1/k2-1,8-7/f6-1,8-2/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_661921_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H13N3O/c3-4(5)7(8)9-1-2-6-10-7/h5-6,8H,2H2,1,3H3/b5-4+/t6-/m0/s1/k2-1,9-7,10-6/f9-1,10-7/r1",
+   "reversed": "AMChI=2S/C4H13N3O/c3-4(5)7(8)9-1-2-6-10-7/h5-6,8H,2H2,1,3H3/b5-4+/t6-/m0/s1/k2-1,9-7,10-6/f9-1,10-7/r0",
+   "mirrored": "AMChI=2S/C4H13N3O/c3-4(5)7(8)9-1-2-6-10-7/h5-6,8H,2H2,1,3H3/b5-4+/t6-/m1/s1/k2-1,9-7,10-6/f9-1,10-7/r1",
+   "reversed_mirrored": "AMChI=2S/C4H13N3O/c3-4(5)7(8)9-1-2-6-10-7/h5-6,8H,2H2,1,3H3/b5-4+/t6-/m1/s1/k2-1,9-7,10-6/f9-1,10-7/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_622549_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H12N2O2/c1-4(9)3(8)7-6-5(4)2/h3-5,7-9H,1-2H3/b6-5-/t3-,4-,5+/m0/s1/k5-4/f4-3/r1",
+   "reversed": "AMChI=2S/C5H12N2O2/c1-4(9)3(8)7-6-5(4)2/h3-5,7-9H,1-2H3/b6-5-/t3-,4-,5+/m0/s1/k5-4/f4-3/r0",
+   "mirrored": "AMChI=2S/C5H12N2O2/c1-4(9)3(8)7-6-5(4)2/h3-5,7-9H,1-2H3/b6-5-/t3-,4-,5+/m1/s1/k5-4/f4-3/r1",
+   "reversed_mirrored": "AMChI=2S/C5H12N2O2/c1-4(9)3(8)7-6-5(4)2/h3-5,7-9H,1-2H3/b6-5-/t3-,4-,5+/m1/s1/k5-4/f4-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_378285_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H7NO/c2-1-3(7)6(5)4-1/h2-3H,4H2,5H3/k4-1,6-3/f3-1/r0",
+   "reversed": "AMChI=2S/C5H7NO/c2-1-3(7)6(5)4-1/h2-3H,4H2,5H3/k4-1,6-3/f3-1/r1",
+   "mirrored": "AMChI=2S/C5H7NO/c2-1-3(7)6(5)4-1/h2-3H,4H2,5H3/k4-1,6-3/f3-1/r0",
+   "reversed_mirrored": "AMChI=2S/C5H7NO/c2-1-3(7)6(5)4-1/h2-3H,4H2,5H3/k4-1,6-3/f3-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_523485_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H11N5/c2-8-4(6)1(5)9(4,3)7/h5H,6-7H2,2-3H3/b5-1-,8-4-/k4-1,9-1/f9-4/r0",
+   "reversed": "AMChI=2S/C4H11N5/c2-8-4(6)1(5)9(4,3)7/h5H,6-7H2,2-3H3/b5-1-,8-4-/k4-1,9-1/f9-4/r1",
+   "mirrored": "AMChI=2S/C4H11N5/c2-8-4(6)1(5)9(4,3)7/h5H,6-7H2,2-3H3/b5-1-,8-4-/k4-1,9-1/f9-4/r0",
+   "reversed_mirrored": "AMChI=2S/C4H11N5/c2-8-4(6)1(5)9(4,3)7/h5H,6-7H2,2-3H3/b5-1-,8-4-/k4-1,9-1/f9-4/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_358571_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H9NO3/c2-4-1(5)3(6,7)8-4/h1,3-4,6-7H,2H3/k3-1,8-4/f4-1,8-3/r1",
+   "reversed": "AMChI=2S/C3H9NO3/c2-4-1(5)3(6,7)8-4/h1,3-4,6-7H,2H3/k3-1,8-4/f4-1,8-3/r0",
+   "mirrored": "AMChI=2S/C3H9NO3/c2-4-1(5)3(6,7)8-4/h1,3-4,6-7H,2H3/k3-1,8-4/f4-1,8-3/r1",
+   "reversed_mirrored": "AMChI=2S/C3H9NO3/c2-4-1(5)3(6,7)8-4/h1,3-4,6-7H,2H3/k3-1,8-4/f4-1,8-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_223146_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N2O2/c1-4(8)2(6)3(7)5-10-9-4/h5,7-8H,6H2,1H3/b4-2+,5-3-/t4-/m0/s1/k9-4,10-5/f10-9/r0",
+   "reversed": "AMChI=2S/C4H10N2O2/c1-4(8)2(6)3(7)5-10-9-4/h5,7-8H,6H2,1H3/b4-2+,5-3-/t4-/m0/s1/k9-4,10-5/f10-9/r1",
+   "mirrored": "AMChI=2S/C4H10N2O2/c1-4(8)2(6)3(7)5-10-9-4/h5,7-8H,6H2,1H3/b4-2+,5-3-/t4-/m1/s1/k9-4,10-5/f10-9/r0",
+   "reversed_mirrored": "AMChI=2S/C4H10N2O2/c1-4(8)2(6)3(7)5-10-9-4/h5,7-8H,6H2,1H3/b4-2+,5-3-/t4-/m1/s1/k9-4,10-5/f10-9/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_90072_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H11N3O/c1-4-5-3(8)2(7,9)6-5/h3,6H,4,7-8H2,1H3/b5-3+,6-5+/t3-/m0/s1/k6-2/f3-2/r0",
+   "reversed": "AMChI=2S/C5H11N3O/c1-4-5-3(8)2(7,9)6-5/h3,6H,4,7-8H2,1H3/b5-3+,6-5+/t3-/m0/s1/k6-2/f3-2/r1",
+   "mirrored": "AMChI=2S/C5H11N3O/c1-4-5-3(8)2(7,9)6-5/h3,6H,4,7-8H2,1H3/b5-3+,6-5+/t3-/m1/s1/k6-2/f3-2/r0",
+   "reversed_mirrored": "AMChI=2S/C5H11N3O/c1-4-5-3(8)2(7,9)6-5/h3,6H,4,7-8H2,1H3/b5-3+,6-5+/t3-/m1/s1/k6-2/f3-2/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_368309_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H11N3/c2-1-6(7)5(3)9(1,4)8/h2,6H,3,7-8H2,4H3/t6-/m1/s1/k6-1,9-5/f9-1/r0",
+   "reversed": "AMChI=2S/C6H11N3/c2-1-6(7)5(3)9(1,4)8/h2,6H,3,7-8H2,4H3/t6-/m1/s1/k6-1,9-5/f9-1/r1",
+   "mirrored": "AMChI=2S/C6H11N3/c2-1-6(7)5(3)9(1,4)8/h2,6H,3,7-8H2,4H3/t6-/m0/s1/k6-1,9-5/f9-1/r0",
+   "reversed_mirrored": "AMChI=2S/C6H11N3/c2-1-6(7)5(3)9(1,4)8/h2,6H,3,7-8H2,4H3/t6-/m0/s1/k6-1,9-5/f9-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_427844_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H13N3O/c1-4(8)7(3,6)10-5-2-9-4/h5,8H,1-2,6H2,3H3/t5-/m1/s1/k7-4,9-2,10-5/f9-4,10-7/r0",
+   "reversed": "AMChI=2S/C4H13N3O/c1-4(8)7(3,6)10-5-2-9-4/h5,8H,1-2,6H2,3H3/t5-/m1/s1/k7-4,9-2,10-5/f9-4,10-7/r1",
+   "mirrored": "AMChI=2S/C4H13N3O/c1-4(8)7(3,6)10-5-2-9-4/h5,8H,1-2,6H2,3H3/t5-/m0/s1/k7-4,9-2,10-5/f9-4,10-7/r0",
+   "reversed_mirrored": "AMChI=2S/C4H13N3O/c1-4(8)7(3,6)10-5-2-9-4/h5,8H,1-2,6H2,3H3/t5-/m0/s1/k7-4,9-2,10-5/f9-4,10-7/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_488611_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H13N3O/c1-5-6-4(7,9)8(5,2)3/h5-6H,7H2,1-3H3/b6-5+/t5-/m1/s1/k6-4,8-5/f8-4/r1",
+   "reversed": "AMChI=2S/C5H13N3O/c1-5-6-4(7,9)8(5,2)3/h5-6H,7H2,1-3H3/b6-5+/t5-/m1/s1/k6-4,8-5/f8-4/r0",
+   "mirrored": "AMChI=2S/C5H13N3O/c1-5-6-4(7,9)8(5,2)3/h5-6H,7H2,1-3H3/b6-5+/t5-/m0/s1/k6-4,8-5/f8-4/r1",
+   "reversed_mirrored": "AMChI=2S/C5H13N3O/c1-5-6-4(7,9)8(5,2)3/h5-6H,7H2,1-3H3/b6-5+/t5-/m0/s1/k6-4,8-5/f8-4/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_166037_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H11N3/c1-5(2)7(3)4(6)8-5/h6-7H,1-3H3/b6-4-/k7-5/f7-4/r1",
+   "reversed": "AMChI=2S/C5H11N3/c1-5(2)7(3)4(6)8-5/h6-7H,1-3H3/b6-4-/k7-5/f7-4/r0",
+   "mirrored": "AMChI=2S/C5H11N3/c1-5(2)7(3)4(6)8-5/h6-7H,1-3H3/b6-4-/k7-5/f7-4/r1",
+   "reversed_mirrored": "AMChI=2S/C5H11N3/c1-5(2)7(3)4(6)8-5/h6-7H,1-3H3/b6-4-/k7-5/f7-4/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_239436_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H12N4/c1-7(2)4(6)5(7)8(4)3/h5H,6H2,1-3H3/t4-,8+/m0/s1/k7-4,8-5/f7-5/r1",
+   "reversed": "AMChI=2S/C4H12N4/c1-7(2)4(6)5(7)8(4)3/h5H,6H2,1-3H3/t4-,8+/m0/s1/k7-4,8-5/f7-5/r0",
+   "mirrored": "AMChI=2S/C4H12N4/c1-7(2)4(6)5(7)8(4)3/h5H,6H2,1-3H3/t4-,8+/m1/s1/k7-4,8-5/f7-5/r1",
+   "reversed_mirrored": "AMChI=2S/C4H12N4/c1-7(2)4(6)5(7)8(4)3/h5H,6H2,1-3H3/t4-,8+/m1/s1/k7-4,8-5/f7-5/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_57753_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C2H9N5/c1-2(3)7-4-8-9-6(7)5/h3-4H,5H2,1H3/b3-2-/t4-,6+/m1/s1/k8-4,9-6/f9-8/r1",
+   "reversed": "AMChI=2S/C2H9N5/c1-2(3)7-4-8-9-6(7)5/h3-4H,5H2,1H3/b3-2-/t4-,6+/m1/s1/k8-4,9-6/f9-8/r0",
+   "mirrored": "AMChI=2S/C2H9N5/c1-2(3)7-4-8-9-6(7)5/h3-4H,5H2,1H3/b3-2-/t4-,6+/m0/s1/k8-4,9-6/f9-8/r1",
+   "reversed_mirrored": "AMChI=2S/C2H9N5/c1-2(3)7-4-8-9-6(7)5/h3-4H,5H2,1H3/b3-2-/t4-,6+/m0/s1/k8-4,9-6/f9-8/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_74862_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H8N2O/c2-4-3(5)1-6(4)7/h5,7H,1-2H3/b5-3+,6-4+/k6-1/f3-1/r1",
+   "reversed": "AMChI=2S/C4H8N2O/c2-4-3(5)1-6(4)7/h5,7H,1-2H3/b5-3+,6-4+/k6-1/f3-1/r0",
+   "mirrored": "AMChI=2S/C4H8N2O/c2-4-3(5)1-6(4)7/h5,7H,1-2H3/b5-3+,6-4+/k6-1/f3-1/r1",
+   "reversed_mirrored": "AMChI=2S/C4H8N2O/c2-4-3(5)1-6(4)7/h5,7H,1-2H3/b5-3+,6-4+/k6-1/f3-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_622289_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H8N2O4/c1-2(6)4-3(7,8)5(2)9/h5,8-9H,4H2,1H3/k4-3,5-2/f4-2,5-3/r1",
+   "reversed": "AMChI=2S/C3H8N2O4/c1-2(6)4-3(7,8)5(2)9/h5,8-9H,4H2,1H3/k4-3,5-2/f4-2,5-3/r0",
+   "mirrored": "AMChI=2S/C3H8N2O4/c1-2(6)4-3(7,8)5(2)9/h5,8-9H,4H2,1H3/k4-3,5-2/f4-2,5-3/r1",
+   "reversed_mirrored": "AMChI=2S/C3H8N2O4/c1-2(6)4-3(7,8)5(2)9/h5,8-9H,4H2,1H3/k4-3,5-2/f4-2,5-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_543623_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H9NO/c2-5(8)4-6-3-1-9-7(3)6/h1,6-7H,4H2,2H3/t6-/m1/s1/k7-3,9-1/f9-7/r0",
+   "reversed": "AMChI=2S/C6H9NO/c2-5(8)4-6-3-1-9-7(3)6/h1,6-7H,4H2,2H3/t6-/m1/s1/k7-3,9-1/f9-7/r1",
+   "mirrored": "AMChI=2S/C6H9NO/c2-5(8)4-6-3-1-9-7(3)6/h1,6-7H,4H2,2H3/t6-/m0/s1/k7-3,9-1/f9-7/r0",
+   "reversed_mirrored": "AMChI=2S/C6H9NO/c2-5(8)4-6-3-1-9-7(3)6/h1,6-7H,4H2,2H3/t6-/m0/s1/k7-3,9-1/f9-7/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_26806_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C7H15N/c1-6(3)2-7(4)8(6)5/h7-8H,1-2H2,3-5H3/t7-/m0/s1/k6-2,8-7/f8-6/r1",
+   "reversed": "AMChI=2S/C7H15N/c1-6(3)2-7(4)8(6)5/h7-8H,1-2H2,3-5H3/t7-/m0/s1/k6-2,8-7/f8-6/r0",
+   "mirrored": "AMChI=2S/C7H15N/c1-6(3)2-7(4)8(6)5/h7-8H,1-2H2,3-5H3/t7-/m1/s1/k6-2,8-7/f8-6/r1",
+   "reversed_mirrored": "AMChI=2S/C7H15N/c1-6(3)2-7(4)8(6)5/h7-8H,1-2H2,3-5H3/t7-/m1/s1/k6-2,8-7/f8-6/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_354276_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H8N2O/c1-2(5)6-3(4-6)7-2/h3,5-6H,4H2,1H3/b5-2-/t3-/m1/s1/k6-3,7-2/f6-2/r0",
+   "reversed": "AMChI=2S/C4H8N2O/c1-2(5)6-3(4-6)7-2/h3,5-6H,4H2,1H3/b5-2-/t3-/m1/s1/k6-3,7-2/f6-2/r1",
+   "mirrored": "AMChI=2S/C4H8N2O/c1-2(5)6-3(4-6)7-2/h3,5-6H,4H2,1H3/b5-2-/t3-/m0/s1/k6-3,7-2/f6-2/r0",
+   "reversed_mirrored": "AMChI=2S/C4H8N2O/c1-2(5)6-3(4-6)7-2/h3,5-6H,4H2,1H3/b5-2-/t3-/m0/s1/k6-3,7-2/f6-2/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_16649_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H12N2O/c2-5-1-3(7,8)9-6-4-5/h4-6H,7H2,1-2H3/b5-4-,6-4+/t5-/m0/s1/k3-1,9-6/f5-1,9-3/r0",
+   "reversed": "AMChI=2S/C5H12N2O/c2-5-1-3(7,8)9-6-4-5/h4-6H,7H2,1-2H3/b5-4-,6-4+/t5-/m0/s1/k3-1,9-6/f5-1,9-3/r1",
+   "mirrored": "AMChI=2S/C5H12N2O/c2-5-1-3(7,8)9-6-4-5/h4-6H,7H2,1-2H3/b5-4-,6-4+/t5-/m1/s1/k3-1,9-6/f5-1,9-3/r0",
+   "reversed_mirrored": "AMChI=2S/C5H12N2O/c2-5-1-3(7,8)9-6-4-5/h4-6H,7H2,1-2H3/b5-4-,6-4+/t5-/m1/s1/k3-1,9-6/f5-1,9-3/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_505125_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H7NO2/c2-3-4-1(6)5-4/h3,6H,1H2,2H3/b4-3+/k5-1/f4-1/r0",
+   "reversed": "AMChI=2S/C3H7NO2/c2-3-4-1(6)5-4/h3,6H,1H2,2H3/b4-3+/k5-1/f4-1/r1",
+   "mirrored": "AMChI=2S/C3H7NO2/c2-3-4-1(6)5-4/h3,6H,1H2,2H3/b4-3+/k5-1/f4-1/r0",
+   "reversed_mirrored": "AMChI=2S/C3H7NO2/c2-3-4-1(6)5-4/h3,6H,1H2,2H3/b4-3+/k5-1/f4-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_607818_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C2H7N3O2/c3-1(4)5-2(7)6-9-8-2/h3,5,7H,4H2/b3-1-/t2-/m0/s1/k8-2,9-6/f9-8/r0",
+   "reversed": "AMChI=2S/C2H7N3O2/c3-1(4)5-2(7)6-9-8-2/h3,5,7H,4H2/b3-1-/t2-/m0/s1/k8-2,9-6/f9-8/r1",
+   "mirrored": "AMChI=2S/C2H7N3O2/c3-1(4)5-2(7)6-9-8-2/h3,5,7H,4H2/b3-1-/t2-/m1/s1/k8-2,9-6/f9-8/r0",
+   "reversed_mirrored": "AMChI=2S/C2H7N3O2/c3-1(4)5-2(7)6-9-8-2/h3,5,7H,4H2/b3-1-/t2-/m1/s1/k8-2,9-6/f9-8/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_602910_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H9N3O3/c1-5-2(8,10)4(6,7)3(5)9/h5,10H,6-7H2,1H3/k4-2,5-3/f5-2/r0",
+   "reversed": "AMChI=2S/C4H9N3O3/c1-5-2(8,10)4(6,7)3(5)9/h5,10H,6-7H2,1H3/k4-2,5-3/f5-2/r1",
+   "mirrored": "AMChI=2S/C4H9N3O3/c1-5-2(8,10)4(6,7)3(5)9/h5,10H,6-7H2,1H3/k4-2,5-3/f5-2/r0",
+   "reversed_mirrored": "AMChI=2S/C4H9N3O3/c1-5-2(8,10)4(6,7)3(5)9/h5,10H,6-7H2,1H3/k4-2,5-3/f5-2/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_482409_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H12N2O/c1-4(7)6(2,9)5-8(4)3/h5,7,9H,1-3H3/b6-5+,7-4+,8-5+/t6-/m1/s1/k8-4/f6-4/r0",
+   "reversed": "AMChI=2S/C6H12N2O/c1-4(7)6(2,9)5-8(4)3/h5,7,9H,1-3H3/b6-5+,7-4+,8-5+/t6-/m1/s1/k8-4/f6-4/r1",
+   "mirrored": "AMChI=2S/C6H12N2O/c1-4(7)6(2,9)5-8(4)3/h5,7,9H,1-3H3/b6-5+,7-4+,8-5+/t6-/m0/s1/k8-4/f6-4/r0",
+   "reversed_mirrored": "AMChI=2S/C6H12N2O/c1-4(7)6(2,9)5-8(4)3/h5,7,9H,1-3H3/b6-5+,7-4+,8-5+/t6-/m0/s1/k8-4/f6-4/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_170576_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C3H10N2O/c3-1-4(6)5-2-7-1/h5-6H,1-2H2,3H3/t4-/m1/s1/k4-1,7-2/f7-1/r0",
+   "reversed": "AMChI=2S/C3H10N2O/c3-1-4(6)5-2-7-1/h5-6H,1-2H2,3H3/t4-/m1/s1/k4-1,7-2/f7-1/r1",
+   "mirrored": "AMChI=2S/C3H10N2O/c3-1-4(6)5-2-7-1/h5-6H,1-2H2,3H3/t4-/m0/s1/k4-1,7-2/f7-1/r0",
+   "reversed_mirrored": "AMChI=2S/C3H10N2O/c3-1-4(6)5-2-7-1/h5-6H,1-2H2,3H3/t4-/m0/s1/k4-1,7-2/f7-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_382830_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N2O2/c2-3-1(5)6(8)4(3)7/h1,3-8H,2H3/b5-1-/t3-,4+/m1/s1/k3-1,6-4/f6-1/r1",
+   "reversed": "AMChI=2S/C4H10N2O2/c2-3-1(5)6(8)4(3)7/h1,3-8H,2H3/b5-1-/t3-,4+/m1/s1/k3-1,6-4/f6-1/r0",
+   "mirrored": "AMChI=2S/C4H10N2O2/c2-3-1(5)6(8)4(3)7/h1,3-8H,2H3/b5-1-/t3-,4+/m0/s1/k3-1,6-4/f6-1/r1",
+   "reversed_mirrored": "AMChI=2S/C4H10N2O2/c2-3-1(5)6(8)4(3)7/h1,3-8H,2H3/b5-1-/t3-,4+/m0/s1/k3-1,6-4/f6-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_277702_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H14N4/c1-5(3)9-2-11-7-10(9)6(4)8/h7H,1-2,8H2,3-4H3/b10-6+/k10-9,11-2/f11-7/r0",
+   "reversed": "AMChI=2S/C6H14N4/c1-5(3)9-2-11-7-10(9)6(4)8/h7H,1-2,8H2,3-4H3/b10-6+/k10-9,11-2/f11-7/r1",
+   "mirrored": "AMChI=2S/C6H14N4/c1-5(3)9-2-11-7-10(9)6(4)8/h7H,1-2,8H2,3-4H3/b10-6+/k10-9,11-2/f11-7/r0",
+   "reversed_mirrored": "AMChI=2S/C6H14N4/c1-5(3)9-2-11-7-10(9)6(4)8/h7H,1-2,8H2,3-4H3/b10-6+/k10-9,11-2/f11-7/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_83219_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H17N3/c1-5(9)7(4)11-8-6(2,3)10-5/h7-8H,1,9H2,2-4H3/t8-/m1/s1/k7-5,10-6,11-8/f10-5,11-7/r0",
+   "reversed": "AMChI=2S/C6H17N3/c1-5(9)7(4)11-8-6(2,3)10-5/h7-8H,1,9H2,2-4H3/t8-/m1/s1/k7-5,10-6,11-8/f10-5,11-7/r1",
+   "mirrored": "AMChI=2S/C6H17N3/c1-5(9)7(4)11-8-6(2,3)10-5/h7-8H,1,9H2,2-4H3/t8-/m0/s1/k7-5,10-6,11-8/f10-5,11-7/r0",
+   "reversed_mirrored": "AMChI=2S/C6H17N3/c1-5(9)7(4)11-8-6(2,3)10-5/h7-8H,1,9H2,2-4H3/t8-/m0/s1/k7-5,10-6,11-8/f10-5,11-7/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_19855_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C6H11N/c2-1-6(3,4)5-7-1/h1,5,7H,2H2,3-4H3/b7-5+/k7-1/f6-1/r0",
+   "reversed": "AMChI=2S/C6H11N/c2-1-6(3,4)5-7-1/h1,5,7H,2H2,3-4H3/b7-5+/k7-1/f6-1/r1",
+   "mirrored": "AMChI=2S/C6H11N/c2-1-6(3,4)5-7-1/h1,5,7H,2H2,3-4H3/b7-5+/k7-1/f6-1/r0",
+   "reversed_mirrored": "AMChI=2S/C6H11N/c2-1-6(3,4)5-7-1/h1,5,7H,2H2,3-4H3/b7-5+/k7-1/f6-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_141222_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H11NO2/c3-5-1-7(4)2(5)6/h2,5H,1,3-4H3/k5-2,7-1/f5-1,7-2/r0",
+   "reversed": "AMChI=2S/C4H11NO2/c3-5-1-7(4)2(5)6/h2,5H,1,3-4H3/k5-2,7-1/f5-1,7-2/r1",
+   "mirrored": "AMChI=2S/C4H11NO2/c3-5-1-7(4)2(5)6/h2,5H,1,3-4H3/k5-2,7-1/f5-1,7-2/r0",
+   "reversed_mirrored": "AMChI=2S/C4H11NO2/c3-5-1-7(4)2(5)6/h2,5H,1,3-4H3/k5-2,7-1/f5-1,7-2/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_64959_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N2O/c5-4-1-8-3-2-6(4)7/h7H,1-3,5H2/b6-4-/k6-2,8-3/f8-1/r0",
+   "reversed": "AMChI=2S/C4H10N2O/c5-4-1-8-3-2-6(4)7/h7H,1-3,5H2/b6-4-/k6-2,8-3/f8-1/r1",
+   "mirrored": "AMChI=2S/C4H10N2O/c5-4-1-8-3-2-6(4)7/h7H,1-3,5H2/b6-4-/k6-2,8-3/f8-1/r0",
+   "reversed_mirrored": "AMChI=2S/C4H10N2O/c5-4-1-8-3-2-6(4)7/h7H,1-3,5H2/b6-4-/k6-2,8-3/f8-1/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_253373_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H7N3O/c3-7-1(5)4(7,6)2(7)8/h6,8H,2H2,3H3/b6-4-/k4-2,7-1/f4-1,7-2/r1",
+   "reversed": "AMChI=2S/C4H7N3O/c3-7-1(5)4(7,6)2(7)8/h6,8H,2H2,3H3/b6-4-/k4-2,7-1/f4-1,7-2/r0",
+   "mirrored": "AMChI=2S/C4H7N3O/c3-7-1(5)4(7,6)2(7)8/h6,8H,2H2,3H3/b6-4-/k4-2,7-1/f4-1,7-2/r1",
+   "reversed_mirrored": "AMChI=2S/C4H7N3O/c3-7-1(5)4(7,6)2(7)8/h6,8H,2H2,3H3/b6-4-/k4-2,7-1/f4-1,7-2/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_234177_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N2/c2-4(3)6-1-5-6/h1,5H2,2-3H3/k6-5/f5-1/r1",
+   "reversed": "AMChI=2S/C4H10N2/c2-4(3)6-1-5-6/h1,5H2,2-3H3/k6-5/f5-1/r0",
+   "mirrored": "AMChI=2S/C4H10N2/c2-4(3)6-1-5-6/h1,5H2,2-3H3/k6-5/f5-1/r1",
+   "reversed_mirrored": "AMChI=2S/C4H10N2/c2-4(3)6-1-5-6/h1,5H2,2-3H3/k6-5/f5-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_73456_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H11NO2/c2-4(7)5(3)1-6(4,5)8/h5,7-8H,2H2,1,3H3/t5-/m0/s1/k5-4,6-1/f5-1,6-4/r0",
+   "reversed": "AMChI=2S/C5H11NO2/c2-4(7)5(3)1-6(4,5)8/h5,7-8H,2H2,1,3H3/t5-/m0/s1/k5-4,6-1/f5-1,6-4/r1",
+   "mirrored": "AMChI=2S/C5H11NO2/c2-4(7)5(3)1-6(4,5)8/h5,7-8H,2H2,1,3H3/t5-/m1/s1/k5-4,6-1/f5-1,6-4/r0",
+   "reversed_mirrored": "AMChI=2S/C5H11NO2/c2-4(7)5(3)1-6(4,5)8/h5,7-8H,2H2,1,3H3/t5-/m1/s1/k5-4,6-1/f5-1,6-4/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_535120_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H8N2O2/c3-7-4(8,9)1(6)2-5-7/h5-6,9H,2H2,3H3/b6-1+,7-5-/k2-1,4-1/f7-4/r1",
+   "reversed": "AMChI=2S/C5H8N2O2/c3-7-4(8,9)1(6)2-5-7/h5-6,9H,2H2,3H3/b6-1+,7-5-/k2-1,4-1/f7-4/r0",
+   "mirrored": "AMChI=2S/C5H8N2O2/c3-7-4(8,9)1(6)2-5-7/h5-6,9H,2H2,3H3/b6-1+,7-5-/k2-1,4-1/f7-4/r1",
+   "reversed_mirrored": "AMChI=2S/C5H8N2O2/c3-7-4(8,9)1(6)2-5-7/h5-6,9H,2H2,3H3/b6-1+,7-5-/k2-1,4-1/f7-4/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_283823_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H7NO/c1-3-4-5(2,7)6(3)4/h4,7H,1H2,2H3/t4-,5-/m0/s1/k4-3,6-5/r1",
+   "reversed": "AMChI=2S/C5H7NO/c1-3-4-5(2,7)6(3)4/h4,7H,1H2,2H3/t4-,5-/m0/s1/k4-3,6-5/r0",
+   "mirrored": "AMChI=2S/C5H7NO/c1-3-4-5(2,7)6(3)4/h4,7H,1H2,2H3/t4-,5-/m1/s1/k4-3,6-5/r1",
+   "reversed_mirrored": "AMChI=2S/C5H7NO/c1-3-4-5(2,7)6(3)4/h4,7H,1H2,2H3/t4-,5-/m1/s1/k4-3,6-5/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_51245_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H11N3O/c1-7(3-4-8)2(5)6-9-7/h5-6,8H,3-4H2,1H3/b5-2+/k7-2,9-6/f9-7/r0",
+   "reversed": "AMChI=2S/C4H11N3O/c1-7(3-4-8)2(5)6-9-7/h5-6,8H,3-4H2,1H3/b5-2+/k7-2,9-6/f9-7/r1",
+   "mirrored": "AMChI=2S/C4H11N3O/c1-7(3-4-8)2(5)6-9-7/h5-6,8H,3-4H2,1H3/b5-2+/k7-2,9-6/f9-7/r0",
+   "reversed_mirrored": "AMChI=2S/C4H11N3O/c1-7(3-4-8)2(5)6-9-7/h5-6,8H,3-4H2,1H3/b5-2+/k7-2,9-6/f9-7/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_290081_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H10N2O/c2-5-1-9-3(8)6-4-7(5)6/h3,8H,1,4H2,2H3/t3-,6+/m1/s1/k7-6,9-3/f9-1/r1",
+   "reversed": "AMChI=2S/C5H10N2O/c2-5-1-9-3(8)6-4-7(5)6/h3,8H,1,4H2,2H3/t3-,6+/m1/s1/k7-6,9-3/f9-1/r0",
+   "mirrored": "AMChI=2S/C5H10N2O/c2-5-1-9-3(8)6-4-7(5)6/h3,8H,1,4H2,2H3/t3-,6+/m0/s1/k7-6,9-3/f9-1/r1",
+   "reversed_mirrored": "AMChI=2S/C5H10N2O/c2-5-1-9-3(8)6-4-7(5)6/h3,8H,1,4H2,2H3/t3-,6+/m0/s1/k7-6,9-3/f9-1/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_142585_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H12N2O/c2-1-5(6)9-7-4(3)8-1/h1,4-5H,2,6H2,3H3/t4-/m0/s1/k5-1,8-4,9-7/f8-1,9-5/r0",
+   "reversed": "AMChI=2S/C4H12N2O/c2-1-5(6)9-7-4(3)8-1/h1,4-5H,2,6H2,3H3/t4-/m0/s1/k5-1,8-4,9-7/f8-1,9-5/r1",
+   "mirrored": "AMChI=2S/C4H12N2O/c2-1-5(6)9-7-4(3)8-1/h1,4-5H,2,6H2,3H3/t4-/m1/s1/k5-1,8-4,9-7/f8-1,9-5/r0",
+   "reversed_mirrored": "AMChI=2S/C4H12N2O/c2-1-5(6)9-7-4(3)8-1/h1,4-5H,2,6H2,3H3/t4-/m1/s1/k5-1,8-4,9-7/f8-1,9-5/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_160627_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H8N2O/c1-3-4(5)2-6(3)7/h2-3,7H,5H2,1H3/b4-3-,6-2+/t3-/m1/s1/k6-3/r1",
+   "reversed": "AMChI=2S/C4H8N2O/c1-3-4(5)2-6(3)7/h2-3,7H,5H2,1H3/b4-3-,6-2+/t3-/m1/s1/k6-3/r0",
+   "mirrored": "AMChI=2S/C4H8N2O/c1-3-4(5)2-6(3)7/h2-3,7H,5H2,1H3/b4-3-,6-2+/t3-/m0/s1/k6-3/r1",
+   "reversed_mirrored": "AMChI=2S/C4H8N2O/c1-3-4(5)2-6(3)7/h2-3,7H,5H2,1H3/b4-3-,6-2+/t3-/m0/s1/k6-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_539760_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H13N3/c2-5(4)6(7)10-3-8-1-9-5/h1,6H,2-3,7H2,4H3/k6-5,9-1,10-3/f9-5,10-6/r1",
+   "reversed": "AMChI=2S/C5H13N3/c2-5(4)6(7)10-3-8-1-9-5/h1,6H,2-3,7H2,4H3/k6-5,9-1,10-3/f9-5,10-6/r0",
+   "mirrored": "AMChI=2S/C5H13N3/c2-5(4)6(7)10-3-8-1-9-5/h1,6H,2-3,7H2,4H3/k6-5,9-1,10-3/f9-5,10-6/r1",
+   "reversed_mirrored": "AMChI=2S/C5H13N3/c2-5(4)6(7)10-3-8-1-9-5/h1,6H,2-3,7H2,4H3/k6-5,9-1,10-3/f9-5,10-6/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_282673_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H9N3O/c2-4-3(6)1(8)5(3)7/h4-5H,6-7H2,2H3/b4-3+/k3-1,5-1/f5-3/r1",
+   "reversed": "AMChI=2S/C4H9N3O/c2-4-3(6)1(8)5(3)7/h4-5H,6-7H2,2H3/b4-3+/k3-1,5-1/f5-3/r0",
+   "mirrored": "AMChI=2S/C4H9N3O/c2-4-3(6)1(8)5(3)7/h4-5H,6-7H2,2H3/b4-3+/k3-1,5-1/f5-3/r1",
+   "reversed_mirrored": "AMChI=2S/C4H9N3O/c2-4-3(6)1(8)5(3)7/h4-5H,6-7H2,2H3/b4-3+/k3-1,5-1/f5-3/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_512374_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H11NO2/c1-4-5(2,7-4)6(4,3)8/h5,7-8H,1H2,2-3H3/t5-/m1/s1/k6-5,7-4/f6-4,7-5/r1",
+   "reversed": "AMChI=2S/C5H11NO2/c1-4-5(2,7-4)6(4,3)8/h5,7-8H,1H2,2-3H3/t5-/m1/s1/k6-5,7-4/f6-4,7-5/r0",
+   "mirrored": "AMChI=2S/C5H11NO2/c1-4-5(2,7-4)6(4,3)8/h5,7-8H,1H2,2-3H3/t5-/m0/s1/k6-5,7-4/f6-4,7-5/r1",
+   "reversed_mirrored": "AMChI=2S/C5H11NO2/c1-4-5(2,7-4)6(4,3)8/h5,7-8H,1H2,2-3H3/t5-/m0/s1/k6-5,7-4/f6-4,7-5/r0"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_528614_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H10N4O/c1-3-2(5)6(8)10-9-4(3)7/h5-6H,7-8H2,1H3/b5-2+/k6-2,10-9/f10-6/r0",
+   "reversed": "AMChI=2S/C4H10N4O/c1-3-2(5)6(8)10-9-4(3)7/h5-6H,7-8H2,1H3/b5-2+/k6-2,10-9/f10-6/r1",
+   "mirrored": "AMChI=2S/C4H10N4O/c1-3-2(5)6(8)10-9-4(3)7/h5-6H,7-8H2,1H3/b5-2+/k6-2,10-9/f10-6/r0",
+   "reversed_mirrored": "AMChI=2S/C4H10N4O/c1-3-2(5)6(8)10-9-4(3)7/h5-6H,7-8H2,1H3/b5-2+/k6-2,10-9/f10-6/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_346637_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C4H11N3O2/c2-4(9)1-7(6)3(4,5)8/h4,9H,1,5-6H2,2H3/t4-/m1/s1/k4-1,7-3/f4-3/r0",
+   "reversed": "AMChI=2S/C4H11N3O2/c2-4(9)1-7(6)3(4,5)8/h4,9H,1,5-6H2,2H3/t4-/m1/s1/k4-1,7-3/f4-3/r1",
+   "mirrored": "AMChI=2S/C4H11N3O2/c2-4(9)1-7(6)3(4,5)8/h4,9H,1,5-6H2,2H3/t4-/m0/s1/k4-1,7-3/f4-3/r0",
+   "reversed_mirrored": "AMChI=2S/C4H11N3O2/c2-4(9)1-7(6)3(4,5)8/h4,9H,1,5-6H2,2H3/t4-/m0/s1/k4-1,7-3/f4-3/r1"
+  }
+ },
+ {
+  "fixture": "records",
+  "id": "rgd1:MR_149967_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": {
+   "forward": "AMChI=2S/C5H12N2O2/c1-4(8)5(2)7(9)6(4)3/h5-6,9H,1-3H3/t5-,7+/m0/s1/k5-4,7-6/f6-4/r1",
+   "reversed": "AMChI=2S/C5H12N2O2/c1-4(8)5(2)7(9)6(4)3/h5-6,9H,1-3H3/t5-,7+/m0/s1/k5-4,7-6/f6-4/r0",
+   "mirrored": "AMChI=2S/C5H12N2O2/c1-4(8)5(2)7(9)6(4)3/h5-6,9H,1-3H3/t5-,7+/m1/s1/k5-4,7-6/f6-4/r1",
+   "reversed_mirrored": "AMChI=2S/C5H12N2O2/c1-4(8)5(2)7(9)6(4)3/h5-6,9H,1-3H3/t5-,7+/m1/s1/k5-4,7-6/f6-4/r0"
+  }
+ },
+ {
+  "fixture": "hand_cases:hnno",
+  "id": "hnno:1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/H2N2O2/c1-2(3)4/h1,4H"
+ },
+ {
+  "fixture": "hand_cases:hnno",
+  "id": "hnno:2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/H2N2O2/c1-2(3)4/h1,4H"
+ },
+ {
+  "fixture": "components",
+  "id": "chiral+water",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H5NO2.H2O/c1-5-3-2-4;/h2-3H,1H3;1H2"
+ },
+ {
+  "fixture": "components",
+  "id": "water+chiral+water",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H5NO2.2H2O/c1-5-3-2-4;;/h2-3H,1H3;2*1H2"
+ },
+ {
+  "fixture": "components",
+  "id": "enantiomers",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/2C2H5NO2/c2*1-5-3-2-4/h2*2-3H,1H3"
+ },
+ {
+  "fixture": "components",
+  "id": "water+cis_trans+chiral",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H6N.C2H5NO2.H2O/c1-3-5-4-2;1-5-3-2-4;/h1,3-5H,2H2;2-3H,1H3;1H2/b3-1+;;"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:3888_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8NO2/c1-4(7)6-2-5(8)3-6/h5,8H,1-3H2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:9253_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H13N2O/c1-6(10)9-4-2-7(8)3-5-9/h7-8H,2-5H2,1H3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:42453_ba2712",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C9H14N/c1-2-8-3-10-6-4-9(8)5-7-10/h2-3,8-9H,1,4-7H2/t8-/m1/s1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:90843_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H13N2/c1-2-3-9-6-4-8-5-7-9/h2-3,8H,1,4-7H2/b3-2+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:102884_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H17N2/c1-2-10-5-3-8(7-9)4-6-10/h2,8H,3-7,9H2,1H3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:120832_d9ddfb",
+  "decisions": [
+   "D42"
+  ],
+  "new": "AMChI=2S/C10H13/c1-9-3-7-2-8(4-9)5-10(1,9)6-7/h1,7-8H,2-6H2/t1+,7+,8-,9+,10+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:155142_be9301",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H10NO2/c1-3-7(4-2)5(9)8-6(7)10/h3,8H,4H2,1-2H3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:155476_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H17N2/c1-3-2-10-6-4-8(9)5-7-10/h2,8H,3-7,9H2,1H3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:183779_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C9H16N/c1-10-7-8-3-5-9(10,2)6-4-8/h8H,1,3-7H2,2H3/t8-,9+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:186700_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H8N2O2/c1-7-2-4(8)6-5(9)3-7/h6H,2-3H2,1H3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:204337_fb9272",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H11N2O/c8-1-7-4-2-6-3-5-7/h1,6,8H,2-5H2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:229228_9da9a6",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H11N2O/c8-1-2-9-5-3-7(10)4-6-9/h2,7,10H,3-6H2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:253208_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H14N2O/c1-2-3-7-4-9(5-7)6(8)10/h7H,2-5,8H2,1H3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:253213_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H13N2O/c1-2-3-7-4-9(5-7)6(8)10/h7H,1-5,8H2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:257672_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H13N2/c1-3-7-2-6-4-8-5-6/h2,6-8H,3-5H2,1H3/t6-,8+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:286032_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10N3O/c1-8-4(10)9-6-2-5(3-6)7-9/h5-6,8H,2-3H2,1H3/t5+,6-"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:372569_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N3O/c1-7-5(4(6)9)2-8-3-5/h7-8H,1-3,6H2/t5+,8+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:394925_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N3O/c1-7-4(9)6-5-2-8-3-5/h5,7-8H,2-3H2,1H3/b6-4-/t5+,8+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:412643_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H14NO/c1-8-7-3-6(4-7)5-9-2/h6-8H,1,3-5H2,2H3/t6-,7+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:420780_0",
+  "decisions": [
+   "D42"
+  ],
+  "new": "AMChI=2S/C8H11O2/c1-10-6(9)7-4-8(5-7)2-3-8/h2,7H,3-5H2,1H3/t2-,7+,8-/m1/s1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:424644_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10N2O2/c1-8-2-6(3-7-4-6)10-5(8)9/h7H,2-4H2,1H3/t6+,7+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:425693_978ede",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11N2O/c1-5(9)8-3-6(2,7)4-8/h1,3-4,7H2,2H3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:432296_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11N2O2/c1-10-2-5(9)8-6-3-7-4-6/h6-8H,1-4H2/t6+,7+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:462043_fa61e9",
+  "decisions": [
+   "D42"
+  ],
+  "new": "AMChI=2S/C5H8N/c1-2-5(1)3-6-4-5/h1,6H,2-4H2/t1-,5+,6+/m1/s1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:468069_f2b785",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H11N2O/c1-9-3-2-7(6(9)10)4-8-5-7/h2,8H,3-5H2,1H3/t7-,8+"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:468297_1a4029",
+  "decisions": [
+   "D42"
+  ],
+  "new": "AMChI=2S/C6H10N/c1-7-4-6(5-7)2-3-6/h2H,3-5H2,1H3/t2-,6+,7+/m1/s1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:510539_ef5d95",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H5N2/c1-4-2-5(1)3-4/h1H,2-3H2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "stjohn:522643_860a20",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H13N2O/c1-2-7-3-5-8(9)6-4-7/h2-6H2,1H3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_112749_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H13NO2/c3-5(1-6(5)4)2-10-8-7(5)9/h6,9H,1-2H2,3-4H3/t5-,6-/m0/s1/k5-1,6-5,10-2/f7-5,10-8/r0"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_116121_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H13N3O/c2-4(1-5(4,3)8)6-7-10-9-4/h6-7H,1,8H2,2-3H3/b7-6+/t4-,5-,7-/m1/s1/k4-1,5-4,10-9/f6-4,10-7/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_124444_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H9NO2/c1-2-4-5-3(8-2)7-9-6-5/h2-3H,4H2,1H3/t2-,3+/m0/s1/k8-3,9-7/f8-2,9-6/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_125810_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H10N2O2/c1-3-6(2)4(5,9-3)8-10-7-3/h5H2,1-2H3/t3-,4+/m1/s1/k9-4,10-8/f9-3,10-7/r0"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_135647_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H10N2/c1-5-2(3)6(5)4/h1-2H2,3-4H3/k6-2/f5-2/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_13910_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H13N/c1-5-6(4)7-2(3)8-6/h5H,1-2H2,3-4H3/k7-6,8-2/f7-2,8-6"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_15656_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H11NO/c2-1-7-5(8-1)4(3)6/h5H,1H2,2-3H3/k7-5,8-1/f7-1,8-5"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_206937_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H10N4O/c2-6-1(8)7(5)3(6)4/h8H,1,4-5H2,2H3/b6-3+,7-3+/k7-1/f6-1/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_220205_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H13N3/c3-2-7(4)1(6)8(2)5/h7-8H,2H2,3-5H3/k7-2,8-1/f7-1,8-2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_231764_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H11N5/c2-7-1(4)8(6)3(7)5/h1,4-6H2,2H3/b7-3+,8-3+/k8-1/f7-1/r0"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_245330_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H9N3/c1-7-2(5)4-3(7)6-7/h2-3H,4-5H2,1H3/t2-,3-/m1/s1/k7-3/f7-2/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_282643_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N2O/c2-4-1(6)5(4,3)7(4)8/h1,6-8H,2-3H3/b6-1-/k5-1,7-4/f4-1,7-5"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_389844_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H8N2O2/c3-1-5(7)2(4)6(1,5)8/h1-2,7-8H,3-4H2/k5-2,6-1/f5-1,6-2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_424139_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C8H18N2/c2-7(4)1-8(3,5)10(7,6)9/h2-3,9H2,1,4-6H3/k8-1,10-7/f7-1,10-8"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_442888_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H7N5O/c1-6-2(3,8)7(4)5-6/h3-4H2,1H3/b6-5+,7-5+/k7-2/f6-2/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_444725_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H15N3O/c1-5(3)7-6(2,4)9(5,8)10/h10H,1-2,7-8H2,3-4H3/k7-6,9-5/f7-5,9-6"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_459667_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H8N4O2/c4-1(7)3(6)2(5,8)9-1/h3H,4-6H2/k3-2,9-1/f3-1,9-2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_467088_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H3N3O3/c3-2(4)5-7-1(6)8-5/h3H,4H2/b3-2+/k7-5,8-1/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_470391_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H12N2O3/c1-4(8)6-5(2,9)7(4,3)10/h10H,6H2,1-3H3/k6-5,7-4/f6-4,7-5"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_481520_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H14N4/c1-4(6)9(3,8)5(2,7)10-4/h6-7H,8H2,1-3H3/b6-4-,7-5-/k9-5,10-4/f9-4,10-5"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_483284_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H9N3O4/c5-2(7)1(9)3(6,8)4(2)10/h4,9-10H,1,5-6H2/k3-1,4-2/f2-1,4-3"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_485314_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H12N2O/c5-3-2(4-3)1(8)6(2)7/h1-2,6H,3-4,7H2,5H3/t2-/m1/s1/k2-1,4-3,6-2/f3-2,6-1/r0"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_510019_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H4N2O2/c4-2-3-5-7-1-6-3/h5H,1H3/k7-1/f6-1/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_514954_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H8N2O/c7-1-3-2-5-4(1)6-3/h2-7H,1H2/t3-,4+/m0/s1/k4-1/f3-1/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_530142_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H15N3O/c1-5(9)7(3)6(2,10)8(5)4/h7-8H,1,9H2,2-4H3/k7-6,8-5/f7-5,8-6"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_54234_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H10N2/c3-6-1-4(6,5)2-6/h5H,1-3H3/b5-4+/k4-2,6-1/f4-1,6-2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_54276_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H9N/c1-4-5(2,3)6(4)7-5/h1H2,2-3H3/k5-4,7-6/f7-5/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_576335_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H14N4O/c1-4(2)6(8)5(3,10)7(4)9/h6-7H,1,8-9H2,2-3H3/k6-5,7-4/f6-4,7-5"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_590437_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H10N2O/c3-4(7)2-5(4)1(6)8-5/h1,4,6-7H,2H2,3H3/b6-1+/t4-/m1/s1/k4-2,5-1,8-5/f5-4,8-1/r0"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_595580_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H10N2/c2-5-1(7)6(5,3)8(5)4/h1,7-8H,2-3H2,4H3/b7-1+/k6-1,8-5/f5-1,8-6"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_606113_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H12N2O/c3-1-6(4)2(8)7(1)5/h1-2,6-7H,3H2,4-5H3/k6-2,7-1/f6-1,7-2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_610849_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H13N3O/c1-4(6)8(3,9)5(2,7)10-4/h6-7,9H,1-3H3/b6-4-,7-5-/k8-5,10-4/f8-4,10-5"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_6527_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H7NO/c2-3-4-6-1-5-7-4/h1H2,2H3/k6-1,7-5/f6-4,7-4/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_665805_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H4N2O2/c5-3-1(6)4-2(3)7/h3-4H,5H2/t3-/m0/s1/k3-2,4-1/r0"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_667471_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H10N2O2/c1-3-5-6-4(2)7(3)8/h3-4,6,8H,1-2H3/b5-3-/t3-,4+/m1/s1/k7-4/f7-3/r0"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_67320_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H10N2O/c1-3-5(2)7-6(4)8-5/h3H,1,4H2,2H3/k7-6,8-5/f7-5,8-6"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_684632_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H11N3/c1-4-5(2,6(4)7)8(4)3/h7-8H,1-3H3/b7-6+/k6-5,8-4/f6-4,8-5"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_685445_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H5N3O/c3-1-4-6-2(3)5-1/h1-2,5H,3H2/t1-,2-/m1/s1/k3-2/f3-1/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_68889_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C2H6N2O2/c3-2-4-6-1-5-2/h4H,3H2,1H3/k6-1/f5-1/r0"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_689871_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H9N3/c3-4(2-7-4)1(5)6-4/h1,5-7H,2H2,3H3/b5-1-,6-4-/t4-,7-/m1/s1/k4-2,6-1,7-4/f4-1/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_691038_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H7N3/c1-3-4(2)7-5-6-3/h6H,1-2H3/b6-3+/k6-5/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_702642_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H14N2O2/c1-4-7-6-10-8(11-6)5(2)9-3/h4-7H,1H2,2-3H3/t5-,6-/m0/s1/k10-8,11-6/f10-6,11-8/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_703679_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H14N4/c1-4(6)9(3,8)5(2,7)10-4/h6-7H,8H2,1-3H3/b6-4-,7-5-/k9-5,10-4/f9-4,10-5"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_79857_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C4H10N2/c3-1-5(6)2(4)7-1/h1-2,5H,3-4,6H2/k5-2,7-1/f5-1,7-2"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:MR_90669_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N2/c1-4-5-7(4)3-6(4)2/h3-4H,5H2,1-2H3/b6-3+/t4-/m1/s1/k7-4/f6-4/r1"
+ },
+ {
+  "fixture": "large_differences",
+  "id": "rgd1:mol96536",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C3H4N2O2/c4-3-1(6)5-2(3)7/h3,5H,4H2"
+ },
+ {
+  "fixture": "metamorphic",
+  "id": "rgd1:MR_242866_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/2CH4N2/c2*1-2-3-1/h2*2-3H,1H2/t2-,3-;2-/m10/s1/k;2-1/r;1"
+ },
+ {
+  "fixture": "metamorphic",
+  "id": "rgd1:MR_13442_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H13N3/c2-1(3(4)9-1)5(7,8)6-1/h6H,2-3,7-8H2,4H3/k5-1,6-1,9-3/f3-1,9-1/r1"
+ },
+ {
+  "fixture": "metamorphic",
+  "id": "rgd1:MR_336105_2",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H12N2O/c2-1(8(4)11-1)5(9,10-1)6(3)7/h7-8H,2H2,3-4H3/b7-6+/k5-1,10-1,11-8/f8-1,10-5,11-1/r1"
+ },
+ {
+  "fixture": "metamorphic",
+  "id": "rgd1:MR_468850_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C6H11NO/c2-1(5(8)7-1)6(3,4)9-1/h6-7H,2H2,3-4H3/k5-1,7-1,9-6/f6-1,9-1/r1"
+ },
+ {
+  "fixture": "metamorphic",
+  "id": "rgd1:MR_520772_0",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C7H13N/c3-2(1-9-2)7(5,6-4)8-2/h6,8H,3-4H2,1,5H3/b8-7+/t7-/m1/s1/k7-2,8-2,9-1/f2-1,9-2/r1"
+ },
+ {
+  "fixture": "metamorphic",
+  "id": "rgd1:MR_694075_1",
+  "decisions": [
+   "D41"
+  ],
+  "new": "AMChI=2S/C5H10N2O/c2-1(7(8)9-1)4(5-3)6-1/h7-8H,2,5H2,3H3/k4-1,6-1,9-7/f7-1,9-1/r0"
+ }
+]

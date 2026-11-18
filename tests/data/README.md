@@ -17,4 +17,6 @@ Written by the old AutoMol (never imported here), except `inchi.json`. The first
 
 - `metamorphic.json`: the records of the full datasets that broke a metamorphic rule of the planning repo's `baseline/metamorphic.py` (`finding` says which), with their geometries from its `baseline/oracle_read.py --ids` and, once fixed, the new string (`amchi`). Not written by the old AutoMol.
 
-They are regenerated from the planning repo's `baseline/` (`make_test_records.py`, `dump_hand_cases.py`, `dump_components.py`, `inchi_c_layers.py`, `ts_variants.py`, `dump_ts_hand_cases.py`, `dump_large_differences.py`).
+- `low_t_differences.json`: the records of every other fixture whose strings D41 and D42 change (the low-temperature atom candidates), with the decisions and the new strings (for the TSs of `records.json.gz` and `ts_hand_cases.json`, of all four variants). The old strings stay in their own fixtures. Written by the planning repo's `baseline/dump_low_t_differences.py`, which runs amchi before and after the change, not by the old AutoMol.
+
+They are regenerated from the planning repo's `baseline/` (`make_test_records.py`, `dump_hand_cases.py`, `dump_components.py`, `inchi_c_layers.py`, `ts_variants.py`, `dump_ts_hand_cases.py`, `dump_large_differences.py`, `dump_low_t_differences.py`).
